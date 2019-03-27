@@ -1,0 +1,19 @@
+-- test "fire away" vs "keep firing" conditions
+
+debug_test(easy)
+debug_test(easy)
+debug_test(medium)
+debug_test(hard)
+debug_test(advanced)
+bomb([C,3],[C,3])
+fire([A,5])	-- Invalid coordinate -> fire away!
+fire([A,1])	-- miss! Keep firing!
+fire([A,5])	-- Invalid coordinate -> Keep firing!
+fire([A,2])
+fire([A,3])
+fire([A,4])
+fire([B,1])
+fire([B,2])
+fire([B,3])
+fire([B,4])
+fire([A,10]) -- no shots remaining + invalid coordinate
