@@ -35,7 +35,7 @@ feature -- queries
 		local
 			n: INTEGER
 		do
-			n := board.size
+			n := board.implementation.width
 			Result := (1 <= a_x and a_x <= n) and (1 <= a_y and a_y <= n)
 		end
 

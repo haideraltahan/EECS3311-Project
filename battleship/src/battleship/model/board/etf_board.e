@@ -16,20 +16,22 @@ create
 feature {NONE} -- create
 	make_empty
 		do
-			size := 0
-			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), size, size)
+			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), 1, 1)
 			create history.make
-			create Ships.make (size)
+			create Ships.make (1)
 		end
-	make(a_size, s_size: INTEGER)
+	make(a_size, s_size: INTEGER; a_is_debug_mode: BOOLEAN)
 			-- Initialization for `Current'.
 		do
-			size := a_size
-			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), size, size)
+			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), a_size, a_size)
 			create history.make
-			create Ships.make (s_size)
+			Ships := generate_ships(s_size)
+			is_debug_mode := a_is_debug_mode
+			if is_debug_mode then
+				fill_debug
+			end
 		end
-feature -- random generators
+feature {NONE} -- internal attributes
 
 	rand_gen: RANDOM_GENERATOR
 			-- random generator for normal mode
@@ -44,24 +46,32 @@ feature -- random generators
 		attribute
 			create result.make_debug
 		end
-
-feature {ETF_ACTIONS} -- implementation
-	implementation: ARRAY2[ETF_SQUARE]
-		-- implementation
 	row_indices : ARRAY[CHARACTER]
 		once
 			Result := <<'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'>>
 		end
+
+feature -- attributes
 	history: ETF_HISTORY
-	Ships : ARRAYED_LIST[ETF_SHIP]
+	ships : ARRAYED_LIST[ETF_SHIP]
+	is_debug_mode: BOOLEAN
+	-- shots
+	shots, max_shots : INTEGER
+	-- bombs
+	bombs, max_bombs : INTEGER
+	-- score
+	score, max_score : INTEGER
 
-feature -- utilities
+feature {ETF_ACTIONS} -- implementation
+	implementation: ARRAY2[ETF_SQUARE]
+		-- implementation
 
-	generate_ships (is_debug_mode: BOOLEAN; board_size: INTEGER; num_ships: INTEGER): ARRAYED_LIST[ETF_SHIP]
+feature {NONE} -- utilities
+	generate_ships (num_ships: INTEGER): ARRAYED_LIST[ETF_SHIP]
 			-- places the ships on the board
 			-- either deterministicly random or completely random depending on debug mode
 		local
-			c,r : INTEGER
+			c,r, a_size : INTEGER
 			d: BOOLEAN
 			gen: RANDOM_GENERATOR
 			new_ship: ETF_SHIP
@@ -73,27 +83,27 @@ feature -- utilities
 				gen := rand_gen
 			end
 			from
-				size := num_ships
+				a_size := num_ships
 			until
-				size = 0
+				a_size = 0
 			loop
 				d := (gen.direction \\ 2 = 1)
 				if d then
-					c := (gen.column \\ board_size) + 1
-					r := (gen.row \\ (board_size - size)) + 1
+					c := (gen.column \\ implementation.width) + 1
+					r := (gen.row \\ (implementation.width - a_size)) + 1
 				else
-					r := (gen.row \\ board_size) + 1
-					c := (gen.column \\ (board_size - size)) + 1
+					r := (gen.row \\ implementation.width) + 1
+					c := (gen.column \\ (implementation.width - a_size)) + 1
 				end
 
-				new_ship := create {ETF_SHIP}.make (size, r, c,d)
+				new_ship := create {ETF_SHIP}.make (a_size, r, c,d)
 
 				if not collide_with (Result, new_ship) then
 					-- If the generated ship does not collide with
 					-- ones that have been generated, then
 					-- add it to the set.
 					Result.extend (new_ship)
-					size := size - 1
+					a_size := a_size - 1
 				end
 				gen.forth
 			end
@@ -155,17 +165,81 @@ feature -- utilities
 					end
 			end
 
-feature  -- game started
-	size: INTEGER
-		-- size of board
+	ship_on_coordinate( coordinate: TUPLE[row: INTEGER_32; column: INTEGER_32]):ETF_SHIP
+		local
+			r:BOOLEAN
+		do
+			create Result.make_empty
+			across ships as s loop
+				if s.item.dir ~ TRUE then
+					r := coordinate.row > s.item.row and coordinate.row <= s.item.row + s.item.size and coordinate.column ~ s.item.col
+				else
+					r := coordinate.column > s.item.col and coordinate.column <= s.item.col + s.item.size and coordinate.row ~ s.item.row
+				end
 
-    started: BOOLEAN
-    	-- has the game started?
+				if r then
+					Result := s.item
+				end
+			end
+		end
 
-    set_started
-    	do
-        	started := True
-    	end
+	fill_debug
+		local
+			temp : ETF_SHIP
+		do
+			across 1 |..| implementation.width as i loop
+				across 1 |..| implementation.height as j loop
+					temp := ship_on_coordinate ([i.item, j.item])
+					if temp.size ~ 0 then
+						implementation[i.item,j.item] := create {ETF_SQUARE}.make ('_')
+					else
+						if temp.dir then
+							implementation[i.item,j.item] := create {ETF_SQUARE}.make ('v')
+						else
+							implementation[i.item,j.item] := create {ETF_SQUARE}.make ('h')
+						end
+					end
+				end
+			end
+		end
+
+feature  -- game info
+	game_status: INTEGER
+		-- 0: Game is RUNNING
+		-- 1: Game is LOST
+		-- 2: Game is WON
+		-- 3: Game has not started
+		local
+			all_ships_sunk: BOOLEAN
+		do
+			if ships.count ~ 0 then
+				Result := 3
+			else
+				Result := 0
+				all_ships_sunk := TRUE
+				across ships as s loop
+					if not s.item.is_sunk(implementation) then
+				    	all_ships_sunk := FALSE
+				    end
+				end
+
+				if all_ships_sunk ~ TRUE then
+					Result := 2
+				elseif shots ~ max_shots and bombs ~ max_bombs then
+					Result := 1
+				end
+			end
+		end
+
+	count_sunk_ships : INTEGER
+		do
+			Result := 0
+			across ships as c loop
+				if c.item.is_sunk (implementation) ~ True then
+					Result := Result + 1
+				end
+			end
+		end
 
 feature -- positions
     move_king(a_square: ETF_SQUARE)
@@ -181,8 +255,63 @@ feature -- positions
     	end
 
 feature -- out
+	ships_out: STRING
+		local
+			i, j:INTEGER
+		do
+			create Result.make_from_string ("%N")
+			if is_debug_mode then
+				i := 1
+				across ships as c loop
+					Result.append ("    " + c.item.size.out)
+					Result.append ("x1: ")
 
-    board_out: STRING
+					from j := 1
+					until j > c.item.size
+					loop
+						if c.item.dir ~ True then
+							Result.append ("[")
+							Result.append (row_indices[c.item.row + j].out)
+							Result.append (", ")
+							Result.append (c.item.col.out)
+							Result.append ("]")
+							Result.append ("->")
+							Result.append (implementation[c.item.row + j,c.item.col].out)
+						else
+							Result.append ("[")
+							Result.append (row_indices[c.item.row].out)
+							Result.append (", ")
+							Result.append ((c.item.col + j).out)
+							Result.append ("]")
+							Result.append ("->")
+							Result.append (implementation[c.item.row,c.item.col + j].out)
+						end
+						if j <= c.item.size - 1 then
+							Result.append (";")
+						end
+						j := j + 1
+					end
+
+					if i < ships.count then
+						Result.append ("%N")
+					end
+					i := i + 1
+				end
+			else
+				i := 1
+				across ships as c loop
+					Result.append (c.item.size.out)
+					Result.append ("x1: ")
+					if c.item.is_sunk(implementation) ~ True then
+						Result.append ("Sunk %N")
+					else
+						Result.append ("Not Sunk %N")
+					end
+					i := i + 1
+				end
+			end
+		end
+    out: STRING
 		-- Return string representation of current game.
 		-- You may reuse this routine.
 	local
@@ -197,14 +326,6 @@ feature -- out
 				Result.append ("  " + implementation[i.item,j.item].out)
 			end
 		end
-	end
 
-    out: STRING
-			-- representation of board
-		do
-			Result := ""
-			if started then
-				Result := board_out
-			end
-		end
+	end
 end

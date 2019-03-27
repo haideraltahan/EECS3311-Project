@@ -31,6 +31,14 @@ feature{NONE}
 feature
 	item: CHARACTER
 
+	is_hit:BOOLEAN
+		do
+			Result := FALSE
+			if item ~ 'O' or item ~ 'X' then
+				Result := TRUE
+			end
+		end
+
 	debug_output: STRING
 		do
 			Result := out

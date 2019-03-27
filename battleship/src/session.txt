@@ -1,2 +1,7 @@
+debug_test(hard)
 debug_test(easy)
-fire([A, 4])
+debug_test(easy)
+debug_test(easy)
+debug_test(easy)
+debug_test(easy)
+debug_test(easy)
