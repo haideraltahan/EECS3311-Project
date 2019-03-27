@@ -10,8 +10,8 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1000_8603(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1000_8604(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1000_8605(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1000_8606(EIF_REFERENCE);
 extern void EIF_Minit1000(void);
 
 #ifdef __cplusplus
@@ -34,8 +34,8 @@ extern "C" {
 #endif
 
 /* {KL_SHARED_STRING_EQUALITY_TESTER}.string_equality_tester */
-RTOID (F1000_8603)
-EIF_TYPED_VALUE F1000_8603 (EIF_REFERENCE Current)
+RTOID (F1000_8605)
+EIF_TYPED_VALUE F1000_8605 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "string_equality_tester";
@@ -47,7 +47,7 @@ EIF_TYPED_VALUE F1000_8603 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1000_8603);
+	RTOTDR(F1000_8605);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -57,12 +57,12 @@ EIF_TYPED_VALUE F1000_8603 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 999, Current, 0, 0, 14925);
+	RTEAA(l_feature_name, 999, Current, 0, 0, 14927);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(999, Current, 14925);
+	RTDBGEAA(999, Current, 14927);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -94,8 +94,8 @@ EIF_TYPED_VALUE F1000_8603 (EIF_REFERENCE Current)
 }
 
 /* {KL_SHARED_STRING_EQUALITY_TESTER}.case_insensitive_string_equality_tester */
-RTOID (F1000_8604)
-EIF_TYPED_VALUE F1000_8604 (EIF_REFERENCE Current)
+RTOID (F1000_8606)
+EIF_TYPED_VALUE F1000_8606 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "case_insensitive_string_equality_tester";
@@ -107,7 +107,7 @@ EIF_TYPED_VALUE F1000_8604 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1000_8604);
+	RTOTDR(F1000_8606);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -117,12 +117,12 @@ EIF_TYPED_VALUE F1000_8604 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 999, Current, 0, 0, 14926);
+	RTEAA(l_feature_name, 999, Current, 0, 0, 14928);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(999, Current, 14926);
+	RTDBGEAA(999, Current, 14928);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -156,8 +156,8 @@ EIF_TYPED_VALUE F1000_8604 (EIF_REFERENCE Current)
 void EIF_Minit1000 (void)
 {
 	GTCX
-	RTOTS (8603,F1000_8603)
-	RTOTS (8604,F1000_8604)
+	RTOTS (8605,F1000_8605)
+	RTOTS (8606,F1000_8606)
 }
 
 

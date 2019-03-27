@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern void F1115_9568(EIF_REFERENCE);
+extern void F1115_9570(EIF_REFERENCE);
 extern void EIF_Minit1115(void);
 
 #ifdef __cplusplus
@@ -33,7 +33,7 @@ extern "C" {
 #endif
 
 /* {EV_PND_DEFERRED_ITEM_PARENT}.call_selection_action_sequences */
-void F1115_9568 (EIF_REFERENCE Current)
+void F1115_9570 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "call_selection_action_sequences";
@@ -48,12 +48,12 @@ void F1115_9568 (EIF_REFERENCE Current)
 	RTLU (SK_VOID, NULL);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1114, Current, 0, 0, 15802);
+	RTEAA(l_feature_name, 1114, Current, 0, 0, 15804);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1114, Current, 15802);
+	RTDBGEAA(1114, Current, 15804);
 	RTIV(Current, RTAL);
 	RTVI(Current, RTAL);
 	RTRS;

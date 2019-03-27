@@ -57,10 +57,10 @@ OBJECTS = big_file_C1_c.o
 
 OLDOBJECTS =  et989.o et989d.o et987.o et987d.o et988.o et988d.o et986.o et986d.o \
 	et985.o et985d.o et984.o et984d.o c_983.o c_983d.o et982.o et982d.o \
-	et981.o et981d.o ra980.o ra980d.o et979.o et979d.o et978.o et978d.o \
+	et981.o et981d.o et980.o et980d.o ra979.o ra979d.o et978.o et978d.o \
 	va977.o va977d.o et976.o et976d.o ev975.o ev975d.o ev974.o ev974d.o \
-	ev973.o ev973d.o kl972.o kl972d.o ev971.o ev971d.o ev970.o ev970d.o \
-	gt969.o gt969d.o gt968.o gt968d.o ev967.o ev967d.o kl966.o kl966d.o \
+	ev973.o ev973d.o kl972.o kl972d.o gt971.o gt971d.o gt970.o gt970d.o \
+	ev969.o ev969d.o ev968.o ev968d.o ev967.o ev967d.o kl966.o kl966d.o \
 	ev965.o ev965d.o ev964.o ev964d.o ev963.o ev963d.o kl962.o kl962d.o \
 	ev961.o ev961d.o ev960.o ev960d.o ev991.o ev991d.o ev990.o ev990d.o 
 

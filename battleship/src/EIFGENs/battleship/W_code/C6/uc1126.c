@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1126_9970(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1126_9972(EIF_REFERENCE);
 extern void EIF_Minit1126(void);
 
 #ifdef __cplusplus
@@ -33,8 +33,8 @@ extern "C" {
 #endif
 
 /* {UC_IMPORTED_UNICODE_ROUTINES}.unicode */
-RTOID (F1126_9970)
-EIF_TYPED_VALUE F1126_9970 (EIF_REFERENCE Current)
+RTOID (F1126_9972)
+EIF_TYPED_VALUE F1126_9972 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "unicode";
@@ -46,7 +46,7 @@ EIF_TYPED_VALUE F1126_9970 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1126_9970);
+	RTOTDR(F1126_9972);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -56,12 +56,12 @@ EIF_TYPED_VALUE F1126_9970 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1125, Current, 0, 0, 16201);
+	RTEAA(l_feature_name, 1125, Current, 0, 0, 16203);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1125, Current, 16201);
+	RTDBGEAA(1125, Current, 16203);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -95,7 +95,7 @@ EIF_TYPED_VALUE F1126_9970 (EIF_REFERENCE Current)
 void EIF_Minit1126 (void)
 {
 	GTCX
-	RTOTS (9970,F1126_9970)
+	RTOTS (9972,F1126_9972)
 }
 
 

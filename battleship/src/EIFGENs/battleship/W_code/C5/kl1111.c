@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1111_9541(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1111_9543(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
 extern void EIF_Minit1111(void);
 
 #ifdef __cplusplus
@@ -33,7 +33,7 @@ extern "C" {
 #endif
 
 /* {KL_STRING_EQUALITY_TESTER}.test */
-EIF_TYPED_VALUE F1111_9541 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
+EIF_TYPED_VALUE F1111_9543 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
 {
 	GTCX
 	char *l_feature_name = "test";
@@ -65,12 +65,12 @@ EIF_TYPED_VALUE F1111_9541 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TY
 	RTLU(SK_INT32, &loc1);
 	RTLU(SK_INT32, &loc2);
 	
-	RTEAA(l_feature_name, 1110, Current, 2, 2, 15777);
+	RTEAA(l_feature_name, 1110, Current, 2, 2, 15779);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1110, Current, 15777);
+	RTDBGEAA(1110, Current, 15779);
 	if (arg1) {
 		RTCC(arg1, 1110, l_feature_name, 1, eif_new_type(232, 0x00), 0x00);
 	}

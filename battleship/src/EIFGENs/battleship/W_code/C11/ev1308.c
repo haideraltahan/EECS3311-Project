@@ -10,8 +10,8 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1308_11891(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1308_11892(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1308_11893(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1308_11894(EIF_REFERENCE);
 extern void EIF_Minit1308(void);
 
 #ifdef __cplusplus
@@ -34,17 +34,17 @@ extern "C" {
 #endif
 
 /* {EV_SEPARATOR}.implementation */
-EIF_TYPED_VALUE F1308_11891 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1308_11893 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_REF;
-	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(8440,Dtype(Current)));
+	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(8442,Dtype(Current)));
 	return r;
 }
 
 
 /* {EV_SEPARATOR}.is_in_default_state_for_tabs */
-EIF_TYPED_VALUE F1308_11892 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1308_11894 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "is_in_default_state_for_tabs";
@@ -64,19 +64,19 @@ EIF_TYPED_VALUE F1308_11892 (EIF_REFERENCE Current)
 	RTLU (SK_BOOL, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1307, Current, 0, 0, 18689);
+	RTEAA(l_feature_name, 1307, Current, 0, 0, 18691);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1307, Current, 18689);
+	RTDBGEAA(1307, Current, 18691);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0x04000000, 1,0); /* Result */
 	tb1 = '\0';
-	tb2 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(8666, dtype))(Current)).it_b);
+	tb2 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(8668, dtype))(Current)).it_b);
 	if ((EIF_BOOLEAN) !tb2) {
-		tb2 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(8665, dtype))(Current)).it_b);
+		tb2 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(8667, dtype))(Current)).it_b);
 		tb1 = (EIF_BOOLEAN) !tb2;
 	}
 	Result = (EIF_BOOLEAN) tb1;

@@ -10,14 +10,14 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1032_8877(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1032_8878(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1032_8879(EIF_REFERENCE);
-extern void F1032_8881(EIF_REFERENCE, EIF_TYPED_VALUE);
-extern void F1032_8882(EIF_REFERENCE, EIF_TYPED_VALUE);
-extern void F1032_8883(EIF_REFERENCE);
-extern void F1032_8884(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1032_8880(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1032_8881(EIF_REFERENCE);
+extern void F1032_8883(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern void F1032_8884(EIF_REFERENCE, EIF_TYPED_VALUE);
 extern void F1032_8885(EIF_REFERENCE);
+extern void F1032_8886(EIF_REFERENCE);
+extern void F1032_8887(EIF_REFERENCE);
 extern void EIF_Minit1032(void);
 
 #ifdef __cplusplus
@@ -40,26 +40,6 @@ extern "C" {
 #endif
 
 /* {EV_GRAPHICAL_FORMAT}.scale_width */
-EIF_TYPED_VALUE F1032_8877 (EIF_REFERENCE Current)
-{
-	EIF_TYPED_VALUE r;
-	r.type = SK_INT32;
-	r.it_i4 = *(EIF_INTEGER_32 *)(Current + RTWA(6657,Dtype(Current)));
-	return r;
-}
-
-
-/* {EV_GRAPHICAL_FORMAT}.scale_height */
-EIF_TYPED_VALUE F1032_8878 (EIF_REFERENCE Current)
-{
-	EIF_TYPED_VALUE r;
-	r.type = SK_INT32;
-	r.it_i4 = *(EIF_INTEGER_32 *)(Current + RTWA(6658,Dtype(Current)));
-	return r;
-}
-
-
-/* {EV_GRAPHICAL_FORMAT}.color_mode */
 EIF_TYPED_VALUE F1032_8879 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
@@ -69,8 +49,28 @@ EIF_TYPED_VALUE F1032_8879 (EIF_REFERENCE Current)
 }
 
 
+/* {EV_GRAPHICAL_FORMAT}.scale_height */
+EIF_TYPED_VALUE F1032_8880 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_INT32;
+	r.it_i4 = *(EIF_INTEGER_32 *)(Current + RTWA(6660,Dtype(Current)));
+	return r;
+}
+
+
+/* {EV_GRAPHICAL_FORMAT}.color_mode */
+EIF_TYPED_VALUE F1032_8881 (EIF_REFERENCE Current)
+{
+	EIF_TYPED_VALUE r;
+	r.type = SK_INT32;
+	r.it_i4 = *(EIF_INTEGER_32 *)(Current + RTWA(6661,Dtype(Current)));
+	return r;
+}
+
+
 /* {EV_GRAPHICAL_FORMAT}.set_scale_width */
-void F1032_8881 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+void F1032_8883 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "set_scale_width";
@@ -91,12 +91,12 @@ void F1032_8881 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_INT32,&arg1);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1031, Current, 0, 1, 15184);
+	RTEAA(l_feature_name, 1031, Current, 0, 1, 15186);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1031, Current, 15184);
+	RTDBGEAA(1031, Current, 15186);
 	RTIV(Current, RTAL);
 	if ((RTAL & CK_REQUIRE) || RTAC) {
 		RTHOOK(1);
@@ -109,12 +109,12 @@ label_1:
 	}
 body:;
 	RTHOOK(2);
-	RTDBGAA(Current, dtype, 6657, 0x10000000, 1); /* scale_width */
-	*(EIF_INTEGER_32 *)(Current + RTWA(6657, dtype)) = (EIF_INTEGER_32) arg1;
+	RTDBGAA(Current, dtype, 6659, 0x10000000, 1); /* scale_width */
+	*(EIF_INTEGER_32 *)(Current + RTWA(6659, dtype)) = (EIF_INTEGER_32) arg1;
 	if (RTAL & CK_ENSURE) {
 		RTHOOK(3);
 		RTCT("scale_width_set", EX_POST);
-		ti4_1 = *(EIF_INTEGER_32 *)(Current + RTWA(6657, dtype));
+		ti4_1 = *(EIF_INTEGER_32 *)(Current + RTWA(6659, dtype));
 		if ((EIF_BOOLEAN)(ti4_1 == arg1)) {
 			RTCK;
 		} else {
@@ -133,7 +133,7 @@ body:;
 }
 
 /* {EV_GRAPHICAL_FORMAT}.set_scale_height */
-void F1032_8882 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+void F1032_8884 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "set_scale_height";
@@ -154,12 +154,12 @@ void F1032_8882 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_INT32,&arg1);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1031, Current, 0, 1, 15185);
+	RTEAA(l_feature_name, 1031, Current, 0, 1, 15187);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1031, Current, 15185);
+	RTDBGEAA(1031, Current, 15187);
 	RTIV(Current, RTAL);
 	if ((RTAL & CK_REQUIRE) || RTAC) {
 		RTHOOK(1);
@@ -172,12 +172,12 @@ label_1:
 	}
 body:;
 	RTHOOK(2);
-	RTDBGAA(Current, dtype, 6658, 0x10000000, 1); /* scale_height */
-	*(EIF_INTEGER_32 *)(Current + RTWA(6658, dtype)) = (EIF_INTEGER_32) arg1;
+	RTDBGAA(Current, dtype, 6660, 0x10000000, 1); /* scale_height */
+	*(EIF_INTEGER_32 *)(Current + RTWA(6660, dtype)) = (EIF_INTEGER_32) arg1;
 	if (RTAL & CK_ENSURE) {
 		RTHOOK(3);
 		RTCT("scale_height_set", EX_POST);
-		ti4_1 = *(EIF_INTEGER_32 *)(Current + RTWA(6658, dtype));
+		ti4_1 = *(EIF_INTEGER_32 *)(Current + RTWA(6660, dtype));
 		if ((EIF_BOOLEAN)(ti4_1 == arg1)) {
 			RTCK;
 		} else {
@@ -196,76 +196,10 @@ body:;
 }
 
 /* {EV_GRAPHICAL_FORMAT}.set_truecolor */
-void F1032_8883 (EIF_REFERENCE Current)
-{
-	GTCX
-	char *l_feature_name = "set_truecolor";
-	RTEX;
-	RTSN;
-	RTDA;
-	RTLD;
-	
-	RTLI(1);
-	RTLR(0,Current);
-	RTLIU(1);
-	RTLU (SK_VOID, NULL);
-	RTLU (SK_REF, &Current);
-	
-	RTEAA(l_feature_name, 1031, Current, 0, 0, 15186);
-	RTSA(Dtype(Current));
-	RTSC;
-	RTME(Dtype(Current), 0);
-	RTGC;
-	RTDBGEAA(1031, Current, 15186);
-	RTIV(Current, RTAL);
-	RTVI(Current, RTAL);
-	RTRS;
-	RTHOOK(1);
-	RTDBGLE;
-	RTMD(0);
-	RTLE;
-	RTLO(2);
-	RTEE;
-}
-
-/* {EV_GRAPHICAL_FORMAT}.set_greyscale */
-void F1032_8884 (EIF_REFERENCE Current)
-{
-	GTCX
-	char *l_feature_name = "set_greyscale";
-	RTEX;
-	RTSN;
-	RTDA;
-	RTLD;
-	
-	RTLI(1);
-	RTLR(0,Current);
-	RTLIU(1);
-	RTLU (SK_VOID, NULL);
-	RTLU (SK_REF, &Current);
-	
-	RTEAA(l_feature_name, 1031, Current, 0, 0, 15187);
-	RTSA(Dtype(Current));
-	RTSC;
-	RTME(Dtype(Current), 0);
-	RTGC;
-	RTDBGEAA(1031, Current, 15187);
-	RTIV(Current, RTAL);
-	RTVI(Current, RTAL);
-	RTRS;
-	RTHOOK(1);
-	RTDBGLE;
-	RTMD(0);
-	RTLE;
-	RTLO(2);
-	RTEE;
-}
-
-/* {EV_GRAPHICAL_FORMAT}.set_paletted */
 void F1032_8885 (EIF_REFERENCE Current)
 {
 	GTCX
-	char *l_feature_name = "set_paletted";
+	char *l_feature_name = "set_truecolor";
 	RTEX;
 	RTSN;
 	RTDA;
@@ -283,6 +217,72 @@ void F1032_8885 (EIF_REFERENCE Current)
 	RTME(Dtype(Current), 0);
 	RTGC;
 	RTDBGEAA(1031, Current, 15188);
+	RTIV(Current, RTAL);
+	RTVI(Current, RTAL);
+	RTRS;
+	RTHOOK(1);
+	RTDBGLE;
+	RTMD(0);
+	RTLE;
+	RTLO(2);
+	RTEE;
+}
+
+/* {EV_GRAPHICAL_FORMAT}.set_greyscale */
+void F1032_8886 (EIF_REFERENCE Current)
+{
+	GTCX
+	char *l_feature_name = "set_greyscale";
+	RTEX;
+	RTSN;
+	RTDA;
+	RTLD;
+	
+	RTLI(1);
+	RTLR(0,Current);
+	RTLIU(1);
+	RTLU (SK_VOID, NULL);
+	RTLU (SK_REF, &Current);
+	
+	RTEAA(l_feature_name, 1031, Current, 0, 0, 15189);
+	RTSA(Dtype(Current));
+	RTSC;
+	RTME(Dtype(Current), 0);
+	RTGC;
+	RTDBGEAA(1031, Current, 15189);
+	RTIV(Current, RTAL);
+	RTVI(Current, RTAL);
+	RTRS;
+	RTHOOK(1);
+	RTDBGLE;
+	RTMD(0);
+	RTLE;
+	RTLO(2);
+	RTEE;
+}
+
+/* {EV_GRAPHICAL_FORMAT}.set_paletted */
+void F1032_8887 (EIF_REFERENCE Current)
+{
+	GTCX
+	char *l_feature_name = "set_paletted";
+	RTEX;
+	RTSN;
+	RTDA;
+	RTLD;
+	
+	RTLI(1);
+	RTLR(0,Current);
+	RTLIU(1);
+	RTLU (SK_VOID, NULL);
+	RTLU (SK_REF, &Current);
+	
+	RTEAA(l_feature_name, 1031, Current, 0, 0, 15190);
+	RTSA(Dtype(Current));
+	RTSC;
+	RTME(Dtype(Current), 0);
+	RTGC;
+	RTDBGEAA(1031, Current, 15190);
 	RTIV(Current, RTAL);
 	RTVI(Current, RTAL);
 	RTRS;

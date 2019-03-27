@@ -57,8 +57,8 @@ OBJECTS = big_file_C6_c.o
 
 OLDOBJECTS =  ro1135.o ro1135d.o et1134.o et1134d.o et1133.o et1133d.o ab1125.o \
 	ab1125d.o da1137.o da1137d.o ev1129.o ev1129d.o kl1130.o kl1130d.o \
-	ev1155.o ev1155d.o ev1154.o ev1154d.o ev1138.o ev1138d.o ev1127.o \
-	ev1127d.o ev1139.o ev1139d.o ev1153.o ev1153d.o kl1156.o kl1156d.o \
+	ev1127.o ev1127d.o ev1155.o ev1155d.o ev1154.o ev1154d.o ev1138.o \
+	ev1138d.o ev1153.o ev1153d.o ev1139.o ev1139d.o kl1156.o kl1156d.o \
 	ev1152.o ev1152d.o ev1151.o ev1151d.o ev1150.o ev1150d.o ev1149.o \
 	ev1149d.o ev1148.o ev1148d.o ev1147.o ev1147d.o ev1128.o ev1128d.o \
 	kl1132.o kl1132d.o ev1136.o ev1136d.o ev1146.o ev1146d.o ev1145.o \

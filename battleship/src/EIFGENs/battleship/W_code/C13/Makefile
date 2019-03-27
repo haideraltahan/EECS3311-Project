@@ -1,14 +1,14 @@
-INCLUDE_PATH =  -I"$(ISE_LIBRARY)/library/encoding/implementation/include" -I"$(ISE_LIBRARY)/library/time/spec/include" -I"$(ISE_LIBRARY)/library/vision2/spec/include" -I"$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib"  -pthread -I/cs/local/include -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/fribidi -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/harfbuzz -I/usr/include/freetype2 -I/usr/include/libpng15 -I/usr/include/uuid -I/usr/include/pixman-1 -I/usr/include/libdrm
+INCLUDE_PATH =  -I"$(ISE_LIBRARY)/library/encoding/implementation/include" -I"$(ISE_LIBRARY)/library/time/spec/include" -I"$(ISE_LIBRARY)/library/vision2/spec/include" -I"$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib"  -D_REENTRANT -I/opt/local/include/gtk-2.0 -I/opt/local/lib/gtk-2.0/include -I/opt/local/include/pango-1.0 -I/opt/local/include/gio-unix-2.0/ -I/opt/local/include -I/opt/local/include/cairo -I/opt/local/include/atk-1.0 -I/opt/local/include/cairo -I/opt/local/include/pixman-1 -I/opt/local/include -I/opt/local/include/gdk-pixbuf-2.0 -I/opt/local/include/libpng16 -I/opt/local/include/pango-1.0 -I/opt/local/include/harfbuzz -I/opt/local/include -I/opt/local/include/pango-1.0 -I/opt/local/include/fribidi -I/opt/local/include -I/opt/local/include/ossp -I/opt/local/include/freetype2 -I/opt/local/include/libpng16 -I/opt/local/include -I/opt/local/include/glib-2.0 -I/opt/local/lib/glib-2.0/include -I/opt/local/include
 SHELL = /bin/sh
-CC = gcc
-CPP = g++
-CFLAGS = -O0 -pipe -fPIC -D_GNU_SOURCE -m64 -DEIF_THREADS -DEIF_LINUXTHREADS  -DEIF_IEEE_BEHAVIOR -DWORKBENCH -I"/cs/local/packages/Eiffel18.11/studio/spec/linux-x86-64/include" -I. $(INCLUDE_PATH)
-CPPFLAGS = -O0 -pipe -fPIC -D_GNU_SOURCE -m64 -DEIF_THREADS -DEIF_LINUXTHREADS  -DEIF_IEEE_BEHAVIOR -DWORKBENCH -I"/cs/local/packages/Eiffel18.11/studio/spec/linux-x86-64/include" -I. $(INCLUDE_PATH)
-LDFLAGS = -m elf_x86_64
-CCLDFLAGS = -m64  
-LDSHAREDFLAGS =  -m elf_x86_64 -shared -o
-EIFLIB = "/cs/local/packages/Eiffel18.11/studio/spec/linux-x86-64/lib/libmtwkbench.a"
-EIFTEMPLATES = /cs/local/packages/Eiffel18.11/studio/config/linux-x86-64/templates
+CC = cc
+CPP = c++
+CFLAGS = -O0 -pipe -fno-common -fPIC -DEIF_THREADS -DEIF_POSIX_THREADS  -DEIF_IEEE_BEHAVIOR -DWORKBENCH -I"/Applications/MacPorts/Eiffel_18.11/studio/spec/macosx-x86-64/include" -I. $(INCLUDE_PATH)
+CPPFLAGS = -O0 -pipe -fno-common -fPIC -DEIF_THREADS -DEIF_POSIX_THREADS  -DEIF_IEEE_BEHAVIOR -DWORKBENCH -I"/Applications/MacPorts/Eiffel_18.11/studio/spec/macosx-x86-64/include" -I. $(INCLUDE_PATH)
+LDFLAGS = 
+CCLDFLAGS =   
+LDSHAREDFLAGS =   -dynamiclib -flat_namespace -undefined suppress -o
+EIFLIB = "/Applications/MacPorts/Eiffel_18.11/studio/spec/macosx-x86-64/lib/libmtwkbench.a"
+EIFTEMPLATES = /Applications/MacPorts/Eiffel_18.11/studio/config/macosx-x86-64/templates
 LIBS = -lm -lpthread
 MAKE = make
 AR = ar
@@ -20,15 +20,15 @@ RANLIB = :
 RM = /bin/rm -f
 FILE_EXIST = 
 RMDIR = 
-X2C = "/cs/local/packages/Eiffel18.11/studio/spec/linux-x86-64/bin/x2c"
-SHAREDLINK = ld
+X2C = "/Applications/MacPorts/Eiffel_18.11/studio/spec/macosx-x86-64/bin/x2c"
+SHAREDLINK = cc
 SHAREDLIBS = -lm
-SHARED_SUFFIX = .so
+SHARED_SUFFIX = .dylib
 COMMAND_MAKEFILE = 
 START_TEST = if [ ! -f finished ] ; then 
 END_TEST = ; fi 
 CREATE_TEST = touch finished 
-SYSTEM_IN_DYNAMIC_LIB = battleship.so 
+SYSTEM_IN_DYNAMIC_LIB = battleship.dylib 
 
 .SUFFIXES:.cpp .o
 
@@ -40,15 +40,15 @@ SYSTEM_IN_DYNAMIC_LIB = battleship.so
 
 OBJECTS = big_file_C13_c.o 
 
-OLDOBJECTS =  ev1370.o ev1370d.o ev1368.o ev1368d.o ev1369.o ev1369d.o ev1367.o \
-	ev1367d.o ev1365.o ev1365d.o ev1366.o ev1366d.o ev1364.o ev1364d.o \
-	ev1363.o ev1363d.o ev1361.o ev1361d.o ev1362.o ev1362d.o ev1385.o \
+OLDOBJECTS =  ev1370.o ev1370d.o ev1369.o ev1369d.o ev1367.o ev1367d.o ev1368.o \
+	ev1368d.o ev1365.o ev1365d.o ev1366.o ev1366d.o ev1363.o ev1363d.o \
+	ev1364.o ev1364d.o ev1361.o ev1361d.o ev1362.o ev1362d.o ev1385.o \
 	ev1385d.o ev1383.o ev1383d.o ev1360.o ev1360d.o ev1359.o ev1359d.o \
-	ev1358.o ev1358d.o ev1371.o ev1371d.o ev1379.o ev1379d.o ev1375.o \
-	ev1375d.o ev1381.o ev1381d.o ev1382.o ev1382d.o ev1380.o ev1380d.o \
-	ev1357.o ev1357d.o ev1356.o ev1356d.o ev1355.o ev1355d.o ev1377.o \
-	ev1377d.o ev1378.o ev1378d.o ev1386.o ev1386d.o ev1374.o ev1374d.o \
-	ev1373.o ev1373d.o ev1384.o ev1384d.o ev1372.o ev1372d.o ev1387.o \
+	ev1358.o ev1358d.o ev1371.o ev1371d.o ev1379.o ev1379d.o ev1381.o \
+	ev1381d.o ev1380.o ev1380d.o ev1375.o ev1375d.o ev1382.o ev1382d.o \
+	ev1357.o ev1357d.o ev1356.o ev1356d.o ev1355.o ev1355d.o ev1378.o \
+	ev1378d.o ev1377.o ev1377d.o ev1386.o ev1386d.o ev1374.o ev1374d.o \
+	ev1373.o ev1373d.o ev1372.o ev1372d.o ev1384.o ev1384d.o ev1387.o \
 	ev1387d.o ev1376.o ev1376d.o 
 
 all: Cobj13.o

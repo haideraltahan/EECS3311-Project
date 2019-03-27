@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1405_13304(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1405_13306(EIF_REFERENCE);
 extern void EIF_Minit1405(void);
 
 #ifdef __cplusplus
@@ -33,7 +33,7 @@ extern "C" {
 #endif
 
 /* {EV_TEXT_ALIGNABLE_I}.default_alignment */
-EIF_TYPED_VALUE F1405_13304 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1405_13306 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "default_alignment";
@@ -50,12 +50,12 @@ EIF_TYPED_VALUE F1405_13304 (EIF_REFERENCE Current)
 	RTLU (SK_INT32, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1404, Current, 0, 0, 19880);
+	RTEAA(l_feature_name, 1404, Current, 0, 0, 19882);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1404, Current, 19880);
+	RTDBGEAA(1404, Current, 19882);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0x10000000, 1,0); /* Result */

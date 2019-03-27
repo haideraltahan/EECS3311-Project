@@ -10,8 +10,8 @@
 extern "C" {
 #endif
 
-static EIF_TYPED_VALUE F1372_12936_body(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1372_12936(EIF_REFERENCE);
+static EIF_TYPED_VALUE F1372_12938_body(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1372_12938(EIF_REFERENCE);
 extern void EIF_Minit1372(void);
 
 #ifdef __cplusplus
@@ -34,7 +34,7 @@ extern "C" {
 #endif
 
 /* {EV_TAB_CONTROLABLE_I}.interface */
-static EIF_TYPED_VALUE F1372_12936_body (EIF_REFERENCE Current)
+static EIF_TYPED_VALUE F1372_12938_body (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "interface";
@@ -51,12 +51,12 @@ static EIF_TYPED_VALUE F1372_12936_body (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1371, Current, 0, 0, 19588);
+	RTEAA(l_feature_name, 1371, Current, 0, 0, 19590);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1371, Current, 19588);
+	RTDBGEAA(1371, Current, 19590);
 	RTIV(Current, RTAL);
 	RTVI(Current, RTAL);
 	RTRS;
@@ -69,20 +69,20 @@ static EIF_TYPED_VALUE F1372_12936_body (EIF_REFERENCE Current)
 	{ EIF_TYPED_VALUE r; r.type = SK_REF; r.it_r = Result; return r; }
 }
 
-EIF_TYPED_VALUE F1372_12936 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1372_12938 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_REF;
-	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(9372,Dtype(Current)));
+	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(9374,Dtype(Current)));
 	if (!r.it_r) {
-		if (RTAT(RTWCT(9372, Dtype(Current), Dftype(Current)))) {
+		if (RTAT(RTWCT(9374, Dtype(Current), Dftype(Current)))) {
 			GTCX
 			RTLD;
 			RTLI(1);
 			RTLR(0,Current);
 			RTLIU(1);
-			r.it_r = (F1372_12936_body (Current)).it_r;
-			*(EIF_REFERENCE *)(Current + RTWA(9372,Dtype(Current))) = r.it_r;
+			r.it_r = (F1372_12938_body (Current)).it_r;
+			*(EIF_REFERENCE *)(Current + RTWA(9374,Dtype(Current))) = r.it_r;
 			RTAR(Current, r.it_r);
 			RTLE;
 		}

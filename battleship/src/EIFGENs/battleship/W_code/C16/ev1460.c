@@ -10,9 +10,9 @@
 extern "C" {
 #endif
 
-static EIF_TYPED_VALUE F1460_14058_body(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1460_14058(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1460_14059(EIF_REFERENCE);
+static EIF_TYPED_VALUE F1460_14060_body(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1460_14060(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1460_14061(EIF_REFERENCE);
 extern void EIF_Minit1460(void);
 
 #ifdef __cplusplus
@@ -35,7 +35,7 @@ extern "C" {
 #endif
 
 /* {EV_RADIO_BUTTON_I}.interface */
-static EIF_TYPED_VALUE F1460_14058_body (EIF_REFERENCE Current)
+static EIF_TYPED_VALUE F1460_14060_body (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "interface";
@@ -52,12 +52,12 @@ static EIF_TYPED_VALUE F1460_14058_body (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1459, Current, 0, 0, 20453);
+	RTEAA(l_feature_name, 1459, Current, 0, 0, 20455);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1459, Current, 20453);
+	RTDBGEAA(1459, Current, 20455);
 	RTIV(Current, RTAL);
 	RTVI(Current, RTAL);
 	RTRS;
@@ -70,20 +70,20 @@ static EIF_TYPED_VALUE F1460_14058_body (EIF_REFERENCE Current)
 	{ EIF_TYPED_VALUE r; r.type = SK_REF; r.it_r = Result; return r; }
 }
 
-EIF_TYPED_VALUE F1460_14058 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1460_14060 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_REF;
-	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(9372,Dtype(Current)));
+	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(9374,Dtype(Current)));
 	if (!r.it_r) {
-		if (RTAT(RTWCT(9372, Dtype(Current), Dftype(Current)))) {
+		if (RTAT(RTWCT(9374, Dtype(Current), Dftype(Current)))) {
 			GTCX
 			RTLD;
 			RTLI(1);
 			RTLR(0,Current);
 			RTLIU(1);
-			r.it_r = (F1460_14058_body (Current)).it_r;
-			*(EIF_REFERENCE *)(Current + RTWA(9372,Dtype(Current))) = r.it_r;
+			r.it_r = (F1460_14060_body (Current)).it_r;
+			*(EIF_REFERENCE *)(Current + RTWA(9374,Dtype(Current))) = r.it_r;
 			RTAR(Current, r.it_r);
 			RTLE;
 		}
@@ -93,7 +93,7 @@ EIF_TYPED_VALUE F1460_14058 (EIF_REFERENCE Current)
 
 
 /* {EV_RADIO_BUTTON_I}.default_alignment */
-EIF_TYPED_VALUE F1460_14059 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1460_14061 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "default_alignment";
@@ -110,12 +110,12 @@ EIF_TYPED_VALUE F1460_14059 (EIF_REFERENCE Current)
 	RTLU (SK_INT32, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1459, Current, 0, 0, 20454);
+	RTEAA(l_feature_name, 1459, Current, 0, 0, 20456);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1459, Current, 20454);
+	RTDBGEAA(1459, Current, 20456);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0x10000000, 1,0); /* Result */

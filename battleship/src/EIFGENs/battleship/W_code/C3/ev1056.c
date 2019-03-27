@@ -10,13 +10,13 @@
 extern "C" {
 #endif
 
-extern void F1056_9130(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
-extern void F1056_9131(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
-extern EIF_TYPED_VALUE F1056_9132(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1056_9133(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1056_9134(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern void F1056_9132(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+extern void F1056_9133(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1056_9134(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1056_9135(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1056_9136(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1056_9136(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1056_9137(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1056_9138(EIF_REFERENCE);
 extern void EIF_Minit1056(void);
 
 #ifdef __cplusplus
@@ -29,8 +29,8 @@ extern void EIF_Minit1056(void);
 extern "C" {
 #endif
 
-#ifndef INLINE_F1056_9130
-static void inline_F1056_9130 (EIF_POINTER arg1, EIF_INTEGER_32 arg2)
+#ifndef INLINE_F1056_9132
+static void inline_F1056_9132 (EIF_POINTER arg1, EIF_INTEGER_32 arg2)
 {
 	{
 	GType type = G_TYPE_STRING;
@@ -38,10 +38,10 @@ static void inline_F1056_9130 (EIF_POINTER arg1, EIF_INTEGER_32 arg2)
 }
 	;
 }
-#define INLINE_F1056_9130
+#define INLINE_F1056_9132
 #endif
-#ifndef INLINE_F1056_9131
-static void inline_F1056_9131 (EIF_POINTER arg1, EIF_INTEGER_32 arg2)
+#ifndef INLINE_F1056_9133
+static void inline_F1056_9133 (EIF_POINTER arg1, EIF_INTEGER_32 arg2)
 {
 	{
 	GType type = GDK_TYPE_PIXBUF;
@@ -49,15 +49,15 @@ static void inline_F1056_9131 (EIF_POINTER arg1, EIF_INTEGER_32 arg2)
 }
 	;
 }
-#define INLINE_F1056_9131
+#define INLINE_F1056_9133
 #endif
-#ifndef INLINE_F1056_9132
-static EIF_INTEGER_32 inline_F1056_9132 (void)
+#ifndef INLINE_F1056_9134
+static EIF_INTEGER_32 inline_F1056_9134 (void)
 {
 	return (EIF_INTEGER_32) (sizeof(GType))
 	;
 }
-#define INLINE_F1056_9132
+#define INLINE_F1056_9134
 #endif
 
 #ifdef __cplusplus
@@ -70,7 +70,7 @@ extern "C" {
 #endif
 
 /* {EV_GTK_DEPENDENT_ROUTINES}.add_g_type_string */
-void F1056_9130 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
+void F1056_9132 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
 {
 	GTCX
 	char *l_feature_name = "add_g_type_string";
@@ -94,11 +94,11 @@ void F1056_9130 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE a
 	RTLU(SK_INT32,&arg2);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1055, Current, 0, 2, 15392);
+	RTEAA(l_feature_name, 1055, Current, 0, 2, 15394);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 1);
-	RTDBGEAA(1055, Current, 15392);
+	RTDBGEAA(1055, Current, 15394);
 	RTIV(Current, RTAL);
 	if ((RTAL & CK_REQUIRE) || RTAC) {
 		RTHOOK(1);
@@ -115,7 +115,7 @@ label_1:
 		RTCF;
 	}
 body:;
-	inline_F1056_9130 ((EIF_POINTER) arg1, (EIF_INTEGER_32) arg2);
+	inline_F1056_9132 ((EIF_POINTER) arg1, (EIF_INTEGER_32) arg2);
 	RTVI(Current, RTAL);
 	RTRS;
 	RTHOOK(3);
@@ -129,7 +129,7 @@ body:;
 }
 
 /* {EV_GTK_DEPENDENT_ROUTINES}.add_gdk_type_pixbuf */
-void F1056_9131 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
+void F1056_9133 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
 {
 	GTCX
 	char *l_feature_name = "add_gdk_type_pixbuf";
@@ -153,11 +153,11 @@ void F1056_9131 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE a
 	RTLU(SK_INT32,&arg2);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1055, Current, 0, 2, 15393);
+	RTEAA(l_feature_name, 1055, Current, 0, 2, 15395);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 1);
-	RTDBGEAA(1055, Current, 15393);
+	RTDBGEAA(1055, Current, 15395);
 	RTIV(Current, RTAL);
 	if ((RTAL & CK_REQUIRE) || RTAC) {
 		RTHOOK(1);
@@ -174,7 +174,7 @@ label_1:
 		RTCF;
 	}
 body:;
-	inline_F1056_9131 ((EIF_POINTER) arg1, (EIF_INTEGER_32) arg2);
+	inline_F1056_9133 ((EIF_POINTER) arg1, (EIF_INTEGER_32) arg2);
 	RTVI(Current, RTAL);
 	RTRS;
 	RTHOOK(3);
@@ -188,7 +188,7 @@ body:;
 }
 
 /* {EV_GTK_DEPENDENT_ROUTINES}.sizeof_gtype */
-EIF_TYPED_VALUE F1056_9132 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1056_9134 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "sizeof_gtype";
@@ -205,13 +205,13 @@ EIF_TYPED_VALUE F1056_9132 (EIF_REFERENCE Current)
 	RTLU (SK_INT32, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1055, Current, 0, 0, 15394);
+	RTEAA(l_feature_name, 1055, Current, 0, 0, 15396);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 1);
-	RTDBGEAA(1055, Current, 15394);
+	RTDBGEAA(1055, Current, 15396);
 	RTIV(Current, RTAL);
-	Result = inline_F1056_9132 ();
+	Result = inline_F1056_9134 ();
 	RTVI(Current, RTAL);
 	RTRS;
 	RTHOOK(1);
@@ -224,7 +224,7 @@ EIF_TYPED_VALUE F1056_9132 (EIF_REFERENCE Current)
 }
 
 /* {EV_GTK_DEPENDENT_ROUTINES}.create_gtk_dialog */
-EIF_TYPED_VALUE F1056_9133 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1056_9135 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "create_gtk_dialog";
@@ -244,18 +244,18 @@ EIF_TYPED_VALUE F1056_9133 (EIF_REFERENCE Current)
 	RTLU (SK_POINTER, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1055, Current, 0, 0, 15395);
+	RTEAA(l_feature_name, 1055, Current, 0, 0, 15397);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1055, Current, 15395);
+	RTDBGEAA(1055, Current, 15397);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0x40000000, 1,0); /* Result */
-	ti4_1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(5162, 967))(Current)).it_i4);
+	ti4_1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(5686, 970))(Current)).it_i4);
 	ui4_1 = ti4_1;
-	Result = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(5481, 967))(Current, ui4_1x)).it_p);
+	Result = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(6005, 970))(Current, ui4_1x)).it_p);
 	RTVI(Current, RTAL);
 	RTRS;
 	RTHOOK(2);
@@ -269,7 +269,7 @@ EIF_TYPED_VALUE F1056_9133 (EIF_REFERENCE Current)
 }
 
 /* {EV_GTK_DEPENDENT_ROUTINES}.client_area_from_c_object */
-EIF_TYPED_VALUE F1056_9134 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+EIF_TYPED_VALUE F1056_9136 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "client_area_from_c_object";
@@ -290,12 +290,12 @@ EIF_TYPED_VALUE F1056_9134 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_POINTER,&arg1);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1055, Current, 0, 1, 15396);
+	RTEAA(l_feature_name, 1055, Current, 0, 1, 15398);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1055, Current, 15396);
+	RTDBGEAA(1055, Current, 15398);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0x40000000, 1,0); /* Result */
@@ -313,8 +313,8 @@ EIF_TYPED_VALUE F1056_9134 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 }
 
 /* {EV_GTK_DEPENDENT_ROUTINES}.horizontal_resolution_internal */
-RTOID (F1056_9135)
-EIF_TYPED_VALUE F1056_9135 (EIF_REFERENCE Current)
+RTOID (F1056_9137)
+EIF_TYPED_VALUE F1056_9137 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "horizontal_resolution_internal";
@@ -331,7 +331,7 @@ EIF_TYPED_VALUE F1056_9135 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRB(EIF_INTEGER_32)
-	RTOTDB(EIF_INTEGER_32, F1056_9135);
+	RTOTDB(EIF_INTEGER_32, F1056_9137);
 
 	RTLI(2);
 	RTLR(0,tr1);
@@ -340,23 +340,23 @@ EIF_TYPED_VALUE F1056_9135 (EIF_REFERENCE Current)
 	RTLU (SK_INT32, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1055, Current, 0, 0, 15397);
+	RTEAA(l_feature_name, 1055, Current, 0, 0, 15399);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1055, Current, 15397);
+	RTDBGEAA(1055, Current, 15399);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0x10000000, 1,0); /* Result */
-	ti4_1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(5297, 967))(Current)).it_i4);
-	tp1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(5931, 968))(Current)).it_p);
+	ti4_1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(5821, 970))(Current)).it_i4);
+	tp1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(5403, 969))(Current)).it_p);
 	up1 = tp1;
-	ti4_2 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(5933, 968))(Current, up1x)).it_i4);
-	tr1 = RTLN(eif_new_type(206, 0x00).id);
+	ti4_2 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(5405, 969))(Current, up1x)).it_i4);
+	tr1 = RTLN(eif_new_type(203, 0x00).id);
 	*(EIF_REAL_64 *)tr1 = (EIF_REAL_64) ((EIF_REAL_64) ((EIF_REAL_64) (ti4_1) /  (EIF_REAL_64) (ti4_2)) * (EIF_REAL_64) 25.4);
-	ti4_3 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(4249, "rounded", tr1))(tr1)).it_i4);
+	ti4_3 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(4222, "rounded", tr1))(tr1)).it_i4);
 	Result = (EIF_INTEGER_32) ti4_3;
 	RTVI(Current, RTAL);
 	RTRS;
@@ -373,8 +373,8 @@ EIF_TYPED_VALUE F1056_9135 (EIF_REFERENCE Current)
 }
 
 /* {EV_GTK_DEPENDENT_ROUTINES}.vertical_resolution_internal */
-RTOID (F1056_9136)
-EIF_TYPED_VALUE F1056_9136 (EIF_REFERENCE Current)
+RTOID (F1056_9138)
+EIF_TYPED_VALUE F1056_9138 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "vertical_resolution_internal";
@@ -391,7 +391,7 @@ EIF_TYPED_VALUE F1056_9136 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRB(EIF_INTEGER_32)
-	RTOTDB(EIF_INTEGER_32, F1056_9136);
+	RTOTDB(EIF_INTEGER_32, F1056_9138);
 
 	RTLI(2);
 	RTLR(0,tr1);
@@ -400,23 +400,23 @@ EIF_TYPED_VALUE F1056_9136 (EIF_REFERENCE Current)
 	RTLU (SK_INT32, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1055, Current, 0, 0, 15398);
+	RTEAA(l_feature_name, 1055, Current, 0, 0, 15400);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1055, Current, 15398);
+	RTDBGEAA(1055, Current, 15400);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0x10000000, 1,0); /* Result */
-	ti4_1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(5296, 967))(Current)).it_i4);
-	tp1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(5931, 968))(Current)).it_p);
+	ti4_1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(5820, 970))(Current)).it_i4);
+	tp1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(5403, 969))(Current)).it_p);
 	up1 = tp1;
-	ti4_2 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(5934, 968))(Current, up1x)).it_i4);
-	tr1 = RTLN(eif_new_type(206, 0x00).id);
+	ti4_2 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(5406, 969))(Current, up1x)).it_i4);
+	tr1 = RTLN(eif_new_type(203, 0x00).id);
 	*(EIF_REAL_64 *)tr1 = (EIF_REAL_64) ((EIF_REAL_64) ((EIF_REAL_64) (ti4_1) /  (EIF_REAL_64) (ti4_2)) * (EIF_REAL_64) 25.4);
-	ti4_3 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(4249, "rounded", tr1))(tr1)).it_i4);
+	ti4_3 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(4222, "rounded", tr1))(tr1)).it_i4);
 	Result = (EIF_INTEGER_32) ti4_3;
 	RTVI(Current, RTAL);
 	RTRS;
@@ -435,8 +435,8 @@ EIF_TYPED_VALUE F1056_9136 (EIF_REFERENCE Current)
 void EIF_Minit1056 (void)
 {
 	GTCX
-	RTOTS (9135,F1056_9135)
-	RTOTS (9136,F1056_9136)
+	RTOTS (9137,F1056_9137)
+	RTOTS (9138,F1056_9138)
 }
 
 

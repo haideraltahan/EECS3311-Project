@@ -167,7 +167,7 @@ E1/eparents.o: Makefile E1/Makefile E1/estructure.h
 
 OBJECTS= C21/Cobj21.o C20/Cobj20.o C19/Cobj19.o C18/Cobj18.o C17/Cobj17.o C16/Cobj16.o C15/Cobj15.o C14/Cobj14.o C13/Cobj13.o C12/Cobj12.o C11/Cobj11.o C10/Cobj10.o C9/Cobj9.o C8/Cobj8.o C7/Cobj7.o C6/Cobj6.o C5/Cobj5.o C4/Cobj4.o C3/Cobj3.o C2/Cobj2.o C1/Cobj1.o  E1/eoption.o E1/epattern.o E1/efrozen.o E1/ecall.o E1/eplug.o E1/eskelet.o E1/enames.o E1/evisib.o E1/ececil.o E1/einit.o E1/eparents.o
 
-PRECOMP_OBJECTS= "/cs/local/packages/Eiffel18.11/precomp/spec/linux-x86-64/EIFGENs/base-scoop-safe/W_code/preobj.o"
+PRECOMP_OBJECTS= "/Users/haideral-tahan/Eiffel User Files/18.11/precomp/spec/macosx-x86-64/EIFGENs/base-scoop-safe/W_code/preobj.o"
 
 
 battleship: $(OBJECTS)  E1/emain.o Makefile

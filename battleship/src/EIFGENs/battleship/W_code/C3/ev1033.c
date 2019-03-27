@@ -10,8 +10,8 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1033_8887(EIF_REFERENCE);
-extern void F1033_8888(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1033_8889(EIF_REFERENCE);
+extern void F1033_8890(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
 extern void EIF_Minit1033(void);
 
 #ifdef __cplusplus
@@ -34,8 +34,8 @@ extern "C" {
 #endif
 
 /* {EV_PNG_FORMAT}.file_extension */
-RTOID (F1033_8887)
-EIF_TYPED_VALUE F1033_8887 (EIF_REFERENCE Current)
+RTOID (F1033_8889)
+EIF_TYPED_VALUE F1033_8889 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "file_extension";
@@ -45,7 +45,7 @@ EIF_TYPED_VALUE F1033_8887 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1033_8887);
+	RTOTDR(F1033_8889);
 
 	RTLI(1);
 	RTLR(0,Current);
@@ -53,12 +53,12 @@ EIF_TYPED_VALUE F1033_8887 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1032, Current, 0, 0, 15189);
+	RTEAA(l_feature_name, 1032, Current, 0, 0, 15191);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1032, Current, 15189);
+	RTDBGEAA(1032, Current, 15191);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -78,7 +78,7 @@ EIF_TYPED_VALUE F1033_8887 (EIF_REFERENCE Current)
 }
 
 /* {EV_PNG_FORMAT}.save */
-void F1033_8888 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
+void F1033_8890 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
 {
 	GTCX
 	char *l_feature_name = "save";
@@ -100,12 +100,12 @@ void F1033_8888 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE a
 	RTLU(SK_REF,&arg2);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1032, Current, 0, 2, 15190);
+	RTEAA(l_feature_name, 1032, Current, 0, 2, 15192);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1032, Current, 15190);
+	RTDBGEAA(1032, Current, 15192);
 	RTCC(arg1, 1032, l_feature_name, 1, eif_new_type(1135, 0x01), 0x01);
 	RTCC(arg2, 1032, l_feature_name, 2, eif_new_type(185, 0x01), 0x01);
 	RTIV(Current, RTAL);
@@ -124,7 +124,7 @@ void F1033_8888 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE a
 void EIF_Minit1033 (void)
 {
 	GTCX
-	RTOTS (8887,F1033_8887)
+	RTOTS (8889,F1033_8889)
 }
 
 

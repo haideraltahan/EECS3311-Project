@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern void F1037_8951(EIF_REFERENCE);
+extern void F1037_8953(EIF_REFERENCE);
 extern void EIF_Minit1037(void);
 
 #ifdef __cplusplus
@@ -33,7 +33,7 @@ extern "C" {
 #endif
 
 /* {YY_PARSER}.clear_all */
-void F1037_8951 (EIF_REFERENCE Current)
+void F1037_8953 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "clear_all";
@@ -48,12 +48,12 @@ void F1037_8951 (EIF_REFERENCE Current)
 	RTLU (SK_VOID, NULL);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1036, Current, 0, 0, 15241);
+	RTEAA(l_feature_name, 1036, Current, 0, 0, 15243);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1036, Current, 15241);
+	RTDBGEAA(1036, Current, 15243);
 	RTIV(Current, RTAL);
 	RTVI(Current, RTAL);
 	RTRS;

@@ -60,9 +60,9 @@ OLDOBJECTS =  es1050.o es1050d.o es1049.o es1049d.o es1046.o es1046d.o es1048.o 
 	es1045.o es1045d.o et1043.o et1043d.o et1041.o et1041d.o yy1039.o \
 	yy1039d.o ev1038.o ev1038d.o yy1037.o yy1037d.o ev1036.o ev1036d.o \
 	ev1035.o ev1035d.o gr1034.o gr1034d.o kl1027.o kl1027d.o ev1032.o \
-	ev1032d.o ev1031.o ev1031d.o ev1030.o ev1030d.o ki1053.o ki1053d.o \
+	ev1032d.o ev1031.o ev1031d.o ev1030.o ev1030d.o ki1055.o ki1055d.o \
 	kl1026.o kl1026d.o ev1025.o ev1025d.o ev1057.o ev1057d.o ev1056.o \
-	ev1056d.o uc1055.o uc1055d.o uc1054.o uc1054d.o ki1052.o ki1052d.o \
+	ev1056d.o ki1054.o ki1054d.o uc1053.o uc1053d.o uc1052.o uc1052d.o \
 	yy1040.o yy1040d.o ev1033.o ev1033d.o uc1051.o uc1051d.o kl1028.o \
 	kl1028d.o uc1029.o uc1029d.o 
 

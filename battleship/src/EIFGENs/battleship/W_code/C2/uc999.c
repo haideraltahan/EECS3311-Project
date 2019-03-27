@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F999_8602(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F999_8604(EIF_REFERENCE);
 extern void EIF_Minit999(void);
 
 #ifdef __cplusplus
@@ -33,8 +33,8 @@ extern "C" {
 #endif
 
 /* {UC_SHARED_STRING_EQUALITY_TESTER}.string_equality_tester */
-RTOID (F999_8602)
-EIF_TYPED_VALUE F999_8602 (EIF_REFERENCE Current)
+RTOID (F999_8604)
+EIF_TYPED_VALUE F999_8604 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "string_equality_tester";
@@ -46,7 +46,7 @@ EIF_TYPED_VALUE F999_8602 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F999_8602);
+	RTOTDR(F999_8604);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -56,12 +56,12 @@ EIF_TYPED_VALUE F999_8602 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 998, Current, 0, 0, 14924);
+	RTEAA(l_feature_name, 998, Current, 0, 0, 14926);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(998, Current, 14924);
+	RTDBGEAA(998, Current, 14926);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -95,7 +95,7 @@ EIF_TYPED_VALUE F999_8602 (EIF_REFERENCE Current)
 void EIF_Minit999 (void)
 {
 	GTCX
-	RTOTS (8602,F999_8602)
+	RTOTS (8604,F999_8604)
 }
 
 

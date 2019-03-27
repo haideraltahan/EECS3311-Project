@@ -10,9 +10,9 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1081_9392(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1081_9393(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1081_9394(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1081_9395(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1081_9396(EIF_REFERENCE);
 extern void EIF_Minit1081(void);
 
 #ifdef __cplusplus
@@ -35,7 +35,7 @@ extern "C" {
 #endif
 
 /* {ETF_REAL_PARAM}.eiffel_type */
-EIF_TYPED_VALUE F1081_9392 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1081_9394 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "eiffel_type";
@@ -78,7 +78,7 @@ EIF_TYPED_VALUE F1081_9392 (EIF_REFERENCE Current)
 }
 
 /* {ETF_REAL_PARAM}.create_clause */
-EIF_TYPED_VALUE F1081_9393 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1081_9395 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "create_clause";
@@ -96,12 +96,12 @@ EIF_TYPED_VALUE F1081_9393 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1080, Current, 0, 0, 15632);
+	RTEAA(l_feature_name, 1080, Current, 0, 0, 15635);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1080, Current, 15632);
+	RTDBGEAA(1080, Current, 15635);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0xF80000E8, 0,0); /* Result */
@@ -118,7 +118,7 @@ EIF_TYPED_VALUE F1081_9393 (EIF_REFERENCE Current)
 }
 
 /* {ETF_REAL_PARAM}.out */
-EIF_TYPED_VALUE F1081_9394 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1081_9396 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "out";
@@ -137,12 +137,12 @@ EIF_TYPED_VALUE F1081_9394 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1080, Current, 0, 0, 15633);
+	RTEAA(l_feature_name, 1080, Current, 0, 0, 15636);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1080, Current, 15633);
+	RTDBGEAA(1080, Current, 15636);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0xF80000E8, 0,0); /* Result */

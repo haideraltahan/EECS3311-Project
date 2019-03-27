@@ -55,12 +55,12 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 
 OBJECTS = big_file_C5_c.o 
 
-OLDOBJECTS =  et1107.o et1107d.o et1092.o et1092d.o es1108.o es1108d.o es1110.o \
-	es1110d.o es1109.o es1109d.o et1105.o et1105d.o et1091.o et1091d.o \
-	et1093.o et1093d.o et1104.o et1104d.o et1103.o et1103d.o et1102.o \
-	et1102d.o da1123.o da1123d.o ti1122.o ti1122d.o et1101.o et1101d.o \
-	et1096.o et1096d.o et1094.o et1094d.o et1100.o et1100d.o et1099.o \
-	et1099d.o et1098.o et1098d.o et1095.o et1095d.o et1097.o et1097d.o \
+OLDOBJECTS =  et1092.o et1092d.o et1107.o et1107d.o es1108.o es1108d.o es1110.o \
+	es1110d.o es1109.o es1109d.o et1091.o et1091d.o et1105.o et1105d.o \
+	et1104.o et1104d.o et1103.o et1103d.o et1102.o et1102d.o et1093.o \
+	et1093d.o da1123.o da1123d.o ti1122.o ti1122d.o et1096.o et1096d.o \
+	et1094.o et1094d.o et1101.o et1101d.o et1100.o et1100d.o et1099.o \
+	et1099d.o et1095.o et1095d.o et1098.o et1098d.o et1097.o et1097d.o \
 	da1121.o da1121d.o du1120.o du1120d.o et1106.o et1106d.o ev1116.o \
 	ev1116d.o ev1114.o ev1114d.o ev1113.o ev1113d.o ev1112.o ev1112d.o \
 	ev1119.o ev1119d.o ev1117.o ev1117d.o ev1115.o ev1115d.o ev1118.o \

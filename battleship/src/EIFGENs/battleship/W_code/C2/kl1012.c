@@ -1,5 +1,5 @@
 /*
- * Code for class KL_SHARED_OPERATING_SYSTEM
+ * Code for class KL_IMPORTED_CHARACTER_ROUTINES
  */
 
 #include "eif_eiffel.h"
@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1012_8720(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1012_8722(EIF_REFERENCE);
 extern void EIF_Minit1012(void);
 
 #ifdef __cplusplus
@@ -32,12 +32,12 @@ extern "C" {
 extern "C" {
 #endif
 
-/* {KL_SHARED_OPERATING_SYSTEM}.operating_system */
-RTOID (F1012_8720)
-EIF_TYPED_VALUE F1012_8720 (EIF_REFERENCE Current)
+/* {KL_IMPORTED_CHARACTER_ROUTINES}.character_ */
+RTOID (F1012_8722)
+EIF_TYPED_VALUE F1012_8722 (EIF_REFERENCE Current)
 {
 	GTCX
-	char *l_feature_name = "operating_system";
+	char *l_feature_name = "character_";
 	RTEX;
 	EIF_REFERENCE tr1 = NULL;
 	RTCDD;
@@ -46,7 +46,7 @@ EIF_TYPED_VALUE F1012_8720 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1012_8720);
+	RTOTDR(F1012_8722);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -56,23 +56,23 @@ EIF_TYPED_VALUE F1012_8720 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1011, Current, 0, 0, 15026);
+	RTEAA(l_feature_name, 1011, Current, 0, 0, 15028);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1011, Current, 15026);
+	RTDBGEAA(1011, Current, 15028);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
-	RTDBGAL(Current, 0, 0xF80003C1, 0,0); /* Result */
-	tr1 = RTLN(eif_new_type(961, 0x01).id);
+	RTDBGAL(Current, 0, 0xF8000403, 0,0); /* Result */
+	tr1 = RTLN(eif_new_type(1027, 0x01).id);
 	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(32, Dtype(tr1)))(tr1);
 	RTNHOOK(1,1);
 	Result = (EIF_REFERENCE) RTCCL(tr1);
 	if (RTAL & CK_ENSURE) {
 		RTHOOK(2);
-		RTCT("operating_system_not_void", EX_POST);
+		RTCT("character_routines_not_void", EX_POST);
 		if ((EIF_BOOLEAN)(Result != NULL)) {
 			RTCK;
 		} else {
@@ -95,7 +95,7 @@ EIF_TYPED_VALUE F1012_8720 (EIF_REFERENCE Current)
 void EIF_Minit1012 (void)
 {
 	GTCX
-	RTOTS (8720,F1012_8720)
+	RTOTS (8722,F1012_8722)
 }
 
 

@@ -10,11 +10,11 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1074_9373(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1074_9374(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1074_9375(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1074_9376(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1074_9377(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1074_9378(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1074_9379(EIF_REFERENCE);
 extern void EIF_Minit1074(void);
 
 #ifdef __cplusplus
@@ -37,8 +37,8 @@ extern "C" {
 #endif
 
 /* {KL_IMPORTED_SPECIAL_ROUTINES}.special_any_ */
-RTOID (F1074_9373)
-EIF_TYPED_VALUE F1074_9373 (EIF_REFERENCE Current)
+RTOID (F1074_9375)
+EIF_TYPED_VALUE F1074_9375 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "special_any_";
@@ -50,7 +50,7 @@ EIF_TYPED_VALUE F1074_9373 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1074_9373);
+	RTOTDR(F1074_9375);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -60,18 +60,18 @@ EIF_TYPED_VALUE F1074_9373 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1073, Current, 0, 0, 15615);
+	RTEAA(l_feature_name, 1073, Current, 0, 0, 15617);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1073, Current, 15615);
+	RTDBGEAA(1073, Current, 15617);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
-	RTDBGAL(Current, 0, 0xF8000649, 0,0); /* Result */
+	RTDBGAL(Current, 0, 0xF800064B, 0,0); /* Result */
 	{
-		static EIF_TYPE_INDEX typarr0[] = {0xFF01,1609,0xFF01,0,0xFFFF};
+		static EIF_TYPE_INDEX typarr0[] = {0xFF01,1611,0xFF01,0,0xFFFF};
 		EIF_TYPE typres0;
 		static EIF_TYPE typcache0 = {INVALID_DTYPE, 0};
 		
@@ -104,8 +104,8 @@ EIF_TYPED_VALUE F1074_9373 (EIF_REFERENCE Current)
 }
 
 /* {KL_IMPORTED_SPECIAL_ROUTINES}.special_boolean_ */
-RTOID (F1074_9374)
-EIF_TYPED_VALUE F1074_9374 (EIF_REFERENCE Current)
+RTOID (F1074_9376)
+EIF_TYPED_VALUE F1074_9376 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "special_boolean_";
@@ -117,7 +117,7 @@ EIF_TYPED_VALUE F1074_9374 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1074_9374);
+	RTOTDR(F1074_9376);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -127,18 +127,18 @@ EIF_TYPED_VALUE F1074_9374 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1073, Current, 0, 0, 15616);
+	RTEAA(l_feature_name, 1073, Current, 0, 0, 15618);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1073, Current, 15616);
+	RTDBGEAA(1073, Current, 15618);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
-	RTDBGAL(Current, 0, 0xF8000653, 0,0); /* Result */
+	RTDBGAL(Current, 0, 0xF8000643, 0,0); /* Result */
 	{
-		static EIF_TYPE_INDEX typarr0[] = {0xFF01,1619,203,0xFFFF};
+		static EIF_TYPE_INDEX typarr0[] = {0xFF01,1603,200,0xFFFF};
 		EIF_TYPE typres0;
 		static EIF_TYPE typcache0 = {INVALID_DTYPE, 0};
 		
@@ -171,8 +171,8 @@ EIF_TYPED_VALUE F1074_9374 (EIF_REFERENCE Current)
 }
 
 /* {KL_IMPORTED_SPECIAL_ROUTINES}.special_character_ */
-RTOID (F1074_9375)
-EIF_TYPED_VALUE F1074_9375 (EIF_REFERENCE Current)
+RTOID (F1074_9377)
+EIF_TYPED_VALUE F1074_9377 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "special_character_";
@@ -184,7 +184,7 @@ EIF_TYPED_VALUE F1074_9375 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1074_9375);
+	RTOTDR(F1074_9377);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -194,18 +194,18 @@ EIF_TYPED_VALUE F1074_9375 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1073, Current, 0, 0, 15617);
+	RTEAA(l_feature_name, 1073, Current, 0, 0, 15619);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1073, Current, 15617);
+	RTDBGEAA(1073, Current, 15619);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
-	RTDBGAL(Current, 0, 0xF8000650, 0,0); /* Result */
+	RTDBGAL(Current, 0, 0xF8000644, 0,0); /* Result */
 	{
-		static EIF_TYPE_INDEX typarr0[] = {0xFF01,1616,197,0xFFFF};
+		static EIF_TYPE_INDEX typarr0[] = {0xFF01,1604,194,0xFFFF};
 		EIF_TYPE typres0;
 		static EIF_TYPE typcache0 = {INVALID_DTYPE, 0};
 		
@@ -238,8 +238,8 @@ EIF_TYPED_VALUE F1074_9375 (EIF_REFERENCE Current)
 }
 
 /* {KL_IMPORTED_SPECIAL_ROUTINES}.special_integer_ */
-RTOID (F1074_9376)
-EIF_TYPED_VALUE F1074_9376 (EIF_REFERENCE Current)
+RTOID (F1074_9378)
+EIF_TYPED_VALUE F1074_9378 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "special_integer_";
@@ -251,7 +251,7 @@ EIF_TYPED_VALUE F1074_9376 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1074_9376);
+	RTOTDR(F1074_9378);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -261,18 +261,18 @@ EIF_TYPED_VALUE F1074_9376 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1073, Current, 0, 0, 15618);
+	RTEAA(l_feature_name, 1073, Current, 0, 0, 15620);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1073, Current, 15618);
+	RTDBGEAA(1073, Current, 15620);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
-	RTDBGAL(Current, 0, 0xF800065C, 0,0); /* Result */
+	RTDBGAL(Current, 0, 0xF8000647, 0,0); /* Result */
 	{
-		static EIF_TYPE_INDEX typarr0[] = {0xFF01,1628,218,0xFFFF};
+		static EIF_TYPE_INDEX typarr0[] = {0xFF01,1607,221,0xFFFF};
 		EIF_TYPE typres0;
 		static EIF_TYPE typcache0 = {INVALID_DTYPE, 0};
 		
@@ -305,8 +305,8 @@ EIF_TYPED_VALUE F1074_9376 (EIF_REFERENCE Current)
 }
 
 /* {KL_IMPORTED_SPECIAL_ROUTINES}.special_string_ */
-RTOID (F1074_9377)
-EIF_TYPED_VALUE F1074_9377 (EIF_REFERENCE Current)
+RTOID (F1074_9379)
+EIF_TYPED_VALUE F1074_9379 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "special_string_";
@@ -318,7 +318,7 @@ EIF_TYPED_VALUE F1074_9377 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1074_9377);
+	RTOTDR(F1074_9379);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -328,18 +328,18 @@ EIF_TYPED_VALUE F1074_9377 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1073, Current, 0, 0, 15619);
+	RTEAA(l_feature_name, 1073, Current, 0, 0, 15621);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1073, Current, 15619);
+	RTDBGEAA(1073, Current, 15621);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
-	RTDBGAL(Current, 0, 0xF8000649, 0,0); /* Result */
+	RTDBGAL(Current, 0, 0xF800064B, 0,0); /* Result */
 	{
-		static EIF_TYPE_INDEX typarr0[] = {0xFF01,1609,0xFF01,232,0xFFFF};
+		static EIF_TYPE_INDEX typarr0[] = {0xFF01,1611,0xFF01,232,0xFFFF};
 		EIF_TYPE typres0;
 		static EIF_TYPE typcache0 = {INVALID_DTYPE, 0};
 		
@@ -374,11 +374,11 @@ EIF_TYPED_VALUE F1074_9377 (EIF_REFERENCE Current)
 void EIF_Minit1074 (void)
 {
 	GTCX
-	RTOTS (9373,F1074_9373)
-	RTOTS (9374,F1074_9374)
 	RTOTS (9375,F1074_9375)
 	RTOTS (9376,F1074_9376)
 	RTOTS (9377,F1074_9377)
+	RTOTS (9378,F1074_9378)
+	RTOTS (9379,F1074_9379)
 }
 
 

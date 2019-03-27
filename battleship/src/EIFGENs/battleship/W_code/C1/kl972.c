@@ -70,7 +70,7 @@ EIF_TYPED_VALUE F972_8366 (EIF_REFERENCE Current)
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0xF800049A, 0,0); /* Result */
 	tr1 = RTLN(eif_new_type(1178, 0x01).id);
-	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(8017, Dtype(tr1)))(tr1);
+	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(8019, Dtype(tr1)))(tr1);
 	RTNHOOK(1,1);
 	Result = (EIF_REFERENCE) RTCCL(tr1);
 	if (RTAL & CK_ENSURE) {
@@ -83,7 +83,7 @@ EIF_TYPED_VALUE F972_8366 (EIF_REFERENCE Current)
 		}
 		RTHOOK(3);
 		RTCT("file_open_read", EX_POST);
-		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6961, "is_open_read", Result))(Result)).it_b);
+		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6963, "is_open_read", Result))(Result)).it_b);
 		if (tb1) {
 			RTCK;
 		} else {
@@ -139,7 +139,7 @@ EIF_TYPED_VALUE F972_8367 (EIF_REFERENCE Current)
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0xF800048E, 0,0); /* Result */
 	tr1 = RTLN(eif_new_type(1166, 0x01).id);
-	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(7838, Dtype(tr1)))(tr1);
+	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(7840, Dtype(tr1)))(tr1);
 	RTNHOOK(1,1);
 	Result = (EIF_REFERENCE) RTCCL(tr1);
 	if (RTAL & CK_ENSURE) {
@@ -152,7 +152,7 @@ EIF_TYPED_VALUE F972_8367 (EIF_REFERENCE Current)
 		}
 		RTHOOK(3);
 		RTCT("file_open_write", EX_POST);
-		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6384, "is_open_write", Result))(Result)).it_b);
+		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6386, "is_open_write", Result))(Result)).it_b);
 		if (tb1) {
 			RTCK;
 		} else {
@@ -208,7 +208,7 @@ EIF_TYPED_VALUE F972_8368 (EIF_REFERENCE Current)
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0xF800048D, 0,0); /* Result */
 	tr1 = RTLN(eif_new_type(1165, 0x01).id);
-	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(7836, Dtype(tr1)))(tr1);
+	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(7838, Dtype(tr1)))(tr1);
 	RTNHOOK(1,1);
 	Result = (EIF_REFERENCE) RTCCL(tr1);
 	if (RTAL & CK_ENSURE) {
@@ -221,7 +221,7 @@ EIF_TYPED_VALUE F972_8368 (EIF_REFERENCE Current)
 		}
 		RTHOOK(3);
 		RTCT("file_open_write", EX_POST);
-		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6384, "is_open_write", Result))(Result)).it_b);
+		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6386, "is_open_write", Result))(Result)).it_b);
 		if (tb1) {
 			RTCK;
 		} else {

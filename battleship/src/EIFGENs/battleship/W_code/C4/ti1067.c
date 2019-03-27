@@ -10,12 +10,12 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1067_9305(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1067_9306(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1067_9307(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1067_9308(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1067_9309(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1067_9310(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1067_9311(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1067_9312(EIF_REFERENCE);
 extern void EIF_Minit1067(void);
 
 #ifdef __cplusplus
@@ -38,7 +38,7 @@ extern "C" {
 #endif
 
 /* {TIME_CONSTANTS}.seconds_in_minute */
-EIF_TYPED_VALUE F1067_9305 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1067_9307 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_INT32;
@@ -47,7 +47,7 @@ EIF_TYPED_VALUE F1067_9305 (EIF_REFERENCE Current)
 }
 
 /* {TIME_CONSTANTS}.seconds_in_hour */
-EIF_TYPED_VALUE F1067_9306 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1067_9308 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_INT32;
@@ -56,7 +56,7 @@ EIF_TYPED_VALUE F1067_9306 (EIF_REFERENCE Current)
 }
 
 /* {TIME_CONSTANTS}.seconds_in_day */
-EIF_TYPED_VALUE F1067_9307 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1067_9309 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_INT32;
@@ -65,7 +65,7 @@ EIF_TYPED_VALUE F1067_9307 (EIF_REFERENCE Current)
 }
 
 /* {TIME_CONSTANTS}.minutes_in_hour */
-EIF_TYPED_VALUE F1067_9308 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1067_9310 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_INT32;
@@ -74,7 +74,7 @@ EIF_TYPED_VALUE F1067_9308 (EIF_REFERENCE Current)
 }
 
 /* {TIME_CONSTANTS}.hours_in_day */
-EIF_TYPED_VALUE F1067_9309 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1067_9311 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_INT32;
@@ -83,7 +83,7 @@ EIF_TYPED_VALUE F1067_9309 (EIF_REFERENCE Current)
 }
 
 /* {TIME_CONSTANTS}.time_default_format_string */
-EIF_TYPED_VALUE F1067_9310 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1067_9312 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "time_default_format_string";
@@ -109,18 +109,18 @@ EIF_TYPED_VALUE F1067_9310 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1066, Current, 0, 0, 15569);
+	RTEAA(l_feature_name, 1066, Current, 0, 0, 15571);
 	RTSA(Dtype(Current));
 	RTSC;
 	RTME(Dtype(Current), 0);
 	RTGC;
-	RTDBGEAA(1066, Current, 15569);
+	RTDBGEAA(1066, Current, 15571);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(Current, 0, 0xF80000E8, 0,0); /* Result */
-	tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(7069, Dtype(Current)))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
+	tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(7071, Dtype(Current)))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
 	RTNHOOK(1,1);
-	tr2 = ((up2x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6516, "time_default_format_string", tr1))(tr1)), (((up2x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up2x.it_r = RTBU(up2x))), (up2x.type = SK_POINTER), up2x.it_r);
+	tr2 = ((up2x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6518, "time_default_format_string", tr1))(tr1)), (((up2x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up2x.it_r = RTBU(up2x))), (up2x.type = SK_POINTER), up2x.it_r);
 	Result = (EIF_REFERENCE) RTCCL(tr2);
 	RTVI(Current, RTAL);
 	RTRS;
