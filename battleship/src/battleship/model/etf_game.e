@@ -41,26 +41,22 @@ feature -- model operations
 			make
 		end
 
-	new_game(level: INTEGER_64; is_debug_mode: BOOLEAN): ETF_BOARD
+	new_game(level: INTEGER_64; is_debug_mode: BOOLEAN)
 			--create new board
-		local
-			a_BOARD : ETF_BOARD
 		do
-			create a_board.make_empty
 			if level ~ 13 then
 				-- easy
-				create a_BOARD.make (4, 2, 8, 2, is_debug_mode)
+				create BOARD.make (4, 2, 8, 2, is_debug_mode)
 			elseif level ~ 14 then
 				-- medium
-				create a_BOARD.make (6, 3, 16, 3, is_debug_mode)
+				create BOARD.make (6, 3, 16, 3, is_debug_mode)
 			elseif level ~ 15 then
 				-- hard
-				create a_BOARD.make (8, 5, 24, 5, is_debug_mode)
+				create BOARD.make (8, 5, 24, 5, is_debug_mode)
 			elseif level ~ 16 then
 				-- advanced
-				create a_BOARD.make (12, 7, 40, 7, is_debug_mode)
+				create BOARD.make (12, 7, 40, 7, is_debug_mode)
 			end
-			Result := a_board
 		end
 
 feature -- actions commands

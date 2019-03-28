@@ -1,12 +1,11 @@
 note
-	description: "Summary description for {ETF_ACTIONS_DEBUG_TEST}."
+	description: "Summary description for {ETF_ACTIONS_FIRE}."
 	author: ""
 	date: "$Date$"
 	revision: "$Revision$"
 
 class
-	ETF_ACTIONS_DEBUG_TEST
-
+	ETF_ACTIONS_FIRE
 inherit
 	ETF_ACTIONS
 

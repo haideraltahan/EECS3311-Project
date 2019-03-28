@@ -75,6 +75,8 @@ feature -- attributes
 	total_score, max_total_score : INTEGER
 	-- feedback messages
 	state_feedback, action_feedback : STRING
+	-- give up bool
+	give_up : BOOLEAN
 
 feature {ETF_ACTIONS} -- implementation
 	implementation: ARRAY2[ETF_SQUARE]
@@ -223,6 +225,7 @@ feature  -- game info
 		-- 1: Game is LOST
 		-- 2: Game is WON
 		-- 3: Game has not started
+		-- 4: Gave up
 		local
 			all_ships_sunk: BOOLEAN
 		do
@@ -241,6 +244,10 @@ feature  -- game info
 					Result := 2
 				elseif shots ~ max_shots and bombs ~ max_bombs then
 					Result := 1
+				end
+
+				if give_up then
+					Result := 4
 				end
 			end
 		end
