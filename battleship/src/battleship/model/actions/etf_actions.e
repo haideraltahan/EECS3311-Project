@@ -22,16 +22,6 @@ feature{NONE}
 			Result := ma.m
 		end
 
-feature -- queries
-	valid (a_x, a_y: INTEGER): BOOLEAN
-			-- Is this a valid position given borad size
-		local
-			n: INTEGER
-		do
-			n := game.board.implementation.width
-			Result := (1 <= a_x and a_x <= n) and (1 <= a_y and a_y <= n)
-		end
-
 feature -- deferred commands
 	execute
 		deferred

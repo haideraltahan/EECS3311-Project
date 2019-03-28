@@ -64,6 +64,7 @@ feature -- model operations
 				-- advanced
 				create BOARD.make (12, 7, 40, 7, is_debug_mode)
 			end
+			game_counter := game_counter + 1
 		end
 
 feature -- actions commands

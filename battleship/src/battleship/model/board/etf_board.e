@@ -77,7 +77,6 @@ feature -- attributes
 
 feature {ETF_ACTIONS} -- implementation
 	implementation: ARRAY2[ETF_SQUARE]
-		-- implementation
 
 feature {NONE} -- utilities
 	generate_ships (num_ships: INTEGER): ARRAYED_LIST[ETF_SHIP]
@@ -226,6 +225,17 @@ feature {NONE} -- utilities
 
 		end
 
+	check_game_status
+		do
+			if game_status ~ 2 then
+				action_feedback := action_feedback + " You Win!"
+			elseif game_status ~ 1 then
+				action_feedback := action_feedback + " Game Over!"
+			else
+				action_feedback := action_feedback + " Keep Firing!"
+			end
+		end
+
 feature  -- game info
 	game_status: INTEGER
 		-- 0: Game is RUNNING
@@ -311,10 +321,11 @@ feature  -- game info
 
 	distance(coordinate1: TUPLE[row: INTEGER_64; column: INTEGER_64] ; coordinate2: TUPLE[row: INTEGER_64; column: INTEGER_64]):INTEGER
 		local
-			temp : REAL_64
+			dx, dy : INTEGER_64
 		do
-			temp := ((coordinate1.row - coordinate2.row) ^ 2) + ((coordinate1.column - coordinate2.column) ^ 2)
-			Result := temp.floor
+			dx := (coordinate1.row - coordinate2.row)
+			dy := (coordinate1.column - coordinate2.column)
+			Result := (dx.abs + dy.abs).as_integer_32
 		end
 
 	is_adjacent(coordinate1: TUPLE[row: INTEGER_64; column: INTEGER_64] ; coordinate2: TUPLE[row: INTEGER_64; column: INTEGER_64]):BOOLEAN
@@ -326,28 +337,66 @@ feature  -- game info
 			end
 		end
 
-	fire(row, col: INTEGER)
+
+	is_valid(coordinate: TUPLE[row: INTEGER_64; column: INTEGER_64]): BOOLEAN
+			-- Is this a valid position given borad size
+		local
+			n: INTEGER
 		do
+			n := implementation.width
+			Result := (1 <= coordinate.row and coordinate.row <= n) and (1 <= coordinate.column and coordinate.column <= n)
+		end
+
+	fire(row, col: INTEGER)
+		local
+			sunk_ships : INTEGER
+		do
+			sunk_ships := count_sunk_ships
 			if is_ship_located(row, col) then
 				implementation[row, col] := create {ETF_SQUARE}.make ('X')
-				set_message("OK","Hit! ")
+				set_message("OK","Hit!")
 			else
 				implementation[row, col] := create {ETF_SQUARE}.make ('O')
-				set_message("OK","Miss! ")
+				set_message("OK","Miss!")
 			end
-			if game_status ~ 2 then
-				action_feedback := action_feedback + " You Win!"
-			elseif game_status ~ 1 then
-				action_feedback := action_feedback + " Game Over!"
-			else
-				action_feedback := action_feedback + " Keep Firing!"
+			shots := shots + 1
+			if count_sunk_ships > sunk_ships then
+
 			end
+			check_game_status
 		end
 
 	bomb(coordinate1: TUPLE[row: INTEGER_64; column: INTEGER_64] ; coordinate2: TUPLE[row: INTEGER_64; column: INTEGER_64])
+		local
+			sunk_ships : INTEGER
 		do
+			sunk_ships := count_sunk_ships
+			if not is_ship_located(coordinate1.row.as_integer_32, coordinate1.column.as_integer_32) and not is_ship_located(coordinate2.row.as_integer_32, coordinate2.column.as_integer_32) then
+				implementation[coordinate1.row.as_integer_32, coordinate1.column.as_integer_32] := create {ETF_SQUARE}.make ('O')
+				implementation[coordinate2.row.as_integer_32, coordinate2.column.as_integer_32] := create {ETF_SQUARE}.make ('O')
+				set_message("OK","Miss!")
+			else
+				if is_ship_located(coordinate1.row.as_integer_32, coordinate1.column.as_integer_32) then
+					implementation[coordinate1.row.as_integer_32, coordinate1.column.as_integer_32] := create {ETF_SQUARE}.make ('X')
+				else
+					implementation[coordinate1.row.as_integer_32, coordinate1.column.as_integer_32] := create {ETF_SQUARE}.make ('O')
+				end
 
+				if is_ship_located(coordinate2.row.as_integer_32, coordinate2.column.as_integer_32) then
+					implementation[coordinate2.row.as_integer_32, coordinate2.column.as_integer_32] := create {ETF_SQUARE}.make ('X')
+				else
+					implementation[coordinate2.row.as_integer_32, coordinate2.column.as_integer_32] := create {ETF_SQUARE}.make ('O')
+				end
+				set_message("OK","Hit!")
+			end
+			bombs := bombs + 1
+			if count_sunk_ships > sunk_ships then
+
+			end
+			check_game_status
 		end
+
+
 
 feature -- out
 	ships_out: STRING

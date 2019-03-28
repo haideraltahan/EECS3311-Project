@@ -22,6 +22,8 @@ feature -- command
 			-- perform some update on the model state
 			if not (model.board.game_status ~ 0) then
 				model.board.set_message("Game not started", "Start a new game")
+			elseif not model.board.is_valid(coordinate) then
+				model.board.set_message("Invalid coordinate", "Keep Firing!")
 			elseif model.board.shots ~ model.board.max_shots then
 				model.board.set_message ("No shots remaining", "Keep Firing!")
 			elseif model.board.is_hit(coordinate.row.as_integer_32, coordinate.column.as_integer_32) then
