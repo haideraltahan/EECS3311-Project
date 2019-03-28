@@ -21,6 +21,8 @@ feature {NONE} -- create
 			create Ships.make (1)
 			is_debug_mode := FALSE
 			MAX_TOTAL_SCORE := 0
+			STATE_FEEDBACK := "OK"
+			ACTION_FEEDBACK := "Start a new game"
 		end
 	make(a_size, s_size, a_shots, a_bombs: INTEGER; a_is_debug_mode: BOOLEAN)
 			-- Initialization for `Current'.
@@ -36,6 +38,8 @@ feature {NONE} -- create
 			max_bombs := a_bombs
 			max_score := get_max_score
 			MAX_TOTAL_SCORE := MAX_TOTAL_SCORE + max_score
+			STATE_FEEDBACK := "OK"
+			ACTION_FEEDBACK := "Fire Away!"
 		end
 feature {NONE} -- internal attributes
 
@@ -69,6 +73,8 @@ feature -- attributes
 	score, max_score : INTEGER
 	-- total score
 	total_score, max_total_score : INTEGER
+	-- feedback messages
+	state_feedback, action_feedback : STRING
 
 feature {ETF_ACTIONS} -- implementation
 	implementation: ARRAY2[ETF_SQUARE]
@@ -266,6 +272,12 @@ feature  -- game info
 		do
 			score := score + 1
 			total_score := total_score + 1
+		end
+
+	set_message(state, action : STRING)
+		do
+			STATE_FEEDBACK := state
+			ACTION_FEEDBACK := action
 		end
 
 feature -- out

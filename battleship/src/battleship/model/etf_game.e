@@ -21,14 +21,11 @@ feature {NONE} -- Initialization
 			-- Initialization for `Current'.
 		do
 			STATE_COUNTER := 0
-			STATE_FEEDBACK := "OK"
-			ACTION_FEEDBACK := "Start a new game"
 			create BOARD.make_empty
 		end
 
 feature -- model attributes
 	STATE_COUNTER, GAME_COUNTER : INTEGER
-	STATE_FEEDBACK, ACTION_FEEDBACK : STRING
 	BOARD : ETF_BOARD
 
 feature -- model operations
@@ -44,30 +41,34 @@ feature -- model operations
 			make
 		end
 
-	new_game(level: INTEGER_64; is_debug_mode: BOOLEAN)
+	new_game(level: INTEGER_64; is_debug_mode: BOOLEAN): ETF_BOARD
 			--create new board
+		local
+			a_BOARD : ETF_BOARD
 		do
+			create a_board.make_empty
 			if level ~ 13 then
 				-- easy
-				create BOARD.make (4, 2, 8, 2, is_debug_mode)
+				create a_BOARD.make (4, 2, 8, 2, is_debug_mode)
 			elseif level ~ 14 then
 				-- medium
-				create BOARD.make (6, 3, 16, 3, is_debug_mode)
+				create a_BOARD.make (6, 3, 16, 3, is_debug_mode)
 			elseif level ~ 15 then
 				-- hard
-				create BOARD.make (8, 5, 24, 5, is_debug_mode)
+				create a_BOARD.make (8, 5, 24, 5, is_debug_mode)
 			elseif level ~ 16 then
 				-- advanced
-				create BOARD.make (12, 7, 40, 7, is_debug_mode)
+				create a_BOARD.make (12, 7, 40, 7, is_debug_mode)
 			end
+			Result := a_board
 		end
 
-	set_message(state, action : STRING)
+feature -- actions commands
+
+	set_board(a_BOARD: ETF_BOARD)
 		do
-			STATE_FEEDBACK := state
-			ACTION_FEEDBACK := action
+			board:=a_board
 		end
-
 
 feature -- queries
 	out : STRING
@@ -76,9 +77,9 @@ feature -- queries
 			Result.append ("state ")
 			Result.append (STATE_COUNTER.out)
 			Result.append (" ")
-			Result.append (STATE_FEEDBACK.out)
+			Result.append (board.STATE_FEEDBACK.out)
 			Result.append (" -> ")
-			Result.append (ACTION_FEEDBACK.out)
+			Result.append (board.ACTION_FEEDBACK.out)
 			if not (BOARD.game_status ~ 3) then
 				Result.append (BOARD.out)
 				Result.append ("%N  ")

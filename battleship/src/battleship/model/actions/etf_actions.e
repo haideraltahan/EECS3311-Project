@@ -14,12 +14,12 @@ deferred class
 
 feature{NONE}
 
-	board: ETF_BOARD
+	game: ETF_GAME
 			-- access board via singleton
 		local
 			ma: ETF_GAME_ACCESS
 		once
-			Result := ma.m.board
+			Result := ma.m
 		end
 
 feature -- queries
@@ -28,7 +28,7 @@ feature -- queries
 		local
 			n: INTEGER
 		do
-			n := board.implementation.width
+			n := game.board.implementation.width
 			Result := (1 <= a_x and a_x <= n) and (1 <= a_y and a_y <= n)
 		end
 

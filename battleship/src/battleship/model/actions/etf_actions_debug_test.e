@@ -17,7 +17,7 @@ feature -- Initialization
 
 	make(new_board: ETF_BOARD)
 		do
-			old_position := board
+			old_position := game.board
 			position := new_board
 		end
 
@@ -29,17 +29,16 @@ feature -- commands
 
 	execute
 		do
-				-- To Do
+			game.set_board (position)
 		end
 
 	undo
 		do
-
-				-- To Do
+			game.set_board (old_position)
 		end
 
 	redo
 		do
-			-- To Do
+			execute
 		end
 end
