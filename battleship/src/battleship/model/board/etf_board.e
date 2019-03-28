@@ -309,13 +309,44 @@ feature  -- game info
 			Result := implementation[row, col].is_hit
 		end
 
+	distance(coordinate1: TUPLE[row: INTEGER_64; column: INTEGER_64] ; coordinate2: TUPLE[row: INTEGER_64; column: INTEGER_64]):INTEGER
+		local
+			temp : REAL_64
+		do
+			temp := ((coordinate1.row - coordinate2.row) ^ 2) + ((coordinate1.column - coordinate2.column) ^ 2)
+			Result := temp.floor
+		end
+
+	is_adjacent(coordinate1: TUPLE[row: INTEGER_64; column: INTEGER_64] ; coordinate2: TUPLE[row: INTEGER_64; column: INTEGER_64]):BOOLEAN
+		do
+			if distance(coordinate1, coordinate2) ~ 1 then
+				Result := TRUE
+			else
+				Result := FALSE
+			end
+		end
+
 	fire(row, col: INTEGER)
 		do
 			if is_ship_located(row, col) then
 				implementation[row, col] := create {ETF_SQUARE}.make ('X')
+				set_message("OK","Hit! ")
 			else
 				implementation[row, col] := create {ETF_SQUARE}.make ('O')
+				set_message("OK","Miss! ")
 			end
+			if game_status ~ 2 then
+				action_feedback := action_feedback + " You Win!"
+			elseif game_status ~ 1 then
+				action_feedback := action_feedback + " Game Over!"
+			else
+				action_feedback := action_feedback + " Keep Firing!"
+			end
+		end
+
+	bomb(coordinate1: TUPLE[row: INTEGER_64; column: INTEGER_64] ; coordinate2: TUPLE[row: INTEGER_64; column: INTEGER_64])
+		do
+
 		end
 
 feature -- out

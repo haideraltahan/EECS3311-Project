@@ -20,7 +20,9 @@ feature -- command
 			new_board : ETF_BOARD
     	do
 			-- perform some update on the model state
-			if model.board.shots ~ model.board.max_shots then
+			if not (model.board.game_status ~ 0) then
+				model.board.set_message("Game not started", "Start a new game")
+			elseif model.board.shots ~ model.board.max_shots then
 				-- no more shots
 			elseif model.board.is_hit(coordinate.row.as_integer_32, coordinate.column.as_integer_32) then
 				-- area already shot

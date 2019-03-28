@@ -43,6 +43,11 @@ feature -- model operations
 			make
 		end
 
+	reset_history
+		do
+			history := create {ETF_HISTORY}.make
+		end
+
 	new_game(level: INTEGER_64; is_debug_mode: BOOLEAN)
 			--create new board
 		do
