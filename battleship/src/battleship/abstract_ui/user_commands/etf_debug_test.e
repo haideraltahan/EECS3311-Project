@@ -15,8 +15,11 @@ feature -- command
 	debug_test(level: INTEGER_64)
 		require else
 			debug_test_precond(level)
+		local
+			action: 	ETF_ACTIONS_DEBUG_TEST
     	do
 			-- perform some update on the model state
+			create action.make (model.board)
 			if model.BOARD.game_status ~ 0 then
 				model.set_message("Game already started", "Fire Away!")
 			else
