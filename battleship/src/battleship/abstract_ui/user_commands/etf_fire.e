@@ -23,9 +23,9 @@ feature -- command
 			if not (model.board.game_status ~ 0) then
 				model.board.set_message("Game not started", "Start a new game")
 			elseif model.board.shots ~ model.board.max_shots then
-				-- no more shots
+				model.board.set_message ("No shots remaining", "Keep Firing!")
 			elseif model.board.is_hit(coordinate.row.as_integer_32, coordinate.column.as_integer_32) then
-				-- area already shot
+				model.board.set_message ("Already fired there", "Keep Firing!")
 			else
 				-- shoot the area
 				new_board := model.board.deep_twin

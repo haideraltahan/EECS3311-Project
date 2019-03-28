@@ -23,11 +23,11 @@ feature -- command
 			if not (model.board.game_status ~ 0) then
 				model.board.set_message("Game not started", "Start a new game")
 			elseif model.board.bombs ~ model.board.max_bombs then
-				-- no more shots
-			elseif model.board.is_hit(coordinate1.row.as_integer_32, coordinate1.column.as_integer_32) and model.board.is_hit(coordinate2.row.as_integer_32, coordinate2.column.as_integer_32) then
-				-- area already shot
+				model.board.set_message ("No bombs remaining", "Keep Firing!")
+			elseif model.board.is_hit(coordinate1.row.as_integer_32, coordinate1.column.as_integer_32) or model.board.is_hit(coordinate2.row.as_integer_32, coordinate2.column.as_integer_32) then
+				model.board.set_message ("Already fired there", "Keep Firing!")
 			elseif model.board.is_adjacent(coordinate1, coordinate2) then
-				-- not valid bomb coordinates
+				model.board.set_message ("Bomb coordinates must be adjacent", "Keep Firing!")
 			else
 				-- shoot the area
 				new_board := model.board.deep_twin
