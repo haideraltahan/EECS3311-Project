@@ -76,7 +76,7 @@ feature -- attributes
 	-- feedback messages
 	state_feedback, action_feedback : STRING
 	-- give up bool
-	give_up : BOOLEAN
+	gave_up : BOOLEAN
 
 feature {ETF_ACTIONS} -- implementation
 	implementation: ARRAY2[ETF_SQUARE]
@@ -287,6 +287,15 @@ feature  -- game info
 			ACTION_FEEDBACK := action
 		end
 
+	set_message_state(state:STRING)
+		do
+			STATE_FEEDBACK := state
+		end
+
+	give_up
+		do
+			gave_up := TRUE
+		end
 feature -- out
 	ships_out: STRING
 		local
