@@ -22,11 +22,13 @@ feature {NONE} -- Initialization
 		do
 			STATE_COUNTER := 0
 			create BOARD.make_empty
+			create history.make
 		end
 
 feature -- model attributes
 	STATE_COUNTER, GAME_COUNTER : INTEGER
 	BOARD : ETF_BOARD
+	history: ETF_HISTORY
 
 feature -- model operations
 	default_update

@@ -25,7 +25,6 @@ feature -- queries
 	position: ETF_BOARD
 
 feature -- commands
-
 	execute
 		do
 			game.set_board (position)

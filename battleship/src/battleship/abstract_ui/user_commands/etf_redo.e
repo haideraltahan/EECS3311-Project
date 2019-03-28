@@ -16,16 +16,16 @@ feature -- command
     	do
 			-- perform some update on the model state
 			if
-				model.board.history.before
-				or not model.board.history.after
+				model.history.before
+				or not model.history.after
 			then
-				model.board.history.forth
+				model.history.forth
 			end
 
 			-- redo
-			if model.board.history.on_item then
-				model.board.history.item.redo
-				model.board.set_message_state("ok")
+			if model.history.on_item then
+				model.board.set_message_state ("(= state " + model.history.item.state.out + ")"+" OK")
+				model.history.item.action.redo
 			else
 				model.board.set_message_state("Nothing to redo")
 			end

@@ -13,16 +13,16 @@ create
 feature{NONE} -- create
 	make
 		do
-			create {ARRAYED_LIST[ETF_ACTIONS]}history.make (10)
+			create {ARRAYED_LIST[TUPLE[action:ETF_ACTIONS; state:INTEGER]]}history.make (10)
 		end
 
-	history: LIST[ETF_ACTIONS]
+	history: LIST[TUPLE[action:ETF_ACTIONS; state:INTEGER]]
 		-- a history list of user invoked operations
 		-- implementation
 
 
 feature -- queries
-	item: ETF_ACTIONS
+	item: TUPLE[action:ETF_ACTIONS; state:INTEGER]
 			-- Cursor points to this user operation
 		require
 			on_item
@@ -51,7 +51,7 @@ feature -- queries
 		end
 
 feature -- comands
-	extend_history(a_op: ETF_ACTIONS)
+	extend_history(a_op:TUPLE[action: ETF_ACTIONS; state: INTEGER])
 			-- remove all operations to the right of the current
 			-- cursor in history, then extend with `a_op'
 		do

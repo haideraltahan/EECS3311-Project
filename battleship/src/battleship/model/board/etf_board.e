@@ -17,7 +17,6 @@ feature {NONE} -- create
 	make_empty
 		do
 			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), 1, 1)
-			create history.make
 			create Ships.make (1)
 			is_debug_mode := FALSE
 			MAX_TOTAL_SCORE := 0
@@ -29,7 +28,6 @@ feature {NONE} -- create
 		do
 			is_debug_mode := a_is_debug_mode
 			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), a_size, a_size)
-			create history.make
 			Ships := generate_ships(s_size)
 			if is_debug_mode then
 				fill_debug
@@ -62,7 +60,6 @@ feature {NONE} -- internal attributes
 		end
 
 feature -- attributes
-	history: ETF_HISTORY
 	ships : ARRAYED_LIST[ETF_SHIP]
 	is_debug_mode: BOOLEAN
 	-- shots
@@ -219,6 +216,16 @@ feature {NONE} -- utilities
 			end
 		end
 
+	is_ship_located(row, col: INTEGER): BOOLEAN
+		do
+			if implementation[row, col] ~ create {ETF_SQUARE}.make ('_') then
+				Result := FALSE
+			ELSE
+				Result := TRUE
+			end
+
+		end
+
 feature  -- game info
 	game_status: INTEGER
 		-- 0: Game is RUNNING
@@ -246,7 +253,7 @@ feature  -- game info
 					Result := 1
 				end
 
-				if give_up then
+				if gave_up then
 					Result := 4
 				end
 			end
@@ -296,6 +303,21 @@ feature  -- game info
 		do
 			gave_up := TRUE
 		end
+
+	is_hit(row, col:INTEGER):BOOLEAN
+		do
+			Result := implementation[row, col].is_hit
+		end
+
+	fire(row, col: INTEGER)
+		do
+			if is_ship_located(row, col) then
+				implementation[row, col] := create {ETF_SQUARE}.make ('X')
+			else
+				implementation[row, col] := create {ETF_SQUARE}.make ('O')
+			end
+		end
+
 feature -- out
 	ships_out: STRING
 		local

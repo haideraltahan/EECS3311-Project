@@ -15,16 +15,14 @@ feature -- command
 	undo
     	do
 			-- perform some update on the model state
-			if model.board.history.after then
-				model.board.history.back
+			if model.history.after then
+				model.history.back
 			end
 
-			if model.board.history.on_item then
-				model.board.history.item.undo
-				model.board.history.back
-
-
-				model.board.set_message_state ("OK")
+			if model.history.on_item then
+				model.history.item.action.undo
+				model.board.set_message_state ("(= state " + model.history.item.state.out + ")"+" OK")
+				model.history.back
 			else
 				model.board.set_message_state("Nothing to undo")
 			end
