@@ -19,17 +19,23 @@ feature {NONE} -- create
 			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), 1, 1)
 			create history.make
 			create Ships.make (1)
+			is_debug_mode := FALSE
+			MAX_TOTAL_SCORE := 0
 		end
-	make(a_size, s_size: INTEGER; a_is_debug_mode: BOOLEAN)
+	make(a_size, s_size, a_shots, a_bombs: INTEGER; a_is_debug_mode: BOOLEAN)
 			-- Initialization for `Current'.
 		do
+			is_debug_mode := a_is_debug_mode
 			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), a_size, a_size)
 			create history.make
 			Ships := generate_ships(s_size)
-			is_debug_mode := a_is_debug_mode
 			if is_debug_mode then
 				fill_debug
 			end
+			max_shots := a_shots
+			max_bombs := a_bombs
+			max_score := get_max_score
+			MAX_TOTAL_SCORE := MAX_TOTAL_SCORE + max_score
 		end
 feature {NONE} -- internal attributes
 
@@ -61,6 +67,8 @@ feature -- attributes
 	bombs, max_bombs : INTEGER
 	-- score
 	score, max_score : INTEGER
+	-- total score
+	total_score, max_total_score : INTEGER
 
 feature {ETF_ACTIONS} -- implementation
 	implementation: ARRAY2[ETF_SQUARE]
@@ -223,7 +231,7 @@ feature  -- game info
 				    end
 				end
 
-				if all_ships_sunk ~ TRUE then
+				if all_ships_sunk then
 					Result := 2
 				elseif shots ~ max_shots and bombs ~ max_bombs then
 					Result := 1
@@ -241,18 +249,24 @@ feature  -- game info
 			end
 		end
 
-feature -- positions
-    move_king(a_square: ETF_SQUARE)
-    	do
-    --		implementation.put ('_', king_position.x, king_position.y)
-    	--	implementation.put ('K', a_square.x, a_square.y)
-		--	king_position := a_square
-    	end
+	get_max_score : INTEGER
+		local
+			i:INTEGER
+		do
+			Result := 0
+			from i:=1
+			until i > ships.count
+			loop
+				Result := Result + i
+				i := i + 1
+			end
+		end
 
-    move_bishop(a_square: ETF_SQUARE)
-    	do
-    		-- To do
-    	end
+	update_score(i:INTEGER)
+		do
+			score := score + 1
+			total_score := total_score + 1
+		end
 
 feature -- out
 	ships_out: STRING

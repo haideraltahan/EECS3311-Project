@@ -22,7 +22,7 @@ feature -- constructor
 			col := 0
 			dir := FALSE
 		end
-		
+
 	make(a_size,a_row,a_col: INTEGER; a_dir:BOOLEAN)
 		do
 			size := a_size
@@ -43,8 +43,8 @@ feature -- queries
 			i:INTEGER
 		do
 			Result := TRUE
-			from i:=0
-			until i < size
+			from i:= 0
+			until i ~ size
 			loop
 				if dir then
 					if not board[row + i, col].is_hit then
@@ -55,6 +55,7 @@ feature -- queries
 						Result := FALSE
 					end
 				end
+				i := i + 1
 			end
 		end
 

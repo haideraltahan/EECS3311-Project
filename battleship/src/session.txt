@@ -1,4 +1,7 @@
-debug_test(hard)
+debug_test(easy)
+debug_test(easy)
+debug_test(easy)
+debug_test(easy)
 debug_test(easy)
 debug_test(easy)
 debug_test(easy)

@@ -22,13 +22,6 @@ feature{NONE}
 			Result := ma.m.board
 		end
 
-feature  --deferred queries
-	directions: ARRAY[TUPLE[x: INTEGER; y: INTEGER]]
-			-- array of possoble directions
-			-- to which this piece can move
-		deferred
-		end
-
 feature -- queries
 	valid (a_x, a_y: INTEGER): BOOLEAN
 			-- Is this a valid position given borad size
