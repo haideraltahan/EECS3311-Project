@@ -457,12 +457,16 @@ feature -- out
 			else
 				i := 1
 				across ships as c loop
+					Result.append ("    ")
 					Result.append (c.item.size.out)
 					Result.append ("x1: ")
 					if c.item.is_sunk(implementation) ~ True then
-						Result.append ("Sunk %N")
+						Result.append ("Sunk")
 					else
-						Result.append ("Not Sunk %N")
+						Result.append ("Not Sunk")
+					end
+					if i < ships.count then
+						Result.append("%N")
 					end
 					i := i + 1
 				end

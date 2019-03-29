@@ -18,7 +18,7 @@ feature -- command
     	do
 			-- perform some update on the model state
 			if model.BOARD.game_status ~ 0 then
-				model.board.set_message("Game already started", "Fire Away!")
+				model.board.set_message_state("Game already started")
 			else
 				model.new_game (level.as_integer_32, TRUE)
 			end

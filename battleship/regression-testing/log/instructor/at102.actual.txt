@@ -426,14 +426,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->give_up
   state 32 OK -> You gave up!
      1  2  3  4
@@ -441,14 +440,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->custom_setup_test(6,4,30,3)
   state 33 OK -> You gave up!
      1  2  3  4
@@ -456,14 +454,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->bomb([C, 4],[C, 2])
   state 34 Game not started -> Start a new game
      1  2  3  4
@@ -471,14 +468,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->bomb([C, 4],[C, 3])
   state 35 Game not started -> Start a new game
      1  2  3  4
@@ -486,14 +482,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->bomb([C, 3],[C, 1])
   state 36 Game not started -> Start a new game
      1  2  3  4
@@ -501,14 +496,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->undo
   state 37 Nothing to undo -> Start a new game
      1  2  3  4
@@ -516,14 +510,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->undo
   state 38 Nothing to undo -> Start a new game
      1  2  3  4
@@ -531,14 +524,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->fire([C, 4])
   state 39 Game not started -> Start a new game
      1  2  3  4
@@ -546,14 +538,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->bomb([B, 3],[B, 4])
   state 40 Game not started -> Start a new game
      1  2  3  4
@@ -561,14 +552,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->undo
   state 41 Nothing to undo -> Start a new game
      1  2  3  4
@@ -576,14 +566,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->redo
   state 42 Nothing to redo -> Start a new game
      1  2  3  4
@@ -591,14 +580,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->redo
   state 43 Nothing to redo -> Start a new game
      1  2  3  4
@@ -606,14 +594,13 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
 ->fire([A, 2])
   state 44 Game not started -> Start a new game
      1  2  3  4
@@ -621,11 +608,10 @@
   B  _  _  _  _
   C  _  _  _  _
   D  _  _  _  _
-  Current Game: 3
+  Current Game: 1
   Shots: 0/8
   Bombs: 0/2
-  Score: 0/3 (Total: 6/15)
+  Score: 0/3 (Total: 0/3)
   Ships: 0/2
-2x1: Not Sunk 
-1x1: Not Sunk 
-
+    2x1: Not Sunk
+    1x1: Not Sunk
