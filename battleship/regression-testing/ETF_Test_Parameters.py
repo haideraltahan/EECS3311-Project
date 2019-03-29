@@ -22,7 +22,7 @@ ignore_warnings = True
 # Should the regression testing proceed with a list of expected files, or the 
 # oracle?	
 # When this flag is set True, the the value of 'oracle' is ignored. 
-is_expected = True
+is_expected = False
 
 # Specify where you put the oracle.
 oracle = "../oracle.exe"

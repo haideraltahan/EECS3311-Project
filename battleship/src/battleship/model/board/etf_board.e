@@ -22,11 +22,13 @@ feature {NONE} -- create
 			MAX_TOTAL_SCORE := 0
 			STATE_FEEDBACK := "OK"
 			ACTION_FEEDBACK := "Start a new game"
+			gen := rand_gen
 		end
-	make(a_size, s_size, a_shots, a_bombs: INTEGER; a_is_debug_mode: BOOLEAN; a_score, a_max_score: INTEGER)
+	make(a_size, s_size, a_shots, a_bombs: INTEGER; a_is_debug_mode: BOOLEAN; a_score, a_max_score: INTEGER; a_gen : RANDOM_GENERATOR)
 			-- Initialization for `Current'.
 		do
 			is_debug_mode := a_is_debug_mode
+			gen := a_gen
 			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), a_size, a_size)
 			generate_ships(s_size)
 			if is_debug_mode then
@@ -39,22 +41,13 @@ feature {NONE} -- create
 			MAX_TOTAL_SCORE := MAX_TOTAL_SCORE + max_score + a_max_score
 			STATE_FEEDBACK := "OK"
 			ACTION_FEEDBACK := "Fire Away!"
-
 		end
 feature {NONE} -- internal attributes
-
 	rand_gen: RANDOM_GENERATOR
 			-- random generator for normal mode
 			-- it's important to keep this as an attribute
 		attribute
 			create result.make_random
-		end
-
-	debug_gen: RANDOM_GENERATOR
-			-- deterministic generator for debug mode
-			-- it's important to keep this as an attribute
-		attribute
-			create result.make_debug
 		end
 	row_indices : ARRAY[CHARACTER]
 		once
@@ -76,6 +69,8 @@ feature -- attributes
 	state_feedback, action_feedback : STRING
 	-- give up bool
 	gave_up : BOOLEAN
+	-- random generators
+	gen : RANDOM_GENERATOR
 
 feature {ETF_ACTIONS} -- implementation
 	implementation: ARRAY2[ETF_SQUARE]
@@ -88,20 +83,15 @@ feature {NONE} -- utilities
 			size: INTEGER
 			c,r : INTEGER
 			d: BOOLEAN
-			gen: RANDOM_GENERATOR
 			new_ship: ETF_SHIP
 		do
 			create ships.make (num_ships)
-			if is_debug_mode then
-				gen := debug_gen
-			else
-				gen := rand_gen
-			end
 			from
 				size := num_ships
 			until
 				size = 0
 			loop
+
 				d := (gen.direction \\ 2 = 1)
 				if d then
 					c := (gen.column \\ implementation.width) + 1

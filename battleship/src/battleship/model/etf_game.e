@@ -24,6 +24,19 @@ feature {NONE} -- Initialization
 			create BOARD.make_empty
 			create history.make
 		end
+	rand_gen: RANDOM_GENERATOR
+			-- random generator for normal mode
+			-- it's important to keep this as an attribute
+		attribute
+			create result.make_random
+		end
+
+	debug_gen: RANDOM_GENERATOR
+			-- deterministic generator for debug mode
+			-- it's important to keep this as an attribute
+		attribute
+			create result.make_debug
+		end
 
 feature -- model attributes
 	STATE_COUNTER, GAME_COUNTER : INTEGER
@@ -50,19 +63,27 @@ feature -- model operations
 
 	new_game(level: INTEGER_64; is_debug_mode: BOOLEAN)
 			--create new board
+		local
+			gen : RANDOM_GENERATOR
 		do
+			if is_debug_mode then
+				gen := debug_gen
+			else
+				gen := rand_gen
+			end
+
 			if level ~ 13 then
 				-- easy
-				create BOARD.make (4, 2, 8, 2, is_debug_mode, board.total_score, board.max_total_score)
+				create BOARD.make (4, 2, 8, 2, is_debug_mode, board.total_score, board.max_total_score, gen)
 			elseif level ~ 14 then
 				-- medium
-				create BOARD.make (6, 3, 16, 3, is_debug_mode, board.total_score, board.max_total_score)
+				create BOARD.make (6, 3, 16, 3, is_debug_mode, board.total_score, board.max_total_score, gen)
 			elseif level ~ 15 then
 				-- hard
-				create BOARD.make (8, 5, 24, 5, is_debug_mode, board.total_score, board.max_total_score)
+				create BOARD.make (8, 5, 24, 5, is_debug_mode, board.total_score, board.max_total_score, gen)
 			elseif level ~ 16 then
 				-- advanced
-				create BOARD.make (12, 7, 40, 7, is_debug_mode, board.total_score, board.max_total_score)
+				create BOARD.make (12, 7, 40, 7, is_debug_mode, board.total_score, board.max_total_score, gen)
 			end
 			game_counter := game_counter + 1
 		end
