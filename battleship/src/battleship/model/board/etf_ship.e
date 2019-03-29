@@ -43,19 +43,19 @@ feature -- queries
 			i:INTEGER
 		do
 			Result := TRUE
-			from i:= 0
-			until i ~ size
+			FROM i:=1
+			until i > size
 			loop
 				if dir then
-					if not board[row + i, col].is_hit then
+					if board[row+i,col] /~ create {ETF_SQUARE}.make ('X') then
 						Result := FALSE
 					end
 				else
-					if not board[row, col + i].is_hit then
+					if board[row,col+i] /~ create {ETF_SQUARE}.make ('X') then
 						Result := FALSE
 					end
 				end
-				i := i + 1
+				i:=i+1
 			end
 		end
 

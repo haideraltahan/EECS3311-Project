@@ -23,21 +23,23 @@ feature {NONE} -- create
 			STATE_FEEDBACK := "OK"
 			ACTION_FEEDBACK := "Start a new game"
 		end
-	make(a_size, s_size, a_shots, a_bombs: INTEGER; a_is_debug_mode: BOOLEAN)
+	make(a_size, s_size, a_shots, a_bombs: INTEGER; a_is_debug_mode: BOOLEAN; a_score, a_max_score: INTEGER)
 			-- Initialization for `Current'.
 		do
 			is_debug_mode := a_is_debug_mode
 			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), a_size, a_size)
-			Ships := generate_ships(s_size)
+			generate_ships(s_size)
 			if is_debug_mode then
 				fill_debug
 			end
+			total_score := a_score
 			max_shots := a_shots
 			max_bombs := a_bombs
 			max_score := get_max_score
-			MAX_TOTAL_SCORE := MAX_TOTAL_SCORE + max_score
+			MAX_TOTAL_SCORE := MAX_TOTAL_SCORE + max_score + a_max_score
 			STATE_FEEDBACK := "OK"
 			ACTION_FEEDBACK := "Fire Away!"
+
 		end
 feature {NONE} -- internal attributes
 
@@ -79,43 +81,44 @@ feature {ETF_ACTIONS} -- implementation
 	implementation: ARRAY2[ETF_SQUARE]
 
 feature {NONE} -- utilities
-	generate_ships (num_ships: INTEGER): ARRAYED_LIST[ETF_SHIP]
+	generate_ships (num_ships: INTEGER)
 			-- places the ships on the board
 			-- either deterministicly random or completely random depending on debug mode
 		local
-			c,r, a_size : INTEGER
+			size: INTEGER
+			c,r : INTEGER
 			d: BOOLEAN
 			gen: RANDOM_GENERATOR
 			new_ship: ETF_SHIP
 		do
-			create Result.make (num_ships)
+			create ships.make (num_ships)
 			if is_debug_mode then
 				gen := debug_gen
 			else
 				gen := rand_gen
 			end
 			from
-				a_size := num_ships
+				size := num_ships
 			until
-				a_size = 0
+				size = 0
 			loop
 				d := (gen.direction \\ 2 = 1)
 				if d then
 					c := (gen.column \\ implementation.width) + 1
-					r := (gen.row \\ (implementation.width - a_size)) + 1
+					r := (gen.row \\ (implementation.height - size)) + 1
 				else
-					r := (gen.row \\ implementation.width) + 1
-					c := (gen.column \\ (implementation.width - a_size)) + 1
+					r := (gen.row \\ implementation.height) + 1
+					c := (gen.column \\ (implementation.width - size)) + 1
 				end
 
-				new_ship := create {ETF_SHIP}.make (a_size, r, c,d)
+				new_ship := create {ETF_SHIP}.make (size, r, c, d)
 
-				if not collide_with (Result, new_ship) then
+				if not collide_with (new_ship) then
 					-- If the generated ship does not collide with
 					-- ones that have been generated, then
 					-- add it to the set.
-					Result.extend (new_ship)
-					a_size := a_size - 1
+					ships.extend (new_ship)
+					size := size - 1
 				end
 				gen.forth
 			end
@@ -160,18 +163,17 @@ feature {NONE} -- utilities
  						ship1_head_row >= ship2_tail_row
 			end
 
-	collide_with (existing_ships: ARRAYED_LIST[ETF_SHIP];
-		new_ship: ETF_SHIP): BOOLEAN
+	collide_with (new_ship: ETF_SHIP): BOOLEAN
 				-- Does `new_ship' collide with the set of `existing_ships'?
 			do
 					across
-						existing_ships as existing_ship
+						ships as existing_ship
 					loop
 						Result := Result or collide_with_each_other (new_ship, existing_ship.item)
 					end
 			ensure
 				Result =
-					across existing_ships as existing_ship
+					across ships as existing_ship
 					some
 						collide_with_each_other (new_ship, existing_ship.item)
 					end
@@ -273,7 +275,7 @@ feature  -- game info
 		do
 			Result := 0
 			across ships as c loop
-				if c.item.is_sunk (implementation) ~ True then
+				if c.item.is_sunk (implementation) then
 					Result := Result + 1
 				end
 			end
@@ -294,8 +296,8 @@ feature  -- game info
 
 	update_score(i:INTEGER)
 		do
-			score := score + 1
-			total_score := total_score + 1
+			score := score + i
+			total_score := total_score + i
 		end
 
 	set_message(state, action : STRING)
@@ -350,6 +352,7 @@ feature  -- game info
 	fire(row, col: INTEGER)
 		local
 			sunk_ships : INTEGER
+			temp : ETF_SHIP
 		do
 			sunk_ships := count_sunk_ships
 			if is_ship_located(row, col) then
@@ -361,7 +364,11 @@ feature  -- game info
 			end
 			shots := shots + 1
 			if count_sunk_ships > sunk_ships then
-
+				temp := ship_on_coordinate ([row, col])
+				if temp.size > 0 then
+					action_feedback := temp.out + " ship sunk!"
+					update_score(temp.size)
+				end
 			end
 			check_game_status
 		end
@@ -369,6 +376,7 @@ feature  -- game info
 	bomb(coordinate1: TUPLE[row: INTEGER_64; column: INTEGER_64] ; coordinate2: TUPLE[row: INTEGER_64; column: INTEGER_64])
 		local
 			sunk_ships : INTEGER
+			temp : ETF_SHIP
 		do
 			sunk_ships := count_sunk_ships
 			if not is_ship_located(coordinate1.row.as_integer_32, coordinate1.column.as_integer_32) and not is_ship_located(coordinate2.row.as_integer_32, coordinate2.column.as_integer_32) then
@@ -390,9 +398,24 @@ feature  -- game info
 				set_message("OK","Hit!")
 			end
 			bombs := bombs + 1
-			if count_sunk_ships > sunk_ships then
-
+			if count_sunk_ships - sunk_ships ~ 1  then
+				temp := ship_on_coordinate ([coordinate1.row.as_integer_32, coordinate1.column.as_integer_32])
+				if temp.size > 0 then
+					action_feedback := temp.out + " ship sunk!"
+				else
+					temp := ship_on_coordinate ([coordinate2.row.as_integer_32, coordinate2.column.as_integer_32])
+					action_feedback := temp.out + " ship sunk!"
+				end
+				update_score(temp.size)
+			elseif count_sunk_ships - sunk_ships ~ 2 then
+				temp := ship_on_coordinate ([coordinate1.row.as_integer_32, coordinate1.column.as_integer_32])
+				action_feedback :=  temp.out + " and "
+				update_score(temp.size)
+				temp := ship_on_coordinate ([coordinate2.row.as_integer_32, coordinate2.column.as_integer_32])
+				action_feedback := action_feedback + temp.out + " ships sunk!"
+				update_score(temp.size)
 			end
+
 			check_game_status
 		end
 

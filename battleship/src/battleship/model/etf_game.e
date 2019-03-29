@@ -53,16 +53,16 @@ feature -- model operations
 		do
 			if level ~ 13 then
 				-- easy
-				create BOARD.make (4, 2, 8, 2, is_debug_mode)
+				create BOARD.make (4, 2, 8, 2, is_debug_mode, board.total_score, board.max_total_score)
 			elseif level ~ 14 then
 				-- medium
-				create BOARD.make (6, 3, 16, 3, is_debug_mode)
+				create BOARD.make (6, 3, 16, 3, is_debug_mode, board.total_score, board.max_total_score)
 			elseif level ~ 15 then
 				-- hard
-				create BOARD.make (8, 5, 24, 5, is_debug_mode)
+				create BOARD.make (8, 5, 24, 5, is_debug_mode, board.total_score, board.max_total_score)
 			elseif level ~ 16 then
 				-- advanced
-				create BOARD.make (12, 7, 40, 7, is_debug_mode)
+				create BOARD.make (12, 7, 40, 7, is_debug_mode, board.total_score, board.max_total_score)
 			end
 			game_counter := game_counter + 1
 		end
