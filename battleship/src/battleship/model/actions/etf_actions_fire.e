@@ -45,4 +45,8 @@ feature -- commands
 			Result := [old_position.state, position.state]
 		end
 
+	get_state_feedback: TUPLE[oldp:STRING; newp: STRING]
+		do
+			Result := ["OK", "OK"]
+		end
 end

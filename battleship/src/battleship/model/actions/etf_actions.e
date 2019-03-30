@@ -37,4 +37,8 @@ feature -- deferred commands
 	get_state : TUPLE[oldp:INTEGER; newp: INTEGER]
 		deferred
 		end
+
+	get_state_feedback : TUPLE[oldp:STRING; newp: STRING]
+		deferred
+		end
 end

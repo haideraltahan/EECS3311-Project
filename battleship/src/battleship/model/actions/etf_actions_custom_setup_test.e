@@ -1,11 +1,11 @@
 note
-	description: "Summary description for {ETF_ACTIONS_BOMB}."
+	description: "Summary description for {ETF_ACTIONS_CUSTOM_SETUP_TEST}."
 	author: ""
 	date: "$Date$"
 	revision: "$Revision$"
 
 class
-	ETF_ACTIONS_BOMB
+	ETF_ACTIONS_CUSTOM_SETUP_TEST
 inherit
 	ETF_ACTIONS
 
@@ -44,9 +44,9 @@ feature -- commands
 		do
 			Result := [old_position.state, position.state]
 		end
-
 	get_state_feedback: TUPLE[oldp:STRING; newp: STRING]
 		do
-			Result := ["OK","OK"]
+			Result := [old_position.state_feedback, position.state_feedback]
 		end
+
 end

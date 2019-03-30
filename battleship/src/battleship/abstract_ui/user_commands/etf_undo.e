@@ -25,7 +25,7 @@ feature -- command
 
 			if model.history.on_item then
 				model.history.item.undo
-				model.board.set_message_state ("(= state " + (model.history.item.get_state.oldp + 1).out + ")"+" OK")
+				model.board.set_message_state ("(= state " + (model.history.item.get_state.oldp + 1).out + ") "+model.history.item.get_state_feedback.oldp)
 				model.history.back
 			else
 				model.board.set_message_state("Nothing to undo")
