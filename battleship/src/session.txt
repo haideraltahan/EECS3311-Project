@@ -1,11 +1,1 @@
-debug_test(easy)
-fire([C,3])
-undo
-fire([C,3])
-undo
-undo
-redo
-undo
-fire([C,3])
-undo
-redo
+custom_setup_test(6,4,30,3)

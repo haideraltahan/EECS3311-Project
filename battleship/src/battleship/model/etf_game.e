@@ -100,6 +100,32 @@ feature -- model operations
 			game_counter := game_counter + 1
 		end
 
+	custom_game(dimension, ships, max_shots, num_bombs: INTEGER; is_debug_mode: BOOLEAN)
+			--create new board
+		local
+			gen : RANDOM_GENERATOR
+			total_score, max_total_score : INTEGER
+		do
+			if is_debug_mode then
+				gen := debug_gen
+			else
+				gen := rand_gen
+			end
+
+			if board.is_debug_mode /~ is_debug_mode or gave_up then
+				total_score := 0
+				max_total_score := 0
+				game_counter := 0
+				gave_up := FALSE
+			else
+				total_score := board.total_score
+				max_total_score := board.max_total_score
+			end
+
+			create BOARD.make (dimension, ships, max_shots, num_bombs, is_debug_mode, total_score, max_total_score, gen)
+			game_counter := game_counter + 1
+		end
+
 	give_up
 		do
 			gave_up := TRUE
