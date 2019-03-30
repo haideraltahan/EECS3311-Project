@@ -182,7 +182,7 @@
     2x1: [B, 4]->v;[C, 4]->v
     1x1: [A, 2]->h
 ->redo
-  state 17 (= state 12) (= state 12) Game already started -> Fire Away!
+  state 17 (= state 12) Game already started -> Fire Away!
      1  2  3  4  5  6
   A  _  h  _  _  _  _
   B  _  _  _  v  _  _

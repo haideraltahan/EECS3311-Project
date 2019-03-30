@@ -52,6 +52,20 @@ feature -- commands
 
 	get_state_feedback: TUPLE[oldp:STRING; newp: STRING]
 		do
-			Result := [old_position.state_feedback, position.state_feedback]
+			Result := [remove_previous_steps(old_position.state_feedback), remove_previous_steps(position.state_feedback)]
+		end
+
+	remove_previous_steps(str : STRING) : STRING
+		local
+			i:INTEGER
+		do
+			if str.at (1) ~ '(' then
+				if str.at (12) ~ ')' then
+					str.remove_substring (1,13)
+				else
+					str.remove_substring (1,12)
+				end
+			end
+			Result := str
 		end
 end
