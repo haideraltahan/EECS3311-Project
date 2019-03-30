@@ -16,7 +16,12 @@ feature -- Initialization
 
 	make(new_board: ETF_BOARD)
 		do
-			old_position := game.board
+			if game.last_board.implementation.width ~ 0 then
+				old_position := game.board
+			else
+				old_position := game.last_board
+				game.set_last_board (create {ETF_BOARD}.make_empty)
+			end
 			position := new_board
 		end
 

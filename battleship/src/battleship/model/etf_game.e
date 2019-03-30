@@ -23,6 +23,7 @@ feature {NONE} -- Initialization
 		do
 			STATE_COUNTER := 0
 			create BOARD.make_empty
+			create last_BOARD.make_empty
 			create history.make
 		end
 
@@ -61,6 +62,7 @@ feature -- model attributes
 	history: ETF_HISTORY
 	gave_up : BOOLEAN
 	is_custom : BOOLEAN
+	last_board : ETF_BOARD
 
 feature -- model operations
 
@@ -166,6 +168,11 @@ feature -- actions commands
 	set_board(a_BOARD: ETF_BOARD)
 		do
 			board:=a_board
+		end
+
+	set_last_board(a_BOARD: ETF_BOARD)
+		do
+			last_board:=a_board
 		end
 
 feature -- queries

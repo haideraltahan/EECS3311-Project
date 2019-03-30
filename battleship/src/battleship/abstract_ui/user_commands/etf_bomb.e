@@ -16,7 +16,7 @@ feature -- command
 		require else
 			bomb_precond(coordinate1, coordinate2)
 		local
-			shot : ETF_ACTIONS_BOMB
+			shot : ETF_ACTIONS_FIRE
 			new_board : ETF_BOARD
     	do
 			-- perform some update on the model state

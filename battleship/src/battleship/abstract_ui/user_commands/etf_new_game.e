@@ -31,6 +31,8 @@ feature -- command
 				play.execute
 			else
 				model.new_game (level.as_integer_32, FALSE)
+				model.board.set_state (model.state_counter.deep_twin)
+				model.set_last_board (model.board.deep_twin)
 			end
 
 			model.default_update

@@ -17,7 +17,7 @@ feature {NONE} -- create
 
 	make_empty
 		do
-			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), 1, 1)
+			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), 0, 0)
 			create Ships.make (1)
 			is_debug_mode := FALSE
 			MAX_TOTAL_SCORE := 0

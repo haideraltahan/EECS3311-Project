@@ -13,8 +13,6 @@ create
 	make
 feature -- command
 	redo
-		local
-			z: INTEGER
     	do
 			-- perform some update on the model state
 			if

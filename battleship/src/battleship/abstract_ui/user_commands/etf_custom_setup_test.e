@@ -16,7 +16,7 @@ feature -- command
 		require else
 			custom_setup_test_precond(dimension, ships, max_shots, num_bombs)
     	local
-			play : ETF_ACTIONS_CUSTOM_SETUP_TEST
+			play : ETF_ACTIONS_NEW_GAME
 			new_board : ETF_BOARD
     	do
 			-- perform some update on the model state
@@ -30,6 +30,8 @@ feature -- command
 				play.execute
 			else
 				model.custom_game (dimension.as_integer_32, ships.as_integer_32, max_shots.as_integer_32, num_bombs.as_integer_32, TRUE)
+				model.board.set_state (model.state_counter.deep_twin)
+				model.set_last_board (model.board.deep_twin)
 			end
 
 			model.default_update
