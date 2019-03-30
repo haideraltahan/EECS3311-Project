@@ -14,6 +14,7 @@ create
 	make, make_empty
 
 feature {NONE} -- create
+
 	make_empty
 		do
 			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), 1, 1)
@@ -24,6 +25,7 @@ feature {NONE} -- create
 			ACTION_FEEDBACK := "Start a new game"
 			gen := rand_gen
 		end
+
 	make(a_size, s_size, a_shots, a_bombs: INTEGER; a_is_debug_mode: BOOLEAN; a_score, a_max_score: INTEGER; a_gen : RANDOM_GENERATOR)
 			-- Initialization for `Current'.
 		do
@@ -42,19 +44,23 @@ feature {NONE} -- create
 			STATE_FEEDBACK := "OK"
 			ACTION_FEEDBACK := "Fire Away!"
 		end
+
 feature {NONE} -- internal attributes
+
 	rand_gen: RANDOM_GENERATOR
 			-- random generator for normal mode
 			-- it's important to keep this as an attribute
 		attribute
 			create result.make_random
 		end
+
 	row_indices : ARRAY[CHARACTER]
 		once
 			Result := <<'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'>>
 		end
 
 feature -- attributes
+
 	ships : ARRAYED_LIST[ETF_SHIP]
 	is_debug_mode: BOOLEAN
 	-- shots
@@ -73,9 +79,11 @@ feature -- attributes
 	state : INTEGER
 
 feature {ETF_ACTIONS} -- implementation
+
 	implementation: ARRAY2[ETF_SQUARE]
 
 feature {NONE} -- utilities
+
 	generate_ships (num_ships: INTEGER)
 			-- places the ships on the board
 			-- either deterministicly random or completely random depending on debug mode
@@ -169,7 +177,7 @@ feature {NONE} -- utilities
 					end
 			end
 
-	ship_on_coordinate( coordinate: TUPLE[row: INTEGER_32; column: INTEGER_32]):ETF_SHIP
+	ship_on_coordinate(coordinate: TUPLE[row: INTEGER_32; column: INTEGER_32]):ETF_SHIP
 		local
 			r:BOOLEAN
 		do
@@ -229,6 +237,7 @@ feature {NONE} -- utilities
 		end
 
 feature  -- game info
+
 	game_status: INTEGER
 		-- 0: Game is RUNNING
 		-- 1: Game is LOST
@@ -410,9 +419,8 @@ feature  -- game info
 				state := i
 			end
 
-
-
 feature -- out
+
 	ships_out: STRING
 		local
 			i, j:INTEGER
@@ -473,6 +481,7 @@ feature -- out
 				end
 			end
 		end
+
     out: STRING
 		-- Return string representation of current game.
 		-- You may reuse this routine.
@@ -488,6 +497,6 @@ feature -- out
 				Result.append ("  " + implementation[i.item,j.item].out)
 			end
 		end
-
 	end
+
 end

@@ -12,8 +12,7 @@ root = "../tests"
 # WARNING: Does not support partial file names with wildcards ie at*.txt
 acceptance_tests = ["instructor"]
 
-# acceptance_tests = ["acceptance-tests/at00.txt"
-#                     ,"acceptance-tests/at01.txt"]
+# acceptance_tests = ["at001.txt","at002.txt", "at101.txt", "at102.txt"]
 
 # Should regression testing continue on warnings? If this is set to False,
 # regression testing will exit.
@@ -22,7 +21,7 @@ ignore_warnings = True
 # Should the regression testing proceed with a list of expected files, or the 
 # oracle?	
 # When this flag is set True, the the value of 'oracle' is ignored. 
-is_expected = True
+is_expected = False
 
 # Specify where you put the oracle.
 oracle = "../oracle.exe"

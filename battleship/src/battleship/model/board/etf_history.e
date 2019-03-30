@@ -11,6 +11,7 @@ create
 	make
 
 feature{NONE} -- create
+
 	make
 		do
 			create {ARRAYED_LIST[ETF_ACTIONS]}history.make (10)
@@ -22,6 +23,7 @@ feature{NONE} -- create
 
 
 feature -- queries
+
 	item: ETF_ACTIONS
 			-- Cursor points to this user operation
 		require
@@ -51,6 +53,7 @@ feature -- queries
 		end
 
 feature -- comands
+
 	extend_history(a_op:ETF_ACTIONS)
 			-- remove all operations to the right of the current
 			-- cursor in history, then extend with `a_op'
@@ -76,8 +79,6 @@ feature -- comands
 				end
 			end
 		end
-
-
 
 	forth
 		require

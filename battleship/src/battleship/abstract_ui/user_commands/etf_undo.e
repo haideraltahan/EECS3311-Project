@@ -21,15 +21,26 @@ feature -- command
 
 			if not (model.board.game_status ~ 0) then
 				model.board.set_message("Game not started", "Start a new game")
+
 			end
 
 			if model.history.on_item then
 				model.history.item.undo
 				model.board.set_message_state ("(= state " + (model.history.item.get_state.oldp + 1).out + ")"+" OK")
 				model.history.back
+				model.undo_check_true
+			elseif model.check_undo then
+				model.board.set_message_state ("(= state " + model.get_start_state.out + ")")
+				model.undo_check_false
+				model.redo_check_true
 			else
 				model.board.set_message_state("Nothing to undo")
 			end
+
+--			if model.board.game_status ~ 3 then
+--				model.board.set_message_state("Nothing to undo")
+--			end
+
 			model.default_update
 			etf_cmd_container.on_change.notify ([Current])
     	end

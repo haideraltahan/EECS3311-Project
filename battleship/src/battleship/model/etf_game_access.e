@@ -8,6 +8,7 @@ expanded class
 	ETF_GAME_ACCESS
 
 feature
+
 	m: ETF_GAME
 		once
 			create Result.make

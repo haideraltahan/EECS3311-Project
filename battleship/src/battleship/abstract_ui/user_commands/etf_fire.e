@@ -20,6 +20,7 @@ feature -- command
 			new_board : ETF_BOARD
     	do
 			-- perform some update on the model state
+
 			if not (model.board.game_status ~ 0) then
 				model.board.set_message("Game not started", "Start a new game")
 			elseif not model.board.is_valid(coordinate) then
@@ -37,11 +38,18 @@ feature -- command
 				model.history.extend_history (shot)
 				shot.execute
 			end
+
 			if model.board.game_status ~ 2 then
 				model.reset_history
 			elseif model.board.game_status ~ 1 then
 				model.reset_history
 			end
+
+			if not(model.board.game_status ~ 0) then
+				model.undo_check_false
+				model.redo_check_false
+			end
+
 			model.default_update
 			etf_cmd_container.on_change.notify ([Current])
     	end

@@ -17,6 +17,7 @@ create {ETF_GAME_ACCESS}
 	make
 
 feature {NONE} -- Initialization
+
 	make
 			-- Initialization for `Current'.
 		do
@@ -24,6 +25,7 @@ feature {NONE} -- Initialization
 			create BOARD.make_empty
 			create history.make
 		end
+
 	rand_gen: RANDOM_GENERATOR
 			-- random generator for normal mode
 			-- it's important to keep this as an attribute
@@ -38,13 +40,31 @@ feature {NONE} -- Initialization
 			create result.make_debug
 		end
 
+	custom_rand_gen: RANDOM_GENERATOR
+			-- random generator for normal mode
+			-- it's important to keep this as an attribute
+		attribute
+			create result.make_random
+		end
+
+	custom_debug_gen: RANDOM_GENERATOR
+			-- deterministic generator for debug mode
+			-- it's important to keep this as an attribute
+		attribute
+			create result.make_debug
+		end
+
 feature -- model attributes
+
 	STATE_COUNTER, GAME_COUNTER : INTEGER
 	BOARD : ETF_BOARD
 	history: ETF_HISTORY
 	gave_up : BOOLEAN
+	start_state: INTEGER
+	undo_check, redo_check : BOOLEAN
 
 feature -- model operations
+
 	default_update
 			-- Perform update to the model state.
 		do
@@ -107,9 +127,9 @@ feature -- model operations
 			total_score, max_total_score : INTEGER
 		do
 			if is_debug_mode then
-				gen := debug_gen
+				gen := custom_debug_gen
 			else
-				gen := rand_gen
+				gen := custom_rand_gen
 			end
 
 			if board.is_debug_mode /~ is_debug_mode or gave_up then
@@ -131,6 +151,46 @@ feature -- model operations
 			gave_up := TRUE
 		end
 
+	check_undo: BOOLEAN
+		do
+			Result := undo_check
+		end
+
+	undo_check_false
+		do
+			undo_check := False
+		end
+
+	undo_check_true
+		do
+			undo_check := True
+		end
+
+	check_redo: BOOLEAN
+		do
+			Result := redo_check
+		end
+
+	redo_check_false
+		do
+			redo_check := False
+		end
+
+	redo_check_true
+		do
+			redo_check := True
+		end
+
+	get_start_state: INTEGER
+		do
+			Result := start_state
+		end
+
+	set_start_state
+		do
+			start_state := state_counter
+		end
+
 feature -- actions commands
 
 	set_board(a_BOARD: ETF_BOARD)
@@ -139,6 +199,7 @@ feature -- actions commands
 		end
 
 feature -- queries
+
 	out : STRING
 		do
 			create Result.make_from_string ("  ")
