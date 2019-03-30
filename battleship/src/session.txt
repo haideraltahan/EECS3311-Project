@@ -1,1 +1,4 @@
 custom_setup_test(6,4,30,3)
+fire([A,2])
+fire([A,2])
+undo

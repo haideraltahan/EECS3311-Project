@@ -21,11 +21,8 @@ feature -- command
 
 			if model.BOARD.game_status ~ 0 then
 				model.board.set_message_state("Game already started")
-				model.set_start_state
-				model.undo_check_true
 			else
 				model.new_game (level.as_integer_32, FALSE)
-				model.set_start_state
 			end
 
 			model.default_update

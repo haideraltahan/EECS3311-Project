@@ -60,8 +60,7 @@ feature -- model attributes
 	BOARD : ETF_BOARD
 	history: ETF_HISTORY
 	gave_up : BOOLEAN
-	start_state: INTEGER
-	undo_check, redo_check : BOOLEAN
+	is_custom : BOOLEAN
 
 feature -- model operations
 
@@ -117,7 +116,9 @@ feature -- model operations
 				-- advanced
 				create BOARD.make (12, 7, 40, 7, is_debug_mode, total_score, max_total_score, gen)
 			end
+
 			game_counter := game_counter + 1
+			is_custom := False
 		end
 
 	custom_game(dimension, ships, max_shots, num_bombs: INTEGER; is_debug_mode: BOOLEAN)
@@ -143,7 +144,9 @@ feature -- model operations
 			end
 
 			create BOARD.make (dimension, ships, max_shots, num_bombs, is_debug_mode, total_score, max_total_score, gen)
+
 			game_counter := game_counter + 1
+			is_custom := True
 		end
 
 	give_up
@@ -151,44 +154,11 @@ feature -- model operations
 			gave_up := TRUE
 		end
 
-	check_undo: BOOLEAN
-		do
-			Result := undo_check
-		end
+feature -- queries
 
-	undo_check_false
+	get_is_cusom: BOOLEAN
 		do
-			undo_check := False
-		end
-
-	undo_check_true
-		do
-			undo_check := True
-		end
-
-	check_redo: BOOLEAN
-		do
-			Result := redo_check
-		end
-
-	redo_check_false
-		do
-			redo_check := False
-		end
-
-	redo_check_true
-		do
-			redo_check := True
-		end
-
-	get_start_state: INTEGER
-		do
-			Result := start_state
-		end
-
-	set_start_state
-		do
-			start_state := state_counter
+			Result := is_custom
 		end
 
 feature -- actions commands

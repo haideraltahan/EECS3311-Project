@@ -32,12 +32,6 @@ feature -- command
 			if model.history.on_item then
 				model.history.item.redo
 				model.board.set_message_state ("(= state " + (model.history.item.get_state.newp + 1).out + ")"+" OK")
-				model.redo_check_true
-			elseif model.check_redo then
-				z := model.get_start_state + 1
-				model.board.set_message_state ("(= state " + z.out + ")")
-				model.redo_check_false
-				model.undo_check_true
 			else
 				model.board.set_message_state("Nothing to redo")
 			end

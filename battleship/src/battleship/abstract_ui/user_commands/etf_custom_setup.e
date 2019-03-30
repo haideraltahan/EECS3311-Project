@@ -20,11 +20,8 @@ feature -- command
 
 			if model.BOARD.game_status ~ 0 then
 				model.board.set_message_state("Game already started")
-				model.set_start_state
-				model.undo_check_true
 			else
 				model.custom_game (dimension.as_integer_32, ships.as_integer_32, max_shots.as_integer_32, num_bombs.as_integer_32, False)
-				model.set_start_state
 			end
 
 			model.default_update

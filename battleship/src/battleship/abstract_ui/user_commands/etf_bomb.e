@@ -25,12 +25,28 @@ feature -- command
 				model.board.set_message("Game not started", "Start a new game")
 			elseif not (model.board.is_valid(coordinate1) and model.board.is_valid(coordinate2)) then
 				model.board.set_message("Invalid coordinate", "Keep Firing!")
+				if model.get_is_cusom then
+					create shot.make (model.board.deep_twin)
+					model.history.extend_history (shot)
+				end
 			elseif model.board.bombs ~ model.board.max_bombs then
 				model.board.set_message ("No bombs remaining", "Keep Firing!")
+				if model.get_is_cusom then
+					create shot.make (model.board.deep_twin)
+					model.history.extend_history (shot)
+				end
 			elseif not model.board.is_adjacent(coordinate1, coordinate2) then
 				model.board.set_message ("Bomb coordinates must be adjacent", "Keep Firing!")
+				if model.get_is_cusom then
+					create shot.make (model.board.deep_twin)
+					model.history.extend_history (shot)
+				end
 			elseif model.board.is_hit(coordinate1.row.as_integer_32, coordinate1.column.as_integer_32) or model.board.is_hit(coordinate2.row.as_integer_32, coordinate2.column.as_integer_32) then
 				model.board.set_message ("Already fired there", "Keep Firing!")
+				if model.get_is_cusom then
+					create shot.make (model.board.deep_twin)
+					model.history.extend_history (shot)
+				end
 			else
 				-- shoot the area
 				new_board := model.board.deep_twin
@@ -39,11 +55,6 @@ feature -- command
 				create shot.make (new_board)
 				model.history.extend_history (shot)
 				shot.execute
-			end
-
-			if not(model.board.game_status ~ 0) then
-				model.undo_check_false
-				model.redo_check_false
 			end
 
 			model.default_update
