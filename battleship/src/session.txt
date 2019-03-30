@@ -1,4 +1,5 @@
-debug_test(easy)
-debug_test(easy)
+custom_setup_test(6,4,30,3)
+bomb([C, 4],[C, 2])
+bomb([C, 4],[C, 3])
+bomb([C, 3],[C, 1])
 undo
-redo

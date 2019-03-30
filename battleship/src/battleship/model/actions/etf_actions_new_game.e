@@ -66,4 +66,9 @@ feature -- commands
 			end
 			Result := str
 		end
+
+	get_state_action : TUPLE[oldp:STRING; newp: STRING]
+		do
+			Result := [old_position.action_feedback, position.action_feedback]
+		end
 end

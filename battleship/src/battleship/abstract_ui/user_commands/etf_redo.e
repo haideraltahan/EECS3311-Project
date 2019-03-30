@@ -30,6 +30,7 @@ feature -- command
 			if model.history.on_item then
 				model.history.item.redo
 				model.board.set_message_state ("(= state " + (model.history.item.get_state.newp + 1).out + ") "+model.history.item.get_state_feedback.newp)
+				model.board.set_message_action (model.history.item.get_state_action.newp)
 			else
 				model.board.set_message_state("Nothing to redo")
 			end

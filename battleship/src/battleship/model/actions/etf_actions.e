@@ -41,4 +41,8 @@ feature -- deferred commands
 	get_state_feedback : TUPLE[oldp:STRING; newp: STRING]
 		deferred
 		end
+
+	get_state_action : TUPLE[oldp:STRING; newp: STRING]
+		deferred
+		end
 end
