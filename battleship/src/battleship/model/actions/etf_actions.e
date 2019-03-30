@@ -34,4 +34,7 @@ feature -- deferred commands
 		deferred
 		end
 
+	get_state : TUPLE[oldp:INTEGER; newp: INTEGER]
+		deferred
+		end
 end

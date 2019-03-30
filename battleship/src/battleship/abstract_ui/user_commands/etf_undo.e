@@ -19,9 +19,13 @@ feature -- command
 				model.history.back
 			end
 
+			if not (model.board.game_status ~ 0) then
+				model.board.set_message("Game not started", "Start a new game")
+			end
+
 			if model.history.on_item then
-				model.history.item.action.undo
-				model.board.set_message_state ("(= state " + model.history.item.state.out + ")"+" OK")
+				model.history.item.undo
+				model.board.set_message_state ("(= state " + (model.history.item.get_state.oldp + 1).out + ")"+" OK")
 				model.history.back
 			else
 				model.board.set_message_state("Nothing to undo")

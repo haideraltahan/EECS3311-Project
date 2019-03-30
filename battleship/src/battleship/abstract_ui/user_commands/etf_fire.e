@@ -32,9 +32,15 @@ feature -- command
 				-- shoot the area
 				new_board := model.board.deep_twin
 				new_board.fire (coordinate.row.as_integer_32, coordinate.column.as_integer_32)
+				new_board.set_state (model.state_counter)
 				create shot.make (new_board)
-				model.history.extend_history ([shot, model.state_counter.deep_twin])
+				model.history.extend_history (shot)
 				shot.execute
+			end
+			if model.board.game_status ~ 2 then
+				model.reset_history
+			elseif model.board.game_status ~ 1 then
+				model.reset_history
 			end
 			model.default_update
 			etf_cmd_container.on_change.notify ([Current])

@@ -22,10 +22,14 @@ feature -- command
 				model.history.forth
 			end
 
+			if not (model.board.game_status ~ 0) then
+				model.board.set_message("Game not started", "Start a new game")
+			end
+
 			-- redo
 			if model.history.on_item then
-				model.board.set_message_state ("(= state " + model.history.item.state.out + ")"+" OK")
-				model.history.item.action.redo
+				model.history.item.redo
+				model.board.set_message_state ("(= state " + (model.history.item.get_state.newp + 1).out + ")"+" OK")
 			else
 				model.board.set_message_state("Nothing to redo")
 			end

@@ -34,8 +34,9 @@ feature -- command
 				-- shoot the area
 				new_board := model.board.deep_twin
 				new_board.bomb (coordinate1, coordinate2)
+				new_board.set_state (model.state_counter)
 				create shot.make (new_board)
-				model.history.extend_history ([shot, model.state_counter.deep_twin])
+				model.history.extend_history (shot)
 				shot.execute
 			end
 			model.default_update

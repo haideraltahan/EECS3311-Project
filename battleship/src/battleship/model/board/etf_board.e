@@ -71,6 +71,8 @@ feature -- attributes
 	gave_up : BOOLEAN
 	-- random generators
 	gen : RANDOM_GENERATOR
+	--state number
+	state : INTEGER
 
 feature {ETF_ACTIONS} -- implementation
 	implementation: ARRAY2[ETF_SQUARE]
@@ -290,15 +292,15 @@ feature  -- game info
 			total_score := total_score + i
 		end
 
-	set_message(state, action : STRING)
+	set_message(a_state, a_action : STRING)
 		do
-			STATE_FEEDBACK := state
-			ACTION_FEEDBACK := action
+			STATE_FEEDBACK := a_state
+			ACTION_FEEDBACK := a_action
 		end
 
-	set_message_state(state:STRING)
+	set_message_state(a_state:STRING)
 		do
-			STATE_FEEDBACK := state
+			STATE_FEEDBACK := a_state
 		end
 
 	give_up
@@ -408,6 +410,11 @@ feature  -- game info
 
 			check_game_status
 		end
+
+		set_state(i: INTEGER)
+			do
+				state := i
+			end
 
 
 

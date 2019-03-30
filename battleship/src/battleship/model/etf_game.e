@@ -58,7 +58,7 @@ feature -- model operations
 
 	reset_history
 		do
-			history := create {ETF_HISTORY}.make
+			history.reset
 		end
 
 	new_game(level: INTEGER_64; is_debug_mode: BOOLEAN)

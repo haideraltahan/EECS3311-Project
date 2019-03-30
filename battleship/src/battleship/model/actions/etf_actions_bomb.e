@@ -39,4 +39,9 @@ feature -- commands
 		do
 			execute
 		end
+
+	get_state : TUPLE[oldp:INTEGER; newp: INTEGER]
+		do
+			Result := [old_position.state, position.state]
+		end
 end
