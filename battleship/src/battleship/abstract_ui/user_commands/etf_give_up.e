@@ -18,7 +18,7 @@ feature -- command
 			if not (model.board.game_status ~ 0) then
 				model.board.set_message("Game not started", "Start a new game")
 			else
-				model.board.give_up
+				model.give_up
 				model.reset_history
 				model.board.set_message("OK", "You gave up!")
 			end

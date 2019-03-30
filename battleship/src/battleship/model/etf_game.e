@@ -42,6 +42,7 @@ feature -- model attributes
 	STATE_COUNTER, GAME_COUNTER : INTEGER
 	BOARD : ETF_BOARD
 	history: ETF_HISTORY
+	gave_up : BOOLEAN
 
 feature -- model operations
 	default_update
@@ -73,10 +74,11 @@ feature -- model operations
 				gen := rand_gen
 			end
 
-			if board.is_debug_mode /~ is_debug_mode then
+			if board.is_debug_mode /~ is_debug_mode or gave_up then
 				total_score := 0
 				max_total_score := 0
 				game_counter := 0
+				gave_up := FALSE
 			else
 				total_score := board.total_score
 				max_total_score := board.max_total_score
@@ -96,6 +98,11 @@ feature -- model operations
 				create BOARD.make (12, 7, 40, 7, is_debug_mode, total_score, max_total_score, gen)
 			end
 			game_counter := game_counter + 1
+		end
+
+	give_up
+		do
+			gave_up := TRUE
 		end
 
 feature -- actions commands

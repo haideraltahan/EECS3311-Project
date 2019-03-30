@@ -67,8 +67,6 @@ feature -- attributes
 	total_score, max_total_score : INTEGER
 	-- feedback messages
 	state_feedback, action_feedback : STRING
-	-- give up bool
-	gave_up : BOOLEAN
 	-- random generators
 	gen : RANDOM_GENERATOR
 	--state number
@@ -239,6 +237,7 @@ feature  -- game info
 		-- 4: Gave up
 		local
 			all_ships_sunk: BOOLEAN
+			g : ETF_GAME_ACCESS
 		do
 			if ships.count ~ 0 then
 				Result := 3
@@ -257,7 +256,7 @@ feature  -- game info
 					Result := 1
 				end
 
-				if gave_up then
+				if g.m.gave_up then
 					Result := 4
 				end
 			end
@@ -301,11 +300,6 @@ feature  -- game info
 	set_message_state(a_state:STRING)
 		do
 			STATE_FEEDBACK := a_state
-		end
-
-	give_up
-		do
-			gave_up := TRUE
 		end
 
 	is_hit(row, col:INTEGER):BOOLEAN
