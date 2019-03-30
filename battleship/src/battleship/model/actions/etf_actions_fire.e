@@ -16,7 +16,7 @@ feature -- Initialization
 
 	make(new_board: ETF_BOARD)
 		do
-			old_position := game.board
+			old_position := game.board.deep_twin
 			position := new_board
 		end
 

@@ -17,7 +17,7 @@ feature -- Initialization
 	make(new_board: ETF_BOARD)
 		do
 			if game.last_board.implementation.width ~ 0 then
-				old_position := game.board
+				old_position := game.board.deep_twin
 			else
 				old_position := game.last_board
 				game.set_last_board (create {ETF_BOARD}.make_empty)
@@ -56,8 +56,6 @@ feature -- commands
 		end
 
 	remove_previous_steps(str : STRING) : STRING
-		local
-			i:INTEGER
 		do
 			if str.at (1) ~ '(' then
 				if str.at (12) ~ ')' then

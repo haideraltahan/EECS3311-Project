@@ -310,6 +310,10 @@ feature  -- game info
 		do
 			STATE_FEEDBACK := a_state
 		end
+	set_message_action(a_state:STRING)
+		do
+			action_feedback := a_state
+		end
 
 	is_hit(row, col:INTEGER):BOOLEAN
 		do

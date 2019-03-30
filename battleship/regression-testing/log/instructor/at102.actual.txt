@@ -466,7 +466,7 @@
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->bomb([C, 4],[C, 2])
-  state 34 Bomb coordinates must be adjacent -> Keep Firing!
+  state 34 Bomb coordinates must be adjacent -> Fire Away!
      1  2  3  4  5  6
   A  _  h  h  _  _  _
   B  _  v  _  _  _  _
@@ -502,7 +502,7 @@
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->bomb([C, 3],[C, 1])
-  state 36 Bomb coordinates must be adjacent -> Keep Firing!
+  state 36 Bomb coordinates must be adjacent -> Hit! Keep Firing!
      1  2  3  4  5  6
   A  _  h  h  _  _  _
   B  _  v  _  _  _  _
@@ -520,7 +520,7 @@
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->undo
-  state 37 (= state 35) OK -> Keep Firing!
+  state 37 (= state 35) OK -> Hit! Keep Firing!
      1  2  3  4  5  6
   A  _  h  h  _  _  _
   B  _  v  _  _  _  _
@@ -538,7 +538,7 @@
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->undo
-  state 38 (= state 33) OK -> Keep Firing!
+  state 38 (= state 33) OK -> Fire Away!
      1  2  3  4  5  6
   A  _  h  h  _  _  _
   B  _  v  _  _  _  _

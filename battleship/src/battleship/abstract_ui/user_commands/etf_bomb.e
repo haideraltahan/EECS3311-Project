@@ -36,7 +36,7 @@ feature -- command
 					model.history.extend_history (shot)
 				end
 			elseif not model.board.is_adjacent(coordinate1, coordinate2) then
-				model.board.set_message ("Bomb coordinates must be adjacent", "Keep Firing!")
+				model.board.set_message_state ("Bomb coordinates must be adjacent")
 				if model.get_is_cusom then
 					create shot.make (model.board.deep_twin)
 					model.history.extend_history (shot)
