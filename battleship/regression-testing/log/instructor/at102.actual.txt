@@ -466,7 +466,7 @@
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->bomb([C, 4],[C, 2])
-  state 34 Bomb coordinates must be adjacent -> Keep Firing!
+  state 34 Bomb coordinates must be adjacent -> Fire Away!
      1  2  3  4  5  6
   A  _  h  h  _  _  _
   B  _  v  _  _  _  _
@@ -538,39 +538,39 @@
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->undo
-  state 38 (= state 33) OK -> Keep Firing!
+  state 38 (= state 35) OK -> Hit! Keep Firing!
      1  2  3  4  5  6
   A  _  h  h  _  _  _
   B  _  v  _  _  _  _
-  C  _  v  h  h  h  v
+  C  _  v  X  X  h  v
   D  _  v  _  _  _  _
   E  _  v  _  _  _  _
   F  _  _  _  _  _  _
   Current Game (debug): 1
   Shots: 0/30
-  Bombs: 0/3
+  Bombs: 1/3
   Score: 0/10 (Total: 0/10)
   Ships: 0/4
     4x1: [B, 2]->v;[C, 2]->v;[D, 2]->v;[E, 2]->v
-    3x1: [C, 3]->h;[C, 4]->h;[C, 5]->h
+    3x1: [C, 3]->X;[C, 4]->X;[C, 5]->h
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->fire([C, 4])
-  state 39 OK -> Hit! Keep Firing!
+  state 39 Already fired there -> Keep Firing!
      1  2  3  4  5  6
   A  _  h  h  _  _  _
   B  _  v  _  _  _  _
-  C  _  v  h  X  h  v
+  C  _  v  X  X  h  v
   D  _  v  _  _  _  _
   E  _  v  _  _  _  _
   F  _  _  _  _  _  _
   Current Game (debug): 1
-  Shots: 1/30
-  Bombs: 0/3
+  Shots: 0/30
+  Bombs: 1/3
   Score: 0/10 (Total: 0/10)
   Ships: 0/4
     4x1: [B, 2]->v;[C, 2]->v;[D, 2]->v;[E, 2]->v
-    3x1: [C, 3]->h;[C, 4]->X;[C, 5]->h
+    3x1: [C, 3]->X;[C, 4]->X;[C, 5]->h
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->bomb([B, 3],[B, 4])
@@ -578,35 +578,35 @@
      1  2  3  4  5  6
   A  _  h  h  _  _  _
   B  _  v  O  O  _  _
-  C  _  v  h  X  h  v
+  C  _  v  X  X  h  v
   D  _  v  _  _  _  _
   E  _  v  _  _  _  _
   F  _  _  _  _  _  _
   Current Game (debug): 1
-  Shots: 1/30
-  Bombs: 1/3
+  Shots: 0/30
+  Bombs: 2/3
   Score: 0/10 (Total: 0/10)
   Ships: 0/4
     4x1: [B, 2]->v;[C, 2]->v;[D, 2]->v;[E, 2]->v
-    3x1: [C, 3]->h;[C, 4]->X;[C, 5]->h
+    3x1: [C, 3]->X;[C, 4]->X;[C, 5]->h
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->undo
-  state 41 (= state 39) OK -> Hit! Keep Firing!
+  state 41 (= state 40) OK -> Miss! Keep Firing!
      1  2  3  4  5  6
   A  _  h  h  _  _  _
-  B  _  v  _  _  _  _
-  C  _  v  h  X  h  v
+  B  _  v  O  O  _  _
+  C  _  v  X  X  h  v
   D  _  v  _  _  _  _
   E  _  v  _  _  _  _
   F  _  _  _  _  _  _
   Current Game (debug): 1
-  Shots: 1/30
-  Bombs: 0/3
+  Shots: 0/30
+  Bombs: 2/3
   Score: 0/10 (Total: 0/10)
   Ships: 0/4
     4x1: [B, 2]->v;[C, 2]->v;[D, 2]->v;[E, 2]->v
-    3x1: [C, 3]->h;[C, 4]->X;[C, 5]->h
+    3x1: [C, 3]->X;[C, 4]->X;[C, 5]->h
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->redo
@@ -614,17 +614,17 @@
      1  2  3  4  5  6
   A  _  h  h  _  _  _
   B  _  v  O  O  _  _
-  C  _  v  h  X  h  v
+  C  _  v  X  X  h  v
   D  _  v  _  _  _  _
   E  _  v  _  _  _  _
   F  _  _  _  _  _  _
   Current Game (debug): 1
-  Shots: 1/30
-  Bombs: 1/3
+  Shots: 0/30
+  Bombs: 2/3
   Score: 0/10 (Total: 0/10)
   Ships: 0/4
     4x1: [B, 2]->v;[C, 2]->v;[D, 2]->v;[E, 2]->v
-    3x1: [C, 3]->h;[C, 4]->X;[C, 5]->h
+    3x1: [C, 3]->X;[C, 4]->X;[C, 5]->h
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->redo
@@ -632,17 +632,17 @@
      1  2  3  4  5  6
   A  _  h  h  _  _  _
   B  _  v  O  O  _  _
-  C  _  v  h  X  h  v
+  C  _  v  X  X  h  v
   D  _  v  _  _  _  _
   E  _  v  _  _  _  _
   F  _  _  _  _  _  _
   Current Game (debug): 1
-  Shots: 1/30
-  Bombs: 1/3
+  Shots: 0/30
+  Bombs: 2/3
   Score: 0/10 (Total: 0/10)
   Ships: 0/4
     4x1: [B, 2]->v;[C, 2]->v;[D, 2]->v;[E, 2]->v
-    3x1: [C, 3]->h;[C, 4]->X;[C, 5]->h
+    3x1: [C, 3]->X;[C, 4]->X;[C, 5]->h
     2x1: [A, 2]->h;[A, 3]->h
     1x1: [C, 6]->v
 ->fire([A, 2])
@@ -650,16 +650,16 @@
      1  2  3  4  5  6
   A  _  X  h  _  _  _
   B  _  v  O  O  _  _
-  C  _  v  h  X  h  v
+  C  _  v  X  X  h  v
   D  _  v  _  _  _  _
   E  _  v  _  _  _  _
   F  _  _  _  _  _  _
   Current Game (debug): 1
-  Shots: 2/30
-  Bombs: 1/3
+  Shots: 1/30
+  Bombs: 2/3
   Score: 0/10 (Total: 0/10)
   Ships: 0/4
     4x1: [B, 2]->v;[C, 2]->v;[D, 2]->v;[E, 2]->v
-    3x1: [C, 3]->h;[C, 4]->X;[C, 5]->h
+    3x1: [C, 3]->X;[C, 4]->X;[C, 5]->h
     2x1: [A, 2]->X;[A, 3]->h
     1x1: [C, 6]->v
