@@ -47,7 +47,7 @@ feature -- commands
 
 	get_state_feedback: TUPLE[oldp:STRING; newp: STRING]
 		do
-			Result := ["OK", "OK"]
+			Result := [remove_previous_steps(old_position.state_feedback), remove_previous_steps(position.state_feedback)]
 		end
 
 	get_state_action : TUPLE[oldp:STRING; newp: STRING]

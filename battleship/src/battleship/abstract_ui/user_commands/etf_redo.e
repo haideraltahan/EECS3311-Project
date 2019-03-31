@@ -33,6 +33,9 @@ feature -- command
 				model.board.set_message_action (model.history.item.get_state_action.newp)
 			else
 				model.board.set_message_state("Nothing to redo")
+				if model.board.action_feedback.has_substring ("Hit!") or model.board.action_feedback.has_substring ("Miss!") then
+					model.board.set_message_action ("Keep Firing!")
+				end
 			end
 
 			model.default_update

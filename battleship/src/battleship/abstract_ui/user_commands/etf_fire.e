@@ -18,28 +18,30 @@ feature -- command
 		local
 			shot : ETF_ACTIONS_FIRE
 			new_board : ETF_BOARD
+   			did_shoot : BOOLEAN
     	do
 			-- perform some update on the model state
-
+			did_shoot := FALSE
+			new_board := model.board.deep_twin
 			if not (model.board.game_status ~ 0) then
 				model.board.set_message("Game not started", "Start a new game")
 			elseif not model.board.is_valid(coordinate) then
-				model.board.set_message("Invalid coordinate", "Keep Firing!")
 				if model.get_is_cusom then
-					create shot.make (model.board.deep_twin)
-					model.history.extend_history (shot)
+					new_board.set_message_state("Invalid coordinate")
+				else
+					model.board.set_message("Invalid coordinate", "Keep Firing!")
 				end
 			elseif model.board.shots ~ model.board.max_shots then
-				model.board.set_message ("No shots remaining", "Keep Firing!")
 				if model.get_is_cusom then
-					create shot.make (model.board.deep_twin)
-					model.history.extend_history (shot)
+					new_board.set_message_state("No shots remaining")
+				else
+					model.board.set_message ("No shots remaining", "Keep Firing!")
 				end
 			elseif model.board.is_hit(coordinate.row.as_integer_32, coordinate.column.as_integer_32) then
-				model.board.set_message ("Already fired there", "Keep Firing!")
 				if model.get_is_cusom then
-					create shot.make (model.board.deep_twin)
-					model.history.extend_history (shot)
+					new_board.set_message_state("Already fired there")
+				else
+					model.board.set_message ("Already fired there", "Keep Firing!")
 				end
 			else
 				-- shoot the area
@@ -49,6 +51,15 @@ feature -- command
 				create shot.make (new_board)
 				model.history.extend_history (shot)
 				shot.execute
+				did_shoot := TRUE
+			end
+
+			if model.get_is_cusom and not did_shoot then
+				new_board.set_state (model.state_counter.deep_twin)
+				create shot.make (new_board)
+				model.history.extend_history (shot)
+				shot.execute
+				did_shoot := FALSE
 			end
 
 			if model.board.game_status ~ 2 then

@@ -55,18 +55,6 @@ feature -- commands
 			Result := [remove_previous_steps(old_position.state_feedback), remove_previous_steps(position.state_feedback)]
 		end
 
-	remove_previous_steps(str : STRING) : STRING
-		do
-			if str.at (1) ~ '(' then
-				if str.at (12) ~ ')' then
-					str.remove_substring (1,13)
-				else
-					str.remove_substring (1,12)
-				end
-			end
-			Result := str
-		end
-
 	get_state_action : TUPLE[oldp:STRING; newp: STRING]
 		do
 			Result := [old_position.action_feedback, position.action_feedback]

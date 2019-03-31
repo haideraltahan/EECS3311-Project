@@ -22,6 +22,18 @@ feature{NONE}
 			Result := ma.m
 		end
 
+	remove_previous_steps(str : STRING) : STRING
+		do
+			if str.at (1) ~ '(' then
+				if str.at (12) ~ ')' then
+					str.remove_substring (1,13)
+				else
+					str.remove_substring (1,12)
+				end
+			end
+			Result := str
+		end
+		
 feature -- deferred commands
 	execute
 		deferred
