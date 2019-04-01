@@ -1,5 +1,5 @@
 note
-	description: "A default business model."
+	description: "Business model of the Battleship game."
 	author: "Jackie Wang"
 	date: "$Date$"
 	revision: "$Revision$"
@@ -26,6 +26,8 @@ feature {NONE} -- Initialization
 			create last_BOARD.make_empty
 			create history.make
 		end
+
+feature {NONE} -- random and debug generators
 
 	rand_gen: RANDOM_GENERATOR
 			-- random generator for normal mode
@@ -59,7 +61,7 @@ feature -- model attributes
 
 	STATE_COUNTER, GAME_COUNTER : INTEGER
 	BOARD : ETF_BOARD
-	history: ETF_HISTORY
+	history: ETF_HISTORY [ETF_ACTIONS]
 	gave_up : BOOLEAN
 	is_custom : BOOLEAN
 	last_board : ETF_BOARD
@@ -95,14 +97,14 @@ feature -- model operations
 				gen := rand_gen
 			end
 
-			if board.is_debug_mode /~ is_debug_mode or gave_up then
+			if board.check_debug /~ is_debug_mode or gave_up then
 				total_score := 0
 				max_total_score := 0
 				game_counter := 0
 				gave_up := FALSE
 			else
-				total_score := board.total_score
-				max_total_score := board.max_total_score
+				total_score := board.get_total_score
+				max_total_score := board.get_max_total_score
 			end
 
 			if level ~ 13 then
@@ -135,14 +137,14 @@ feature -- model operations
 				gen := custom_rand_gen
 			end
 
-			if board.is_debug_mode /~ is_debug_mode or gave_up then
+			if board.check_debug /~ is_debug_mode or gave_up then
 				total_score := 0
 				max_total_score := 0
 				game_counter := 0
 				gave_up := FALSE
 			else
-				total_score := board.total_score
-				max_total_score := board.max_total_score
+				total_score := board.get_total_score
+				max_total_score := board.get_max_total_score
 			end
 
 			create BOARD.make (dimension, ships, max_shots, num_bombs, is_debug_mode, total_score, max_total_score, gen)
@@ -165,61 +167,67 @@ feature -- queries
 
 feature -- actions commands
 
-	set_board(a_BOARD: ETF_BOARD)
+	set_board(a_board: ETF_BOARD)
+			-- set current board to a_board
 		do
-			board:=a_board
+			board := a_board
 		end
 
-	set_last_board(a_BOARD: ETF_BOARD)
+	set_last_board(a_board: ETF_BOARD)
+			-- set previous board to a_board
 		do
-			last_board:=a_board
+			last_board := a_board
 		end
 
 feature -- queries
 
 	out : STRING
+			-- Returns string representation of game state
 		do
 			create Result.make_from_string ("  ")
 			Result.append ("state ")
 			Result.append (STATE_COUNTER.out)
 			Result.append (" ")
-			Result.append (board.STATE_FEEDBACK.out)
+			Result.append (board.get_state_feedback)
 			Result.append (" -> ")
-			Result.append (board.ACTION_FEEDBACK.out)
+			Result.append (board.get_action_feedback)
+
 			if not (BOARD.game_status ~ 3) then
 				Result.append (BOARD.out)
 				Result.append ("%N  ")
-				if BOARD.is_debug_mode then
+
+				if BOARD.check_debug then
 					Result.append ("Current Game (debug): ")
 				else
 					Result.append ("Current Game: ")
 				end
+
 				Result.append (GAME_COUNTER.out)
 				Result.append ("%N  ")
 				Result.append ("Shots: ")
-				Result.append (BOARD.shots.out)
+				Result.append (BOARD.get_shots.out)
 				Result.append ("/")
-				Result.append (BOARD.max_shots.out)
+				Result.append (BOARD.get_max_shots.out)
 				Result.append ("%N  ")
 				Result.append ("Bombs: ")
-				Result.append (BOARD.bombs.out)
+				Result.append (BOARD.get_bombs.out)
 				Result.append ("/")
-				Result.append (BOARD.max_bombs.out)
+				Result.append (BOARD.get_max_bombs.out)
 				Result.append ("%N")
 				Result.append ("  Score: ")
-				Result.append (BOARD.score.out)
+				Result.append (BOARD.get_score.out)
 				Result.append ("/")
-				Result.append (BOARD.max_score.out)
+				Result.append (BOARD.get_max_score.out)
 				Result.append (" (Total: ")
-				Result.append (BOARD.TOTAL_SCORE.out)
+				Result.append (BOARD.get_total_score.out)
 				Result.append ("/")
-				Result.append (BOARD.max_total_score.out)
+				Result.append (BOARD.get_max_total_score.out)
 				Result.append (")")
 				Result.append ("%N")
 				Result.append ("  Ships: ")
 				Result.append (BOARD.count_sunk_ships.out)
 				Result.append ("/")
-				Result.append (BOARD.ships.count.out)
+				Result.append (BOARD.ships_count.out)
 				Result.append (BOARD.ships_out)
 			end
 		end

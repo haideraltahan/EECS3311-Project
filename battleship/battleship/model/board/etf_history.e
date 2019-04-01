@@ -1,30 +1,30 @@
 note
-	description: "History operations for undo/redo design pattern"
+	description: "History operations for undo/redo design pattern."
 	author: "JSO"
 	date: "$Date$"
 	revision: "$Revision$"
 
 class
-	ETF_HISTORY
+	ETF_HISTORY [G -> ETF_ACTIONS]
 
 create
 	make
 
-feature{NONE} -- create
+feature {NONE} -- create
 
 	make
 		do
-			create {ARRAYED_LIST[ETF_ACTIONS]}history.make (10)
+			create {ARRAYED_LIST[G]}history.make (10)
 		end
 
-	history: LIST[ETF_ACTIONS]
-		-- a history list of user invoked operations
-		-- implementation
+feature {NONE} -- implementation
 
+	history: LIST[G]
+		-- a history list of user invoked operations
 
 feature -- queries
 
-	item: ETF_ACTIONS
+	item: G
 			-- Cursor points to this user operation
 		require
 			on_item
@@ -38,7 +38,6 @@ feature -- queries
 		do
 			Result := not history.before and not history.after
 		end
-
 
 	after: BOOLEAN
 			-- Is there no valid cursor position to the right of cursor?
@@ -54,7 +53,7 @@ feature -- queries
 
 feature -- comands
 
-	extend_history(a_op:ETF_ACTIONS)
+	extend_history(a_op: G)
 			-- remove all operations to the right of the current
 			-- cursor in history, then extend with `a_op'
 		do
@@ -100,6 +99,5 @@ feature -- comands
 		ensure
 			check_is_empty: history.is_empty
 		end
-
 
 end

@@ -6,6 +6,7 @@ note
 
 class
 	ETF_ACTIONS_NEW_GAME
+
 inherit
 	ETF_ACTIONS
 
@@ -25,11 +26,13 @@ feature -- Initialization
 			position := new_board
 		end
 
-feature -- queries
+feature {NONE} -- attributes
+
 	old_position: ETF_BOARD
 	position: ETF_BOARD
-
+	
 feature -- commands
+
 	execute
 		do
 			game.set_board (position)
@@ -45,18 +48,19 @@ feature -- commands
 			execute
 		end
 
-	get_state : TUPLE[oldp:INTEGER; newp: INTEGER]
+	get_state : TUPLE [oldp:INTEGER; newp: INTEGER]
 		do
-			Result := [old_position.state, position.state]
+			Result := [old_position.get_state, position.get_state]
 		end
 
-	get_state_feedback: TUPLE[oldp:STRING; newp: STRING]
+	get_state_feedback: TUPLE [oldp:STRING; newp: STRING]
 		do
-			Result := [remove_previous_steps(old_position.state_feedback), remove_previous_steps(position.state_feedback)]
+			Result := [remove_previous_steps(old_position.get_state_feedback), remove_previous_steps(position.get_state_feedback)]
 		end
 
-	get_state_action : TUPLE[oldp:STRING; newp: STRING]
+	get_state_action : TUPLE [oldp:STRING; newp: STRING]
 		do
-			Result := [old_position.action_feedback, position.action_feedback]
+			Result := [old_position.get_action_feedback, position.get_action_feedback]
 		end
+
 end

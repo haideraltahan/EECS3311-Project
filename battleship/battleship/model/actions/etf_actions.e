@@ -1,9 +1,6 @@
 note
 	description: "[
-		Abstract move of a chess piece, 
-		e.g. King, Bishop, Rook, Knight etc.
-		`directions` must be effected relative to the this piece,
-		as well as execute, undo and redo.
+		Abstract move of Battleship.
 		]"
 	author: "JSO"
 	date: "$Date$"
@@ -12,7 +9,7 @@ note
 deferred class
 	ETF_ACTIONS
 
-feature{NONE}
+feature {NONE} -- ETF_GAME implementation
 
 	game: ETF_GAME
 			-- access board via singleton
@@ -21,6 +18,8 @@ feature{NONE}
 		once
 			Result := ma.m
 		end
+
+feature {NONE}	-- common operations
 
 	remove_previous_steps(str : STRING) : STRING
 		do
@@ -33,11 +32,13 @@ feature{NONE}
 			end
 			Result := str
 		end
-		
+
 feature -- deferred commands
+
 	execute
 		deferred
 		end
+
 	undo
 		deferred
 		end

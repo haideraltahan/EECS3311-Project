@@ -5,17 +5,20 @@ note
 	revision: "$Revision$"
 
 class
-	ETF_CUSTOM_SETUP
+	ETF_DEBUG_TEST
+
 inherit
-	ETF_CUSTOM_SETUP_INTERFACE
-		redefine custom_setup end
+	ETF_DEBUG_TEST_INTERFACE
+		redefine debug_test end
 create
 	make
+
 feature -- command
-	custom_setup(dimension: INTEGER_64 ; ships: INTEGER_64 ; max_shots: INTEGER_64 ; num_bombs: INTEGER_64)
+
+	debug_test(level: INTEGER_64)
 		require else
-			custom_setup_precond(dimension, ships, max_shots, num_bombs)
-		local
+			debug_test_precond(level)
+    	local
 			play : ETF_ACTIONS_NEW_GAME
 			new_board : ETF_BOARD
     	do
@@ -29,7 +32,7 @@ feature -- command
 				model.history.extend_history (play)
 				play.execute
 			else
-				model.custom_game (dimension.as_integer_32, ships.as_integer_32, max_shots.as_integer_32, num_bombs.as_integer_32, False)
+				model.new_game (level.as_integer_32, TRUE)
 				model.board.set_state (model.state_counter.deep_twin)
 				model.set_last_board (model.board.deep_twin)
 			end

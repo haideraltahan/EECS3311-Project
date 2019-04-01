@@ -6,15 +6,19 @@ note
 
 class
 	ETF_SQUARE
+
 inherit
+
 	ANY
 		redefine out end
 	DEBUG_OUTPUT
 		redefine out end
+
 create
 	make
 
-feature{NONE}
+feature {NONE}
+
 	make(a_char: CHARACTER)
 			-- may not be a valid square
 		do
@@ -28,7 +32,9 @@ feature{NONE}
 		once
 			Result := ma.m.board
 		end
-feature
+
+feature {ETF_BOARD} -- queries
+
 	item: CHARACTER
 
 	is_hit:BOOLEAN

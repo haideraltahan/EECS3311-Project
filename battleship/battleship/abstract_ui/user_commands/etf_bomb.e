@@ -6,12 +6,16 @@ note
 
 class
 	ETF_BOMB
+
 inherit
 	ETF_BOMB_INTERFACE
 		redefine bomb end
+
 create
 	make
+
 feature -- command
+
 	bomb(coordinate1: TUPLE[row: INTEGER_64; column: INTEGER_64] ; coordinate2: TUPLE[row: INTEGER_64; column: INTEGER_64])
 		require else
 			bomb_precond(coordinate1, coordinate2)
@@ -31,7 +35,7 @@ feature -- command
 				else
 					model.board.set_message("Invalid coordinate", "Keep Firing!")
 				end
-			elseif model.board.bombs ~ model.board.max_bombs then
+			elseif model.board.get_bombs ~ model.board.get_max_bombs then
 				if model.get_is_cusom then
 					new_board.set_message_state("No bombs remaining")
 				else
@@ -40,7 +44,7 @@ feature -- command
 			elseif not model.board.is_adjacent(coordinate1, coordinate2) then
 				if model.get_is_cusom then
 					new_board.set_message_state("Bomb coordinates must be adjacent")
-					if new_board.action_feedback.has_substring ("Hit!") or new_board.action_feedback.has_substring ("Miss!") then
+					if new_board.get_action_feedback.has_substring ("Hit!") or new_board.get_action_feedback.has_substring ("Miss!") then
 						new_board.set_message_action ("Keep Firing!")
 					end
 				else

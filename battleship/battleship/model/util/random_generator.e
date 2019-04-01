@@ -15,13 +15,12 @@ class
 create
 	make_debug, make_random
 
-feature{NONE} -- atributues
+feature {NONE} -- attributes
 
 	c_seed, r_seed, d_seed: RANDOM
 			-- used to generate random numbers
 
-
-feature{NONE} -- creation
+feature {NONE} -- creation
 
 	make_debug
 			-- returns random variables for debug purposes

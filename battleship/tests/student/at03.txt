@@ -3,9 +3,9 @@
 debug_test(medium)
 bomb([A,1],[A,2])
 bomb([A,3],[A,4])
-bomb([B,1],[B,8])	-- violates -3, -2: returns "coordinates must be adjacent"
+bomb([B,1],[B,8])	
 bomb([A,5],[A,6])
-bomb([A,1],[A,8])	-- violates -4, -3, -2: returns "No bombs remaining"
+bomb([A,1],[A,8])
 bomb([B,1],[B,5])
 fire([C,2])
 fire([C,3])

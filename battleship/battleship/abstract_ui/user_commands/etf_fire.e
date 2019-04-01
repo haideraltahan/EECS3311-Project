@@ -6,12 +6,15 @@ note
 
 class
 	ETF_FIRE
+
 inherit
 	ETF_FIRE_INTERFACE
 		redefine fire end
 create
 	make
+
 feature -- command
+
 	fire(coordinate: TUPLE[row: INTEGER_64; column: INTEGER_64])
 		require else
 			fire_precond(coordinate)
@@ -31,7 +34,7 @@ feature -- command
 				else
 					model.board.set_message("Invalid coordinate", "Keep Firing!")
 				end
-			elseif model.board.shots ~ model.board.max_shots then
+			elseif model.board.get_shots ~ model.board.get_max_shots then
 				if model.get_is_cusom then
 					new_board.set_message_state("No shots remaining")
 				else

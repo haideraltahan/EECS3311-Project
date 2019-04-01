@@ -1,21 +1,25 @@
 note
-	description: "Chess board of varying sizes."
+	description: "Board of various sizes that represent the state of the Battleship game."
 	author: "JSO"
 	date: "$Date$"
 	revision: "$Revision$"
 
 class
 	ETF_BOARD
+
 inherit
 	ANY
-		redefine out end
+		redefine
+			out
+		end
 
 create
 	make, make_empty
 
-feature {NONE} -- create
+feature {NONE} -- initialization
 
 	make_empty
+			-- Make an empty board
 		do
 			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), 0, 0)
 			create Ships.make (1)
@@ -27,15 +31,27 @@ feature {NONE} -- create
 		end
 
 	make(a_size, s_size, a_shots, a_bombs: INTEGER; a_is_debug_mode: BOOLEAN; a_score, a_max_score: INTEGER; a_gen : RANDOM_GENERATOR)
-			-- Initialization for `Current'.
+			-- Make a board with given size, number of ships, shots, bombs, etc
+		require
+			board_size_limits:
+				a_size >= 4 and a_size <= 12
+			ships_limit:
+				s_size >= 1 and s_size <= 7
+			shots_limit:
+				a_shots >= 1 and a_shots <= 144
+			bombs_limit:
+				a_bombs >= 1 and a_bombs <= 7
 		do
+			board_size := a_size
 			is_debug_mode := a_is_debug_mode
 			gen := a_gen
 			create implementation.make_filled (create {ETF_SQUARE}.make ('_'), a_size, a_size)
 			generate_ships(s_size)
+
 			if is_debug_mode then
 				fill_debug
 			end
+
 			total_score := a_score
 			max_shots := a_shots
 			max_bombs := a_bombs
@@ -43,9 +59,15 @@ feature {NONE} -- create
 			MAX_TOTAL_SCORE := MAX_TOTAL_SCORE + max_score + a_max_score
 			STATE_FEEDBACK := "OK"
 			ACTION_FEEDBACK := "Fire Away!"
+		ensure
+			attributes_assignments:
+				total_score = a_score and max_shots = a_shots and max_bombs = a_bombs and max_score = get_max_score and board_size = a_size and
+				MAX_TOTAL_SCORE = old MAX_TOTAL_SCORE + max_score + a_max_score and is_debug_mode = a_is_debug_mode and gen = a_gen
+			implementation_size:
+				implementation.count = a_size * a_size
 		end
 
-feature {NONE} -- internal attributes
+feature {NONE} -- attributes
 
 	rand_gen: RANDOM_GENERATOR
 			-- random generator for normal mode
@@ -59,9 +81,6 @@ feature {NONE} -- internal attributes
 			Result := <<'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'>>
 		end
 
-feature -- attributes
-
-	ships : ARRAYED_LIST[ETF_SHIP]
 	is_debug_mode: BOOLEAN
 	-- shots
 	shots, max_shots : INTEGER
@@ -77,10 +96,16 @@ feature -- attributes
 	gen : RANDOM_GENERATOR
 	--state number
 	state : INTEGER
+	-- size of board row/column
+	board_size : INTEGER
 
 feature {ETF_ACTIONS} -- implementation
 
 	implementation: ARRAY2[ETF_SQUARE]
+
+feature {NONE} -- ships implementation
+
+	ships : ARRAYED_LIST[ETF_SHIP]
 
 feature {NONE} -- utilities
 
@@ -121,7 +146,8 @@ feature {NONE} -- utilities
 				gen.forth
 			end
 		ensure
-			-- not sure how to best check this
+			check_num_ships:
+				num_ships = ships.count
 		end
 
 	collide_with_each_other (ship1, ship2: ETF_SHIP): BOOLEAN
@@ -130,27 +156,27 @@ feature {NONE} -- utilities
 				ship1_head_row, ship1_head_col, ship1_tail_row, ship1_tail_col: INTEGER
 				ship2_head_row, ship2_head_col, ship2_tail_row, ship2_tail_col: INTEGER
 			do
-					ship1_tail_row := ship1.row
-					ship1_tail_col := ship1.col
-					if ship1.dir then
+					ship1_tail_row := ship1.get_row
+					ship1_tail_col := ship1.get_col
+					if ship1.get_dir then
 						ship1_tail_row := ship1_tail_row + 1
-						ship1_head_row := ship1_tail_row + ship1.size - 1
+						ship1_head_row := ship1_tail_row + ship1.get_size - 1
 						ship1_head_col := ship1_tail_col
 					else
 						ship1_tail_col := ship1_tail_col + 1
-						ship1_head_col := ship1_tail_col + ship1.size - 1
+						ship1_head_col := ship1_tail_col + ship1.get_size - 1
 						ship1_head_row := ship1_tail_row
 					end
 
-					ship2_tail_row := ship2.row
-					ship2_tail_col := ship2.col
-					if ship2.dir then
+					ship2_tail_row := ship2.get_row
+					ship2_tail_col := ship2.get_col
+					if ship2.get_dir then
 						ship2_tail_row := ship2_tail_row + 1
-						ship2_head_row := ship2_tail_row + ship2.size - 1
+						ship2_head_row := ship2_tail_row + ship2.get_size - 1
 						ship2_head_col := ship2_tail_col
 					else
 						ship2_tail_col := ship2_tail_col + 1
-						ship2_head_col := ship2_tail_col + ship2.size - 1
+						ship2_head_col := ship2_tail_col + ship2.get_size - 1
 						ship2_head_row := ship2_tail_row
 					end
 
@@ -162,31 +188,37 @@ feature {NONE} -- utilities
 			end
 
 	collide_with (new_ship: ETF_SHIP): BOOLEAN
-				-- Does `new_ship' collide with the set of `existing_ships'?
-			do
-					across
-						ships as existing_ship
-					loop
-						Result := Result or collide_with_each_other (new_ship, existing_ship.item)
-					end
-			ensure
-				Result =
-					across ships as existing_ship
-					some
-						collide_with_each_other (new_ship, existing_ship.item)
-					end
+			-- Does `new_ship' collide with the set of `existing_ships'?
+		do
+			across
+				ships as existing_ship
+			loop
+				Result := Result or collide_with_each_other (new_ship, existing_ship.item)
 			end
+		ensure
+			Result =
+				across ships as existing_ship
+				some
+					collide_with_each_other (new_ship, existing_ship.item)
+				end
+		end
 
-	ship_on_coordinate(coordinate: TUPLE[row: INTEGER_32; column: INTEGER_32]):ETF_SHIP
+	ship_on_coordinate(coordinate: TUPLE[row: INTEGER_32; column: INTEGER_32]): ETF_SHIP
+			-- Returns ship that is within range of given coordinate
+		require
+			coordinate_row_correct:
+				coordinate.row >= 1 and coordinate.row <= board_size
+			coordinate_column_correct:
+				coordinate.column >= 1 and coordinate.column <= board_size
 		local
-			r:BOOLEAN
+			r: BOOLEAN
 		do
 			create Result.make_empty
 			across ships as s loop
-				if s.item.dir ~ TRUE then
-					r := coordinate.row > s.item.row and coordinate.row <= s.item.row + s.item.size and coordinate.column ~ s.item.col
+				if s.item.get_dir ~ TRUE then
+					r := coordinate.row > s.item.get_row and coordinate.row <= s.item.get_row + s.item.get_size and coordinate.column ~ s.item.get_col
 				else
-					r := coordinate.column > s.item.col and coordinate.column <= s.item.col + s.item.size and coordinate.row ~ s.item.row
+					r := coordinate.column > s.item.get_col and coordinate.column <= s.item.get_col + s.item.get_size and coordinate.row ~ s.item.get_row
 				end
 
 				if r then
@@ -196,16 +228,17 @@ feature {NONE} -- utilities
 		end
 
 	fill_debug
+			-- debug filling ships on board
 		local
 			temp : ETF_SHIP
 		do
 			across 1 |..| implementation.width as i loop
 				across 1 |..| implementation.height as j loop
 					temp := ship_on_coordinate ([i.item, j.item])
-					if temp.size ~ 0 then
+					if temp.get_size ~ 0 then
 						implementation[i.item,j.item] := create {ETF_SQUARE}.make ('_')
 					else
-						if temp.dir then
+						if temp.get_dir then
 							implementation[i.item,j.item] := create {ETF_SQUARE}.make ('v')
 						else
 							implementation[i.item,j.item] := create {ETF_SQUARE}.make ('h')
@@ -216,16 +249,22 @@ feature {NONE} -- utilities
 		end
 
 	is_ship_located(row, col: INTEGER): BOOLEAN
+			-- is the ship in range of input coordinate?
+		require
+			coordinate_row_correct:
+				row >= 1 and row <= board_size
+			coordinate_column_correct:
+				col >= 1 and col <= board_size
 		do
 			if implementation[row, col] ~ create {ETF_SQUARE}.make ('_') then
 				Result := FALSE
-			ELSE
+			else
 				Result := TRUE
 			end
-
 		end
 
 	check_game_status
+			-- Set correct message based on game status
 		do
 			if game_status ~ 2 then
 				action_feedback := action_feedback + " You Win!"
@@ -253,6 +292,7 @@ feature  -- game info
 			else
 				Result := 0
 				all_ships_sunk := TRUE
+
 				across ships as s loop
 					if not s.item.is_sunk(implementation) then
 				    	all_ships_sunk := FALSE
@@ -272,6 +312,7 @@ feature  -- game info
 		end
 
 	count_sunk_ships : INTEGER
+			-- Returns the number of ships sunk
 		do
 			Result := 0
 			across ships as c loop
@@ -282,6 +323,7 @@ feature  -- game info
 		end
 
 	get_max_score : INTEGER
+			-- Returns maximum score possible
 		local
 			i:INTEGER
 		do
@@ -295,32 +337,39 @@ feature  -- game info
 		end
 
 	update_score(i:INTEGER)
+			-- update total_score of current board
 		do
 			score := score + i
 			total_score := total_score + i
 		end
 
 	set_message(a_state, a_action : STRING)
+			-- set messages
 		do
 			STATE_FEEDBACK := a_state
 			ACTION_FEEDBACK := a_action
 		end
 
 	set_message_state(a_state:STRING)
+			-- set messages for states
 		do
 			STATE_FEEDBACK := a_state
 		end
+
 	set_message_action(a_state:STRING)
+			-- set messages for actions
 		do
 			action_feedback := a_state
 		end
 
 	is_hit(row, col:INTEGER):BOOLEAN
+			-- return True if coordinate hits a ship
 		do
 			Result := implementation[row, col].is_hit
 		end
 
 	distance(coordinate1: TUPLE[row: INTEGER_64; column: INTEGER_64] ; coordinate2: TUPLE[row: INTEGER_64; column: INTEGER_64]):INTEGER
+			-- return distance between coordinate1 and coordinate2
 		local
 			dx, dy : INTEGER_64
 		do
@@ -330,12 +379,18 @@ feature  -- game info
 		end
 
 	is_adjacent(coordinate1: TUPLE[row: INTEGER_64; column: INTEGER_64] ; coordinate2: TUPLE[row: INTEGER_64; column: INTEGER_64]):BOOLEAN
+			-- returns true if coordinate1 and coordinate2 are adjacent; false otherwise
 		do
 			if distance(coordinate1, coordinate2) ~ 1 then
 				Result := TRUE
 			else
 				Result := FALSE
 			end
+		ensure
+			is_adjacent:
+				distance(coordinate1, coordinate2) ~ 1 implies Result = True
+			is_not_adjacent:
+				distance(coordinate1, coordinate2) /~ 1 implies Result = False
 		end
 
 
@@ -364,9 +419,9 @@ feature  -- game info
 			shots := shots + 1
 			if count_sunk_ships > sunk_ships then
 				temp := ship_on_coordinate ([row, col])
-				if temp.size > 0 then
+				if temp.get_size > 0 then
 					action_feedback := temp.out + " ship sunk!"
-					update_score(temp.size)
+					update_score(temp.get_size)
 				end
 			end
 			check_game_status
@@ -399,20 +454,20 @@ feature  -- game info
 			bombs := bombs + 1
 			if count_sunk_ships - sunk_ships ~ 1  then
 				temp := ship_on_coordinate ([coordinate1.row.as_integer_32, coordinate1.column.as_integer_32])
-				if temp.size > 0 then
+				if temp.get_size > 0 then
 					action_feedback := temp.out + " ship sunk!"
 				else
 					temp := ship_on_coordinate ([coordinate2.row.as_integer_32, coordinate2.column.as_integer_32])
 					action_feedback := temp.out + " ship sunk!"
 				end
-				update_score(temp.size)
+				update_score(temp.get_size)
 			elseif count_sunk_ships - sunk_ships ~ 2 then
 				temp := ship_on_coordinate ([coordinate1.row.as_integer_32, coordinate1.column.as_integer_32])
 				action_feedback :=  temp.out + " and "
-				update_score(temp.size)
+				update_score(temp.get_size)
 				temp := ship_on_coordinate ([coordinate2.row.as_integer_32, coordinate2.column.as_integer_32])
 				action_feedback := action_feedback + temp.out + " ships sunk!"
-				update_score(temp.size)
+				update_score(temp.get_size)
 			end
 
 			check_game_status
@@ -423,9 +478,84 @@ feature  -- game info
 				state := i
 			end
 
+feature -- queries
+
+	get_state_feedback: STRING
+			-- returns feedback of current state
+		do
+			Result := STATE_FEEDBACK
+		end
+
+	get_action_feedback: STRING
+			-- returns feedback of current 'action'
+		do
+			Result := ACTION_FEEDBACK
+		end
+
+	check_debug: BOOLEAN
+			-- returns indication if board is using debugging mode
+		do
+			Result := is_debug_mode
+		end
+
+	get_shots: INTEGER
+			-- returns number of shots used
+		do
+			Result := shots
+		end
+
+	get_max_shots: INTEGER
+			-- returns max number of shots available
+		do
+			Result := max_shots
+		end
+
+	get_bombs: INTEGER
+			-- returns number of bombs used
+		do
+			Result := bombs
+		end
+
+	get_max_bombs: INTEGER
+			-- returns max number of bombs available
+		do
+			Result := max_bombs
+		end
+
+	get_score: INTEGER
+			-- returns current score of all sunk ships
+		do
+			Result := score
+		end
+
+	get_total_score: INTEGER
+			-- returns total score of all shots that were hit
+		do
+			Result := TOTAL_SCORE
+		end
+
+	get_max_total_score: INTEGER
+			-- returns max score
+		do
+			Result := max_total_score
+		end
+
+	ships_count: INTEGER
+			-- returns number of ships
+		do
+			Result := ships.count
+		end
+
+	get_state: INTEGER
+			-- returns current state
+		do
+			Result := state
+		end
+
 feature -- out
 
 	ships_out: STRING
+			-- Returns string representation of ships
 		local
 			i, j:INTEGER
 		do
@@ -433,30 +563,30 @@ feature -- out
 			if is_debug_mode then
 				i := 1
 				across ships as c loop
-					Result.append ("    " + c.item.size.out)
+					Result.append ("    " + c.item.get_size.out)
 					Result.append ("x1: ")
 
 					from j := 1
-					until j > c.item.size
+					until j > c.item.get_size
 					loop
-						if c.item.dir ~ True then
+						if c.item.get_dir ~ True then
 							Result.append ("[")
-							Result.append (row_indices[c.item.row + j].out)
+							Result.append (row_indices[c.item.get_row + j].out)
 							Result.append (", ")
-							Result.append (c.item.col.out)
+							Result.append (c.item.get_col.out)
 							Result.append ("]")
 							Result.append ("->")
-							Result.append (implementation[c.item.row + j,c.item.col].out)
+							Result.append (implementation[c.item.get_row + j,c.item.get_col].out)
 						else
 							Result.append ("[")
-							Result.append (row_indices[c.item.row].out)
+							Result.append (row_indices[c.item.get_row].out)
 							Result.append (", ")
-							Result.append ((c.item.col + j).out)
+							Result.append ((c.item.get_col + j).out)
 							Result.append ("]")
 							Result.append ("->")
-							Result.append (implementation[c.item.row,c.item.col + j].out)
+							Result.append (implementation[c.item.get_row,c.item.get_col + j].out)
 						end
-						if j <= c.item.size - 1 then
+						if j <= c.item.get_size - 1 then
 							Result.append (";")
 						end
 						j := j + 1
@@ -471,7 +601,7 @@ feature -- out
 				i := 1
 				across ships as c loop
 					Result.append ("    ")
-					Result.append (c.item.size.out)
+					Result.append (c.item.get_size.out)
 					Result.append ("x1: ")
 					if c.item.is_sunk(implementation) ~ True then
 						Result.append ("Sunk")
@@ -502,5 +632,13 @@ feature -- out
 			end
 		end
 	end
+
+invariant
+	board_size_limits:
+		implementation.count = board_size * board_size
+	shots_limit:
+		shots <= max_shots
+	bombs_limit:
+		bombs <= max_bombs
 
 end

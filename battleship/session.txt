@@ -1,0 +1,4 @@
+custom_setup_test(6, 3, 30, 3)
+custom_setup_test(6, 3, 30, 3)
+custom_setup_test(6, 3, 30, 3)
+undo
